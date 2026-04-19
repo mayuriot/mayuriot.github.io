@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Astatine World | Hardware Hub</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@300;400;600&family=Teko:wght@600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@300;400;600&family=Teko:wght@600;700&family=Rajdhani:wght@600;700&family=Inter:wght@300;400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Base Cyberpunk/Sci-Fi Theme */
+        /* Base Theme */
         :root {
             --bg-dark: #030508;
             --cyan: #00f0ff;
             --cyan-glow: rgba(0, 240, 255, 0.4);
             --red: #ff2a5f;
             --text-main: #f8fafc;
-            --text-muted: #64748b;
-            --card-bg: rgba(10, 15, 25, 0.8);
+            --text-muted: #94a3b8;
+            --card-bg: rgba(15, 17, 21, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
         }
 
         * {
@@ -29,11 +30,12 @@
         body {
             background-color: var(--bg-dark);
             color: var(--text-main);
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* ================= SPLASH SCREEN & 3D EFFECTS ================= */
+        /* ================= GLITCH SPLASH SCREEN (RESTORED) ================= */
         .splash-screen {
             height: 100vh;
             display: flex;
@@ -45,7 +47,6 @@
             border-bottom: 1px solid rgba(0, 240, 255, 0.2);
             overflow: hidden;
             background: #010204;
-            /* Container needs perspective for 3D depth */
             perspective: 800px; 
         }
 
@@ -61,11 +62,8 @@
                 linear-gradient(90deg, rgba(0, 240, 255, 0.2) 2px, transparent 2px);
             background-size: 60px 60px;
             z-index: 0;
-            
-            /* The mask creates the curved/faded edge illusion */
             -webkit-mask-image: radial-gradient(circle at center 60%, black 10%, transparent 60%);
             mask-image: radial-gradient(circle at center 60%, black 10%, transparent 60%);
-            
             animation: grid-fly 2s linear infinite, grid-curl 8s ease-in-out infinite alternate;
         }
 
@@ -149,7 +147,7 @@
             text-shadow: 0 0 10px rgba(0,0,0,0.8);
         }
 
-        /* ANIMATIONS */
+        /* GLITCH ANIMATIONS */
         @keyframes text-pulse {
             0%, 100% { text-shadow: 0 0 20px var(--cyan-glow); }
             50% { text-shadow: 0 0 50px rgba(0, 240, 255, 0.8); }
@@ -179,14 +177,15 @@
             60% { transform: translateY(-7px); }
         }
 
-        /* ================= PRODUCT LISTING ================= */
+        /* ================= CLEAN WIDE PRODUCT CARDS ================= */
         .hardware-container {
-            max-width: 1200px;
+            max-width: 1400px;
+            width: 92%;
             margin: 0 auto;
-            padding: 6rem 2rem;
+            padding: 8rem 0;
             display: flex;
             flex-direction: column;
-            gap: 5rem;
+            gap: 6rem;
             position: relative;
             z-index: 2;
         }
@@ -195,40 +194,48 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            gap: 4rem;
+            gap: 5rem;
             background: var(--card-bg);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-left: 4px solid var(--cyan);
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-            transition: border-color 0.3s ease;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
         }
 
         .hardware-row:hover {
-            border-left: 4px solid var(--red);
+            transform: translateY(-5px);
+            border-color: rgba(0, 229, 255, 0.3);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6), 0 0 40px rgba(0, 229, 255, 0.05);
+        }
+
+        .hardware-row:nth-child(even) {
+            flex-direction: row-reverse;
         }
 
         .hardware-image-wrapper {
-            flex: 1;
-            border-radius: 12px;
+            flex: 1.2;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 0 20px rgba(0,0,0,0.8);
             position: relative;
             background: #000;
+            aspect-ratio: 16 / 9; /* Enforces wide box so images fit perfectly */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .hardware-image-wrapper img {
             width: 100%;
-            height: 350px;
-            object-fit: contain; /* Adjusted to fit the 3D renders perfectly */
+            height: 100%;
+            object-fit: cover; /* Forces image to fill the 16:9 box entirely */
+            object-position: center;
             display: block;
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         .hardware-row:hover .hardware-image-wrapper img {
-            transform: scale(1.15);
+            transform: scale(1.05);
         }
 
         .hardware-info {
@@ -239,74 +246,66 @@
         }
 
         .hardware-info h2 {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 2.5rem;
+            font-weight: 700;
             color: #ffffff;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
             text-transform: uppercase;
         }
 
         .hardware-info p {
             font-size: 1.1rem;
             color: var(--text-muted);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
         .portfolio-btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             align-self: flex-start;
-            padding: 12px 30px;
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--cyan);
+            padding: 14px 32px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
             text-decoration: none;
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            border: 2px solid var(--cyan);
-            background: transparent;
-            border-radius: 4px;
-            position: relative;
-            transition: all 0.3s ease;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .portfolio-btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%; width: 100%; height: 100%;
-            background: var(--cyan);
-            transition: all 0.3s ease;
-            z-index: -1;
+            letter-spacing: 1px;
         }
 
         .portfolio-btn:hover {
+            background: var(--cyan);
             color: #000;
-            box-shadow: 0 0 20px var(--cyan-glow);
-        }
-
-        .portfolio-btn:hover::before {
-            left: 0;
+            border-color: var(--cyan);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
         }
 
         /* ================= MOBILE OPTIMIZATION ================= */
-        @media (max-width: 900px) {
-            .hardware-row {
-                flex-direction: column;
-                gap: 2rem;
-                padding: 1.5rem;
-            }
-            .hardware-image-wrapper img { height: 250px; }
+        @media (max-width: 1024px) {
             .splash-title { font-size: 6rem; }
-            .splash-subtitle { font-size: 1.2rem; }
+            .hardware-row, .hardware-row:nth-child(even) {
+                flex-direction: column;
+                gap: 2.5rem;
+                padding: 2rem;
+            }
+            .hardware-image-wrapper { width: 100%; flex: none; }
         }
 
         @media (max-width: 600px) {
             .splash-title { font-size: 3.5rem; letter-spacing: 4px; }
             .splash-subtitle { font-size: 1rem; letter-spacing: 2px;}
+            .hardware-container { padding: 4rem 0; width: 95%; }
+            .hardware-row { padding: 1.5rem; border-radius: 16px; }
             .hardware-info h2 { font-size: 1.8rem; }
-            .hardware-info p { font-size: 0.95rem; }
+            .hardware-info p { font-size: 1rem; }
+            .hardware-image-wrapper { border-radius: 10px; }
         }
     </style>
 </head>
@@ -330,7 +329,7 @@
             </div>
             <div class="hardware-info">
                 <h2>Nexus 4 System</h2>
-                <p>A 4-channel smart relay hub designed for high-reliability room automation. Features local solar-synchronized scheduling and glassmorphic UI control.</p>
+                <p>A 4-channel smart relay hub designed for high-reliability room automation. Features local solar-synchronized scheduling and dynamic edge control architecture.</p>
                 <a href="https://mayursen16.github.io/" class="portfolio-btn">View Portfolio</a>
             </div>
         </div>
@@ -341,7 +340,7 @@
             </div>
             <div class="hardware-info">
                 <h2>Smart Motor Starter</h2>
-                <p>Industrial-grade IoT gateway designed to protect and automate heavy-duty water pumps. Features active load monitoring and overcurrent hardware halts.</p>
+                <p>An industrial-grade IoT gateway engineered to protect and automate heavy-duty water pumps. Features active load monitoring and overcurrent hardware halts.</p>
                 <a href="https://mayursen16.github.io/motor.html" class="portfolio-btn">View Portfolio</a>
             </div>
         </div>
@@ -352,7 +351,7 @@
             </div>
             <div class="hardware-info">
                 <h2>Precision Tank Guardian</h2>
-                <p>100% automated water infrastructure controller featuring True AC math, SD data-logging, and peak detection for rectified DC signals.</p>
+                <p>100% automated water infrastructure controller featuring True AC math, localized SD data-logging, and peak detection for rectified DC signals.</p>
                 <a href="#" class="portfolio-btn">View Portfolio</a>
             </div>
         </div>
@@ -363,7 +362,7 @@
             </div>
             <div class="hardware-info">
                 <h2>Power Diagnostics Relay</h2>
-                <p>STM32-based industrial over/under voltage protection node featuring precise Current Transformer calibration and custom TM1637 drivers.</p>
+                <p>STM32-based industrial over/under voltage protection node featuring precise Current Transformer calibration and custom bus-hardened drivers.</p>
                 <a href="#" class="portfolio-btn">View Portfolio</a>
             </div>
         </div>
