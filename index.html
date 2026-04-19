@@ -35,7 +35,7 @@
             line-height: 1.6;
         }
 
-        /* ================= GLITCH SPLASH SCREEN (RESTORED) ================= */
+        /* ================= GLITCH SPLASH SCREEN ================= */
         .splash-screen {
             height: 100vh;
             display: flex;
@@ -50,7 +50,6 @@
             perspective: 800px; 
         }
 
-        /* The 3D Moving & Curling Grid */
         .cyber-grid {
             position: absolute;
             width: 300vw;
@@ -77,7 +76,6 @@
             100% { transform: rotateX(75deg) scale(1.2) translateY(-50px); }
         }
 
-        /* CRT Scanline Overlay */
         .scanlines {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -87,7 +85,6 @@
             pointer-events: none;
         }
 
-        /* Title Glitch Effect */
         .splash-title {
             font-family: 'Teko', sans-serif;
             font-size: 10rem;
@@ -147,7 +144,6 @@
             text-shadow: 0 0 10px rgba(0,0,0,0.8);
         }
 
-        /* GLITCH ANIMATIONS */
         @keyframes text-pulse {
             0%, 100% { text-shadow: 0 0 20px var(--cyan-glow); }
             50% { text-shadow: 0 0 50px rgba(0, 240, 255, 0.8); }
@@ -182,7 +178,7 @@
             max-width: 1400px;
             width: 92%;
             margin: 0 auto;
-            padding: 8rem 0;
+            padding: 8rem 0 4rem;
             display: flex;
             flex-direction: column;
             gap: 6rem;
@@ -215,21 +211,19 @@
             flex-direction: row-reverse;
         }
 
+        /* FIXED IMAGE WRAPPER - Adapts to image size perfectly */
         .hardware-image-wrapper {
             flex: 1.2;
             border-radius: 16px;
             overflow: hidden;
             position: relative;
-            background: #000;
-            aspect-ratio: 16 / 9; /* Enforces wide box so images fit perfectly */
+            background: transparent; /* Removed black background */
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .hardware-image-wrapper img {
             width: 100%;
-            height: 100%;
-            object-fit: cover; /* Forces image to fill the 16:9 box entirely */
-            object-position: center;
+            height: auto; /* Lets the image naturally determine its own height */
             display: block;
             transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
@@ -287,6 +281,81 @@
             box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
         }
 
+        /* ================= FOOTER / ABOUT ME ================= */
+        .footer-section {
+            background: #010204;
+            border-top: 1px solid var(--card-border);
+            padding: 5rem 0 2rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            width: 92%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 4rem;
+        }
+
+        .footer-about {
+            flex: 1.5;
+        }
+
+        .footer-about h3, .footer-links h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-about p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            max-width: 700px;
+        }
+
+        .footer-links {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 1.05rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .footer-links a:hover {
+            color: var(--cyan);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            width: 92%;
+            margin: 4rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            color: #475569;
+            font-size: 0.9rem;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
         /* ================= MOBILE OPTIMIZATION ================= */
         @media (max-width: 1024px) {
             .splash-title { font-size: 6rem; }
@@ -296,16 +365,19 @@
                 padding: 2rem;
             }
             .hardware-image-wrapper { width: 100%; flex: none; }
+            .footer-content { flex-direction: column; gap: 3rem; }
         }
 
         @media (max-width: 600px) {
             .splash-title { font-size: 3.5rem; letter-spacing: 4px; }
             .splash-subtitle { font-size: 1rem; letter-spacing: 2px;}
-            .hardware-container { padding: 4rem 0; width: 95%; }
+            .hardware-container { padding: 4rem 0 2rem; width: 95%; }
             .hardware-row { padding: 1.5rem; border-radius: 16px; }
             .hardware-info h2 { font-size: 1.8rem; }
             .hardware-info p { font-size: 1rem; }
             .hardware-image-wrapper { border-radius: 10px; }
+            .footer-about h3, .footer-links h3 { font-size: 1.3rem; }
+            .footer-about p, .footer-links a { font-size: 0.95rem; }
         }
     </style>
 </head>
@@ -379,6 +451,25 @@
         </div>
 
     </div>
+
+    <footer class="footer-section">
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>About The Developer</h3>
+                <p>I am Mayur Sen, a 19-year-old embedded systems developer and the founder of Astatine Technologies and MayurIoT. Based in Nawada, Bihar, I specialize in bridging bare-metal hardware design with full-stack deployments. My focus is engineering highly autonomous, commercial-grade systems specifically optimized for cost-effective reliability in the Indian market.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Connect</h3>
+                <a href="mailto:astatinetechtechnologies@gmail.com" target="_blank">astatinetechtechnologies@gmail.com</a>
+                <a href="https://www.linkedin.com/in/mayursen31/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/mayursen16" target="_blank">GitHub</a>
+                <a href="https://www.youtube.com/@mayuriot" target="_blank">YouTube Channel</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Astatine Technologies | MayurIoT. Engineered in Bharat.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
