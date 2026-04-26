@@ -1,475 +1,319 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-IN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Astatine World | Hardware Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astatine Technologies — Futuristic IoT & Embedded Systems</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@300;400;600&family=Teko:wght@600;700&family=Rajdhani:wght@600;700&family=Inter:wght@300;400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Base Theme */
         :root {
-            --bg-dark: #030508;
-            --cyan: #00f0ff;
-            --cyan-glow: rgba(0, 240, 255, 0.4);
-            --red: #ff2a5f;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --card-bg: rgba(15, 17, 21, 0.7);
-            --card-border: rgba(255, 255, 255, 0.08);
+            /* Cyberpunk Color Palette */
+            --bg-color: #050505;
+            --surface-color: #111111;
+            --surface-alt: #1a1a1a;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --neon-yellow: #fcee0a;
+            --neon-cyan: #00f0ff;
+            --neon-pink: #ff003c;
+            --font-heading: 'Orbitron', sans-serif;
+            --font-body: 'Rajdhani', sans-serif;
         }
 
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-dark);
+            background-color: var(--bg-color);
             color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
+            font-family: var(--font-body);
             line-height: 1.6;
-        }
-
-        /* ================= GLITCH SPLASH SCREEN ================= */
-        .splash-screen {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            text-align: center;
-            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
-            overflow: hidden;
-            background: #010204;
-            perspective: 800px; 
-        }
-
-        .cyber-grid {
-            position: absolute;
-            width: 300vw;
-            height: 300vh;
-            top: -50vh;
-            left: -100vw;
-            background-image: 
-                linear-gradient(rgba(0, 240, 255, 0.2) 2px, transparent 2px),
-                linear-gradient(90deg, rgba(0, 240, 255, 0.2) 2px, transparent 2px);
-            background-size: 60px 60px;
-            z-index: 0;
-            -webkit-mask-image: radial-gradient(circle at center 60%, black 10%, transparent 60%);
-            mask-image: radial-gradient(circle at center 60%, black 10%, transparent 60%);
-            animation: grid-fly 2s linear infinite, grid-curl 8s ease-in-out infinite alternate;
-        }
-
-        @keyframes grid-fly {
-            0% { background-position: 0 0; }
-            100% { background-position: 0 60px; }
-        }
-
-        @keyframes grid-curl {
-            0% { transform: rotateX(65deg) scale(1) translateY(0); }
-            100% { transform: rotateX(75deg) scale(1.2) translateY(-50px); }
-        }
-
-        .scanlines {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2));
-            background-size: 100% 4px;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .splash-title {
-            font-family: 'Teko', sans-serif;
-            font-size: 10rem;
-            color: transparent;
-            -webkit-text-stroke: 2px var(--cyan);
-            text-shadow: 0 0 40px var(--cyan-glow);
-            letter-spacing: 8px;
-            line-height: 1;
-            text-transform: uppercase;
-            position: relative;
-            z-index: 2;
-            animation: text-pulse 4s infinite alternate;
-        }
-
-        .splash-title::before, .splash-title::after {
-            content: "ASTATINE WORLD";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            color: var(--cyan);
-            -webkit-text-stroke: 0px;
-            background: transparent;
-            z-index: -1;
-        }
-
-        .splash-title::before {
-            left: 3px;
-            text-shadow: -2px 0 var(--red);
-            animation: glitch-anim-1 3s infinite linear alternate-reverse;
-        }
-
-        .splash-title::after {
-            left: -3px;
-            text-shadow: -2px 0 blue;
-            animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
-        }
-
-        .splash-subtitle {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            color: var(--text-main);
-            letter-spacing: 5px;
-            margin-top: 10px;
-            text-transform: uppercase;
-            z-index: 2;
-            text-shadow: 0 0 15px rgba(0,0,0,1);
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            font-family: 'Rajdhani', sans-serif;
-            color: var(--cyan);
-            font-size: 1.2rem;
-            letter-spacing: 3px;
-            animation: bounce 2s infinite;
-            z-index: 2;
-            text-shadow: 0 0 10px rgba(0,0,0,0.8);
-        }
-
-        @keyframes text-pulse {
-            0%, 100% { text-shadow: 0 0 20px var(--cyan-glow); }
-            50% { text-shadow: 0 0 50px rgba(0, 240, 255, 0.8); }
-        }
-
-        @keyframes glitch-anim-1 {
-            0% { clip-path: inset(20% 0 80% 0); transform: translate(-2px, 1px); }
-            20% { clip-path: inset(60% 0 10% 0); transform: translate(2px, -1px); }
-            40% { clip-path: inset(40% 0 50% 0); transform: translate(-2px, 2px); }
-            60% { clip-path: inset(80% 0 5% 0); transform: translate(2px, -2px); }
-            80% { clip-path: inset(10% 0 70% 0); transform: translate(-1px, 1px); }
-            100% { clip-path: inset(30% 0 50% 0); transform: translate(1px, -1px); }
-        }
-
-        @keyframes glitch-anim-2 {
-            0% { clip-path: inset(10% 0 60% 0); transform: translate(2px, -1px); }
-            20% { clip-path: inset(30% 0 20% 0); transform: translate(-2px, 1px); }
-            40% { clip-path: inset(70% 0 10% 0); transform: translate(2px, 2px); }
-            60% { clip-path: inset(20% 0 50% 0); transform: translate(-2px, -2px); }
-            80% { clip-path: inset(50% 0 30% 0); transform: translate(1px, 1px); }
-            100% { clip-path: inset(5% 0 80% 0); transform: translate(-1px, -1px); }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-15px); }
-            60% { transform: translateY(-7px); }
-        }
-
-        /* ================= CLEAN WIDE PRODUCT CARDS ================= */
-        .hardware-container {
-            max-width: 1400px;
-            width: 92%;
-            margin: 0 auto;
-            padding: 8rem 0 4rem;
-            display: flex;
-            flex-direction: column;
-            gap: 6rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hardware-row {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 5rem;
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--card-border);
-            padding: 2.5rem;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-        }
-
-        .hardware-row:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 229, 255, 0.3);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6), 0 0 40px rgba(0, 229, 255, 0.05);
-        }
-
-        .hardware-row:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        /* FIXED IMAGE WRAPPER - Adapts to image size perfectly */
-        .hardware-image-wrapper {
-            flex: 1.2;
-            border-radius: 16px;
-            overflow: hidden;
-            position: relative;
-            background: transparent; /* Removed black background */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .hardware-image-wrapper img {
-            width: 100%;
-            height: auto; /* Lets the image naturally determine its own height */
-            display: block;
-            transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .hardware-row:hover .hardware-image-wrapper img {
-            transform: scale(1.05);
-        }
-
-        .hardware-info {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .hardware-info h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 1rem;
-            letter-spacing: -0.5px;
-            text-transform: uppercase;
-        }
-
-        .hardware-info p {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
             font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
         }
 
-        .portfolio-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            align-self: flex-start;
-            padding: 14px 32px;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
+        h1, h2, h3, h4, .brand-text {
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
             color: #fff;
-            background: rgba(255, 255, 255, 0.05);
-            text-decoration: none;
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .portfolio-btn:hover {
-            background: var(--cyan);
-            color: #000;
-            border-color: var(--cyan);
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
-        }
+        a { text-decoration: none; color: var(--neon-cyan); transition: 0.3s ease; }
+        a:hover { color: var(--neon-pink); text-shadow: 0 0 8px var(--neon-pink); }
 
-        /* ================= FOOTER / ABOUT ME ================= */
-        .footer-section {
-            background: #010204;
-            border-top: 1px solid var(--card-border);
-            padding: 5rem 0 2rem;
-            margin-top: 2rem;
-            position: relative;
-            z-index: 2;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Header */
+        .site-header { background: rgba(5, 5, 5, 0.9); border-bottom: 2px solid var(--neon-pink); padding: 15px 0; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .brand { display: flex; align-items: center; gap: 10px; color: var(--neon-yellow); font-size: 1.5rem; font-weight: 900; }
+        .primary-nav ul { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; align-items: center; font-weight: 600; }
+        
+        /* Buttons */
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; font-family: var(--font-heading); font-weight: 700; text-transform: uppercase; cursor: pointer; border: none; clip-path: polygon(10px 0, 10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 100%, 0 10px); transition: 0.3s; text-decoration: none; font-size: 0.95rem; }
+        .btn-primary { background: var(--neon-yellow); color: #000; border: 2px solid var(--neon-yellow); }
+        .btn-primary:hover { background: var(--neon-cyan); color: #000; border-color: var(--neon-cyan); box-shadow: 0 0 15px var(--neon-cyan); }
+        .btn-ghost { background: transparent; color: var(--neon-cyan); border: 2px solid var(--neon-cyan); padding: 10px 22px; }
+        .btn-ghost:hover { background: rgba(0, 240, 255, 0.1); box-shadow: 0 0 10px var(--neon-cyan) inset; color: var(--neon-cyan); }
 
-        .footer-content {
-            max-width: 1400px;
-            width: 92%;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            gap: 4rem;
-        }
+        /* Hero Section */
+        .hero { padding: 100px 0; border-bottom: 1px solid #333; position: relative; background: radial-gradient(circle at 80% 50%, rgba(0, 240, 255, 0.1), transparent 50%); }
+        .hero-badge { display: inline-block; padding: 5px 12px; background: rgba(255, 0, 60, 0.2); border: 1px solid var(--neon-pink); color: var(--neon-pink); font-family: var(--font-heading); font-size: 0.85rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
+        .tag { display: inline-block; padding: 3px 8px; border: 1px solid var(--neon-cyan); color: var(--neon-cyan); font-family: var(--font-heading); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 10px; background: rgba(0, 240, 255, 0.05); }
+        
+        .hero h1 { font-size: 4rem; margin: 0 0 20px; line-height: 1.1; }
+        .gradient-text { background: linear-gradient(90deg, var(--neon-yellow), var(--neon-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-sub { font-size: 1.3rem; color: var(--text-muted); max-width: 600px; margin-bottom: 40px; }
+        .hero-actions { display: flex; gap: 20px; }
 
-        .footer-about {
-            flex: 1.5;
-        }
+        /* Grids */
+        .section-header { text-align: center; margin-bottom: 50px; padding-top: 80px; }
+        .services-grid, .portfolio-grid, .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; padding-bottom: 80px; }
+        
+        /* Cards */
+        .card { background: var(--surface-color); border: 1px solid #333; position: relative; transition: 0.3s ease; display: flex; flex-direction: column; }
+        .card:hover { border-color: var(--neon-cyan); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1); }
+        .card::before { content: ''; position: absolute; top: 0; left: 0; width: 40px; height: 3px; background: var(--neon-pink); z-index: 2; }
+        
+        .card-image { width: 100%; height: 220px; overflow: hidden; position: relative; border-bottom: 1px solid #333; background: #000; }
+        .card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; opacity: 0.8; }
+        .card:hover .card-image img { transform: scale(1.05); opacity: 1; }
+        
+        .card-content { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
+        .card h3 { color: var(--neon-yellow); margin-top: 0; font-size: 1.4rem; }
+        .card p { color: var(--text-muted); margin-bottom: 20px; flex-grow: 1; }
+        
+        .service-features { list-style: none; padding: 0; color: var(--text-muted); font-weight: 500; }
+        .service-features li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .service-features li::before { content: '>'; color: var(--neon-pink); font-family: var(--font-heading); font-weight: bold; }
 
-        .footer-about h3, .footer-links h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            color: #ffffff;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        /* Footer */
+        .site-footer { background: #000; border-top: 2px solid var(--neon-cyan); padding: 60px 0 30px; font-size: 1rem; color: var(--text-muted); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { color: #fff; margin-bottom: 20px; }
+        .footer-col ul { list-style: none; padding: 0; }
+        .footer-col ul li { margin-bottom: 10px; }
 
-        .footer-about p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            line-height: 1.8;
-            max-width: 700px;
-        }
+        /* Glitch Effect */
+        .glitch { position: relative; }
+        .glitch::before, .glitch::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.8; }
+        .glitch::before { left: 2px; text-shadow: -2px 0 var(--neon-pink); clip: rect(24px, 550px, 90px, 0); animation: glitch-anim 3s infinite linear alternate-reverse; }
+        .glitch::after { left: -2px; text-shadow: -2px 0 var(--neon-cyan); clip: rect(85px, 550px, 140px, 0); animation: glitch-anim 2.5s infinite linear alternate-reverse; }
 
-        .footer-links {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+        @keyframes glitch-anim {
+            0% { clip: rect(10px, 9999px, 44px, 0); }
+            20% { clip: rect(85px, 9999px, 50px, 0); }
+            40% { clip: rect(22px, 9999px, 98px, 0); }
+            60% { clip: rect(9px, 9999px, 13px, 0); }
+            80% { clip: rect(55px, 9999px, 77px, 0); }
+            100% { clip: rect(33px, 9999px, 2px, 0); }
         }
-
-        .footer-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 1.05rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-            display: inline-block;
-            width: fit-content;
-        }
-
-        .footer-links a:hover {
-            color: var(--cyan);
-            transform: translateX(5px);
-        }
-
-        .footer-bottom {
-            max-width: 1400px;
-            width: 92%;
-            margin: 4rem auto 0;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            text-align: center;
-            color: #475569;
-            font-size: 0.9rem;
-            font-family: 'Space Grotesk', sans-serif;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* ================= MOBILE OPTIMIZATION ================= */
-        @media (max-width: 1024px) {
-            .splash-title { font-size: 6rem; }
-            .hardware-row, .hardware-row:nth-child(even) {
-                flex-direction: column;
-                gap: 2.5rem;
-                padding: 2rem;
-            }
-            .hardware-image-wrapper { width: 100%; flex: none; }
-            .footer-content { flex-direction: column; gap: 3rem; }
-        }
-
-        @media (max-width: 600px) {
-            .splash-title { font-size: 3.5rem; letter-spacing: 4px; }
-            .splash-subtitle { font-size: 1rem; letter-spacing: 2px;}
-            .hardware-container { padding: 4rem 0 2rem; width: 95%; }
-            .hardware-row { padding: 1.5rem; border-radius: 16px; }
-            .hardware-info h2 { font-size: 1.8rem; }
-            .hardware-info p { font-size: 1rem; }
-            .hardware-image-wrapper { border-radius: 10px; }
-            .footer-about h3, .footer-links h3 { font-size: 1.3rem; }
-            .footer-about p, .footer-links a { font-size: 0.95rem; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .primary-nav { display: none; /* Add hamburger menu logic here if needed */ }
         }
     </style>
 </head>
 <body>
 
-    <div class="splash-screen">
-        <div class="cyber-grid"></div>
-        <div class="scanlines"></div>
-        
-        <h1 class="splash-title">ASTATINE WORLD</h1>
-        <p class="splash-subtitle">Engineering The Hardware Edge</p>
-        
-        <div class="scroll-indicator">↓ SCROLL TO EXPLORE ↓</div>
+<header class="site-header">
+    <div class="container nav-container">
+        <a href="https://astatine.in/" class="brand" aria-label="Astatine Technologies home">
+            <span class="brand-text"><strong>ASTATINE</strong> WORLD</span>
+        </a>
+        <nav class="primary-nav">
+            <ul>
+                <li><a href="#portfolio">Hardware</a></li>
+                <li><a href="#services">Capabilities</a></li>
+                <li><a href="#founder">Founder</a></li>
+                <li><a href="mailto:astatinetechtechnologies@gmail.com" class="btn btn-primary">Initialize Build</a></li>
+            </ul>
+        </nav>
     </div>
+</header>
 
-    <div class="hardware-container">
-
-        <div class="hardware-row">
-            <div class="hardware-image-wrapper">
-                <img src="Landing page nexus 4.jpg" alt="Nexus 4 System">
-            </div>
-            <div class="hardware-info">
-                <h2>Nexus 4 System</h2>
-                <p>A 4-channel smart relay hub designed for high-reliability room automation. Features local solar-synchronized scheduling and dynamic edge control architecture.</p>
-                <a href="https://mayursen16.github.io/" class="portfolio-btn">View Portfolio</a>
+<main id="main">
+    <section class="hero">
+        <div class="container">
+            <div class="hero-copy">
+                <span class="hero-badge">System Online // V.2026</span>
+                <h1 class="glitch" data-text="Engineering The Hardware Edge">
+                    Engineering The <span class="gradient-text">Hardware</span> Edge
+                </h1>
+                <p class="hero-sub">From bare-metal silicon to fully autonomous IoT ecosystems. We specialize in custom PCB design, precision microcontroller firmware, and commercial-grade smart automation hardware engineered for the Indian market.</p>
+                <div class="hero-actions">
+                    <a href="#portfolio" class="btn btn-primary">View Catalogue</a>
+                    <a href="#services" class="btn btn-ghost">System Specs</a>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="hardware-row">
-            <div class="hardware-image-wrapper">
-                <img src="landing page ssswms.jpg" alt="Smart Motor Starter">
+    <section id="portfolio" style="background: var(--surface-alt); border-top: 1px solid #333; border-bottom: 1px solid #333;">
+        <div class="container">
+            <div class="section-header">
+                <span class="hero-badge">Hardware Deployed</span>
+                <h2>Flagship <span class="gradient-text">Hardware</span></h2>
             </div>
-            <div class="hardware-info">
-                <h2>Smart Motor Starter</h2>
-                <p>An industrial-grade IoT gateway engineered to protect and automate heavy-duty water pumps. Features active load monitoring and overcurrent hardware halts.</p>
-                <a href="https://mayursen16.github.io/motor.html" class="portfolio-btn">View Portfolio</a>
+
+            <div class="portfolio-grid">
+                
+                <article class="card">
+                    <div class="card-image">
+                        <img src="Landing page nexus 4.jpg" alt="Nexus 4 System">
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">Smart Relay Hub</span>
+                        <h3>Nexus 4 System</h3>
+                        <p>A sleek, 4-channel smart relay hub managed via the dedicated Astatine web interface. Designed for low-latency room automation with Over-the-Air (OTA) update capabilities and dynamic edge control architecture.</p>
+                        <a href="https://mayursen16.github.io/" class="btn btn-ghost" style="align-self: flex-start;">View Portfolio</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-image">
+                        <img src="landing page ssswms.jpg" alt="Smart Motor Starter">
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">Resource Conservation</span>
+                        <h3>Smart Motor Starter</h3>
+                        <p>The MayurIoT gateway. An industrial-grade IoT device engineered to protect heavy-duty water pumps. Features full phone-controlled operation, programmable auto-stop timers to prevent water wastage, and active load monitoring.</p>
+                        <a href="https://mayursen16.github.io/motor.html" class="btn btn-ghost" style="align-self: flex-start;">View Portfolio</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-image">
+                        <img src="placeholder3.jpg" alt="Precision Tank Guardian">
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">Infrastructure Controller</span>
+                        <h3>Precision Tank Guardian</h3>
+                        <p>100% automated water infrastructure controller featuring True AC math, localized SD data-logging, and peak detection for rectified DC signals. Ensures flawless resource management.</p>
+                        <a href="#" class="btn btn-ghost" style="align-self: flex-start;">View Portfolio</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-image">
+                        <img src="placeholder4.jpg" alt="Power Diagnostics Relay">
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">Industrial Protection</span>
+                        <h3>Power Diagnostics Relay</h3>
+                        <p>STM32-based industrial over/under voltage protection node featuring precise Current Transformer calibration and custom bus-hardened drivers for harsh electrical environments.</p>
+                        <a href="#" class="btn btn-ghost" style="align-self: flex-start;">View Portfolio</a>
+                    </div>
+                </article>
+                
+                <article class="card">
+                    <div class="card-image">
+                        <img src="placeholder5.jpg" alt="Custom Edge Hardware">
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">Specialized Builds</span>
+                        <h3>Custom Edge Hardware</h3>
+                        <p>Showcasing specialized hardware builds, ranging from BS6 ICE sequential firing ECU simulators to ultra-low latency MIDI conversion modules and the modular Quick Timer (QT) logic add-ons.</p>
+                        <a href="#" class="btn btn-ghost" style="align-self: flex-start;">View Portfolio</a>
+                    </div>
+                </article>
+
             </div>
         </div>
+    </section>
 
-        <div class="hardware-row">
-            <div class="hardware-image-wrapper">
-                <img src="placeholder3.jpg" alt="Precision Tank Guardian">
+    <section id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="hero-badge">Core Competencies</span>
+                <h2>Engineering <span class="gradient-text">Capabilities</span></h2>
             </div>
-            <div class="hardware-info">
-                <h2>Precision Tank Guardian</h2>
-                <p>100% automated water infrastructure controller featuring True AC math, localized SD data-logging, and peak detection for rectified DC signals.</p>
-                <a href="#" class="portfolio-btn">View Portfolio</a>
+
+            <div class="services-grid">
+                <article class="card" style="padding: 30px;">
+                    <h3>PCB & Firmware Design</h3>
+                    <p>Ground-up hardware development from raw silicon to functional ecosystem. Specializing in professional layouts and component routing.</p>
+                    <ul class="service-features">
+                        <li>ESP8266 & ESP-12F Architecture</li>
+                        <li>STM8 & STM32 Bare-Metal Dev</li>
+                        <li>Custom Circuit Fabrication</li>
+                    </ul>
+                </article>
+
+                <article class="card" style="padding: 30px;">
+                    <h3>Embedded IoT Systems</h3>
+                    <p>Connecting the physical grid to digital interfaces. Expertise in integrating microcontrollers and building custom local web servers for edge devices.</p>
+                    <ul class="service-features">
+                        <li>Blynk IoT Platform Integration</li>
+                        <li>Secure Logic Pipelines</li>
+                        <li>Remote Device OTA Management</li>
+                    </ul>
+                </article>
             </div>
         </div>
+    </section>
 
-        <div class="hardware-row">
-            <div class="hardware-image-wrapper">
-                <img src="placeholder4.jpg" alt="Industrial Protection Relay">
+    <section id="founder" style="background: var(--surface-alt); border-top: 1px solid #333;">
+        <div class="container" style="padding-top: 80px; padding-bottom: 80px;">
+            <div class="section-header" style="padding-top: 0;">
+                <span class="hero-badge">Lead Architect</span>
+                <h2>Meet the <span class="gradient-text">Developer</span></h2>
             </div>
-            <div class="hardware-info">
-                <h2>Power Diagnostics Relay</h2>
-                <p>STM32-based industrial over/under voltage protection node featuring precise Current Transformer calibration and custom bus-hardened drivers.</p>
-                <a href="#" class="portfolio-btn">View Portfolio</a>
+            <div class="team-grid" style="grid-template-columns: 1fr; max-width: 800px; margin: 0 auto;">
+                <article class="card" style="text-align: center; padding: 40px;">
+                    <h3 style="font-size: 2rem;">Mayur Sen</h3>
+                    <div style="color: var(--neon-cyan); font-family: var(--font-heading); margin-bottom: 20px; letter-spacing: 2px;">Founder | Astatine Technologies & MayurIoT</div>
+                    <p style="font-size: 1.15rem; color: #ccc;">I am a 19-year-old embedded systems developer based in Nawada, Bihar. I specialize in bridging bare-metal hardware design with full-stack deployments. My focus is engineering highly autonomous, commercial-grade systems specifically optimized for cost-effective reliability. Whether routing complex PCB traces or coding an ESP8266 to communicate with the cloud, the goal is always performance and innovation.</p>
+                </article>
             </div>
         </div>
+    </section>
+</main>
 
-        <div class="hardware-row">
-            <div class="hardware-image-wrapper">
-                <img src="placeholder5.jpg" alt="Custom Hardware Systems">
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="https://astatine.in/" class="brand">
+                    <span class="brand-text"><strong>ASTATINE</strong> WORLD</span>
+                </a>
+                <p style="margin-top: 15px;">Made on Xeropus.<br>Engineered in Bharat.</p>
             </div>
-            <div class="hardware-info">
-                <h2>Custom Edge Hardware</h2>
-                <p>Showcasing specialized hardware builds, from BS6 ICE sequential firing ECU simulators to ultra-low latency MIDI conversion modules.</p>
-                <a href="#" class="portfolio-btn">View Portfolio</a>
+            
+            <div class="footer-col">
+                <h4>Social Grid</h4>
+                <ul>
+                    <li><a href="https://www.linkedin.com/in/mayursen31/" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://github.com/mayursen16" target="_blank">GitHub</a></li>
+                    <li><a href="https://www.youtube.com/@mayuriot" target="_blank">YouTube Channel</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>HQ Connection</h4>
+                <ul>
+                    <li><span style="color: var(--neon-cyan);">Mail:</span> astatinetechtechnologies@gmail.com</li>
+                    <li><span style="color: var(--neon-cyan);">Grid:</span> Plot 1101, Akbarpur</li>
+                    <li>Nawada, Bihar 805126</li>
+                </ul>
             </div>
         </div>
-
+        <div style="border-top: 1px solid #333; padding-top: 20px; font-family: var(--font-heading); font-size: 0.8rem; text-align: center;">
+            &copy; 2026 ASTATINE TECHNOLOGIES. ALL SYSTEMS NOMINAL.
+        </div>
     </div>
-
-    <footer class="footer-section">
-        <div class="footer-content">
-            <div class="footer-about">
-                <h3>About The Developer</h3>
-                <p>I am Mayur Sen, a 19-year-old embedded systems developer and the founder of Astatine Technologies and MayurIoT. Based in Nawada, Bihar, I specialize in bridging bare-metal hardware design with full-stack deployments. My focus is engineering highly autonomous, commercial-grade systems specifically optimized for cost-effective reliability in the Indian market.</p>
-            </div>
-            <div class="footer-links">
-                <h3>Connect</h3>
-                <a href="mailto:astatinetechtechnologies@gmail.com" target="_blank">astatinetechtechnologies@gmail.com</a>
-                <a href="https://www.linkedin.com/in/mayursen31/" target="_blank">LinkedIn</a>
-                <a href="https://github.com/mayursen16" target="_blank">GitHub</a>
-                <a href="https://www.youtube.com/@mayuriot" target="_blank">YouTube Channel</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Astatine Technologies | MayurIoT. Engineered in Bharat.</p>
-        </div>
-    </footer>
+</footer>
 
 </body>
 </html>
