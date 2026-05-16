@@ -5,20 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Astatine Technologies — Modern IoT & Embedded Systems</title>
     
-    <!-- Updated to modern, clean sans-serif fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Modern Dark Theme Color Palette */
             --bg-color: #0b0f19;
             --surface-color: #111827;
             --surface-alt: #1f2937;
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
-            --accent-primary: #3b82f6; /* Modern Blue */
+            --accent-primary: #3b82f6; 
             --accent-hover: #60a5fa;
             --accent-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
             --border-color: #374151;
@@ -107,7 +105,7 @@
 
         /* Hero Section */
         .hero { 
-            padding: 120px 0; 
+            padding: 120px 0 80px; 
             position: relative; 
             background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.1), transparent 40%); 
         }
@@ -130,21 +128,23 @@
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
         }
-        .tagline {
-            font-size: 1.5rem;
-            color: #fff;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
+        .tagline { font-size: 1.5rem; color: #fff; font-weight: 500; margin-bottom: 20px; }
         .hero-sub { font-size: 1.15rem; color: var(--text-muted); margin: 0 auto 40px; line-height: 1.8; }
         .hero-actions { display: flex; gap: 15px; justify-content: center; }
+
+        /* Tech Stack Grid */
+        .stack-section { padding: 40px 0 80px; border-bottom: 1px solid var(--border-color); text-align: center; }
+        .stack-title { font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 30px; font-weight: 600; font-family: var(--font-body); }
+        .stack-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 900px; margin: 0 auto; }
+        .stack-badge { background: var(--surface-color); border: 1px solid var(--border-color); padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: 0.3s; color: var(--text-main); }
+        .stack-badge:hover { border-color: var(--accent-primary); color: #fff; transform: translateY(-2px); }
 
         /* Grids */
         .section-header { text-align: center; margin-bottom: 60px; padding-top: 80px; }
         .section-header h2 { font-size: 2.5rem; }
         .services-grid, .portfolio-grid, .team-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
             gap: 30px; 
             padding-bottom: 80px; 
         }
@@ -207,12 +207,40 @@
         .footer-col ul { list-style: none; padding: 0; margin: 0; }
         .footer-col ul li { margin-bottom: 15px; }
         
+        /* =========================================
+           MOBILE OPTIMIZATIONS (Phone Screens)
+           ========================================= */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .tagline { font-size: 1.2rem; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .primary-nav { display: none; }
-            .hero-actions { flex-direction: column; }
+            /* Keep only the Contact Us button in header, hide text links */
+            .primary-nav ul li:not(:last-child) { display: none; }
+            .site-header .btn { padding: 8px 16px; font-size: 0.9rem; }
+            
+            /* Reduce massive hero spacing */
+            .hero { padding: 60px 0 40px; }
+            .hero h1 { font-size: 2.6rem; }
+            .tagline { font-size: 1.15rem; margin-bottom: 15px; }
+            .hero-sub { font-size: 1rem; margin-bottom: 30px; }
+            
+            /* Make buttons full width for easy thumb tapping */
+            .hero-actions { flex-direction: column; width: 100%; gap: 12px; }
+            .hero-actions .btn { width: 100%; justify-content: center; }
+            
+            /* Tighter Tech Stack */
+            .stack-section { padding: 20px 0 50px; }
+            .stack-grid { gap: 10px; }
+            .stack-badge { padding: 8px 14px; font-size: 0.85rem; }
+            
+            /* Section Headers */
+            .section-header { padding-top: 40px; margin-bottom: 40px; }
+            .section-header h2 { font-size: 2rem; }
+            
+            /* Ensure single column layout with no side-scrolling */
+            .services-grid, .portfolio-grid, .team-grid { grid-template-columns: 1fr; gap: 20px; padding-bottom: 50px;}
+            .card-content { padding: 25px; }
+            .card-image { height: 180px; } /* Slightly shorter images on mobile */
+            
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; margin-bottom: 40px; }
+            .site-footer { padding: 50px 0 20px; }
         }
     </style>
 </head>
@@ -228,7 +256,6 @@
                 <li><a href="#portfolio">Hardware</a></li>
                 <li><a href="#services">Capabilities</a></li>
                 <li><a href="#founder">Founder</a></li>
-                <!-- Updated Call to Action to WhatsApp -->
                 <li><a href="https://wa.me/916207033076" target="_blank" class="btn btn-primary">Contact Us</a></li>
             </ul>
         </nav>
@@ -242,15 +269,30 @@
                 <span class="hero-badge">System Online // V.2026</span>
                 <h1>Engineering The <span class="gradient-text">Hardware</span> Edge</h1>
                 
-                <!-- Added Tagline -->
                 <h2 class="tagline">Expert in Embedded hardware, firmware, UI, apps, and website design</h2>
                 
                 <p class="hero-sub">From bare-metal silicon to fully autonomous IoT ecosystems. We specialize in custom PCB design, precision microcontroller firmware, and commercial-grade smart automation hardware engineered for the Indian market.</p>
                 <div class="hero-actions">
-                    <!-- Updated Hero Button to WhatsApp -->
                     <a href="https://wa.me/916207033076" target="_blank" class="btn btn-primary">Contact Us</a>
                     <a href="#portfolio" class="btn btn-ghost">View Portfolio</a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Ecosystem -->
+    <section class="stack-section">
+        <div class="container">
+            <h3 class="stack-title">Hardware & Software Ecosystem</h3>
+            <div class="stack-grid">
+                <div class="stack-badge">⚙️ ESP8266 & ESP32</div>
+                <div class="stack-badge">⚙️ STM32 & STM8</div>
+                <div class="stack-badge">📐 EasyEDA</div>
+                <div class="stack-badge">🏭 JLCPCB & LionCircuits</div>
+                <div class="stack-badge">💻 C / C++</div>
+                <div class="stack-badge">🐍 Python</div>
+                <div class="stack-badge">☁️ Blynk IoT Platform</div>
+                <div class="stack-badge">🌐 Web & UI Design</div>
             </div>
         </div>
     </section>
