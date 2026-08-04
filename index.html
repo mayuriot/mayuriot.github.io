@@ -2,7 +2,7 @@
 <html lang="en-IN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Astatine Technologies | Next-Gen Embedded Engineering</title>
     
     <!-- Futuristic Typography -->
@@ -32,15 +32,20 @@
             --font-mono: 'JetBrains Mono', monospace;
         }
 
+        /* Mobile Overflow Fixes */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        html, body { 
+            scroll-behavior: smooth; 
+            overflow-x: hidden; 
+            width: 100%; 
+            max-width: 100vw;
+        }
         
         body {
             font-family: var(--font-display);
             background-color: var(--bg-deep);
             color: var(--text-main);
             line-height: 1.6;
-            overflow-x: hidden;
             background-image: 
                 linear-gradient(var(--border-light) 1px, transparent 1px),
                 linear-gradient(90deg, var(--border-light) 1px, transparent 1px);
@@ -76,7 +81,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            flex-wrap: wrap; /* Allows text to wrap on small screens */
+            gap: 8px;
         }
         .global-banner .highlight { color: #fff; text-shadow: 0 0 10px var(--accent-cyan); font-size: 14px; }
         .global-banner .dim { color: var(--text-muted); }
@@ -87,6 +93,7 @@
             border-radius: 50%;
             box-shadow: 0 0 10px var(--accent-cyan);
             animation: blink 1.5s infinite;
+            flex-shrink: 0;
         }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
@@ -122,6 +129,7 @@
             border: none;
             clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
             transition: 0.3s ease;
+            white-space: nowrap;
         }
         .btn-primary { background: var(--accent-cyan); color: var(--bg-deep); box-shadow: 0 0 20px var(--accent-glow); }
         .btn-primary:hover { background: #fff; box-shadow: 0 0 30px rgba(255,255,255,0.4); transform: translateY(-2px); }
@@ -176,32 +184,32 @@
         @keyframes scanline-scroll { 0% { background-position: 0 0; } 100% { background-position: 0 100px; } }
 
         /* --- Hero Section --- */
-        .hero { padding: 220px 0 120px; position: relative; text-align: center; }
+        .hero { padding: 220px 0 120px; position: relative; text-align: center; overflow: hidden; }
         .hero::before {
             content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
             width: 800px; height: 800px; background: radial-gradient(circle, rgba(138, 43, 226, 0.15) 0%, transparent 60%);
             z-index: -1; pointer-events: none;
         }
         .sys-status { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono); color: var(--accent-cyan); border: 1px solid var(--border-light); padding: 8px 16px; border-radius: 30px; font-size: 13px; letter-spacing: 2px; margin-bottom: 30px; background: var(--bg-glass); }
-        .hero h1 { font-size: clamp(45px, 6vw, 85px); font-weight: 800; line-height: 1.1; margin-bottom: 30px; text-transform: uppercase; }
+        .hero h1 { font-size: clamp(35px, 6vw, 85px); font-weight: 800; line-height: 1.1; margin-bottom: 30px; text-transform: uppercase; }
         .text-gradient { background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 20px; color: var(--text-muted); max-width: 800px; margin: 0 auto 50px; font-weight: 300; }
-        .hero-actions { display: flex; gap: 20px; justify-content: center; }
+        .hero p { font-size: clamp(16px, 3vw, 20px); color: var(--text-muted); max-width: 800px; margin: 0 auto 50px; font-weight: 300; }
+        .hero-actions { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
 
         /* --- Reusable Section Headers --- */
         .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header h2 { font-size: 40px; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; }
+        .section-header h2 { font-size: clamp(28px, 5vw, 40px); font-weight: 800; text-transform: uppercase; margin-bottom: 15px; }
         .section-header p { color: var(--text-muted); font-family: var(--font-mono); font-size: 14px; }
 
         /* --- Interactive Matrix Section --- */
         .matrix-section { padding: 100px 0; border-top: 1px solid var(--border-light); background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-panel) 100%); }
-        .filter-controls { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-bottom: 50px; }
-        .filter-btn { background: var(--bg-deep); border: 1px solid var(--border-light); color: var(--text-muted); padding: 10px 25px; font-family: var(--font-mono); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: 0.3s; clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); }
+        .filter-controls { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 50px; }
+        .filter-btn { background: var(--bg-deep); border: 1px solid var(--border-light); color: var(--text-muted); padding: 10px 20px; font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: 0.3s; clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); flex-grow: 1; text-align: center;}
         .filter-btn:hover { border-color: var(--accent-cyan); color: var(--text-main); }
         .filter-btn.active { background: rgba(0, 240, 255, 0.1); border-color: var(--accent-cyan); color: var(--accent-cyan); box-shadow: inset 0 0 15px var(--accent-glow); }
 
-        .matrix-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; min-height: 400px; }
-        .matrix-card { background: var(--bg-deep); border: 1px solid var(--border-light); padding: 30px; position: relative; display: flex; flex-direction: column; transition: 0.4s ease; animation: cardSpawn 0.5s ease forwards; }
+        .matrix-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 20px; min-height: 400px; }
+        .matrix-card { background: var(--bg-deep); border: 1px solid var(--border-light); padding: 25px; position: relative; display: flex; flex-direction: column; transition: 0.4s ease; animation: cardSpawn 0.5s ease forwards; }
         .matrix-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, var(--accent-cyan), transparent); opacity: 0; transition: 0.3s; }
         .matrix-card:hover { transform: translateY(-5px); border-color: var(--border-strong); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
         .matrix-card:hover::before { opacity: 1; }
@@ -210,15 +218,15 @@
         @keyframes cardSpawn { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
 
         .card-tag { font-family: var(--font-mono); font-size: 11px; color: var(--accent-purple); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 15px; display: block; }
-        .matrix-card h3 { font-size: 22px; font-weight: 600; margin-bottom: 15px; }
-        .matrix-card p { color: var(--text-muted); font-size: 15px; margin-bottom: 25px; flex-grow: 1; }
-        .card-specs { border-top: 1px dashed var(--border-light); padding-top: 20px; font-family: var(--font-mono); font-size: 12px; color: var(--accent-cyan); }
+        .matrix-card h3 { font-size: 20px; font-weight: 600; margin-bottom: 15px; }
+        .matrix-card p { color: var(--text-muted); font-size: 14px; margin-bottom: 25px; flex-grow: 1; }
+        .card-specs { border-top: 1px dashed var(--border-light); padding-top: 20px; font-family: var(--font-mono); font-size: 11px; color: var(--accent-cyan); }
         .card-specs li { margin-bottom: 8px; display: flex; gap: 10px; }
         .card-specs li::before { content: '>'; color: var(--text-muted); }
 
         /* --- Firmware Web Flasher Section --- */
         .flasher-section { padding: 100px 0; border-top: 1px solid var(--border-light); }
-        .flasher-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px; }
+        .flasher-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px; margin-bottom: 40px; }
         
         .term-log-box {
             background: #020408;
@@ -226,7 +234,7 @@
             border-radius: 4px;
             padding: 20px;
             font-family: var(--font-mono);
-            font-size: 13px;
+            font-size: 12px;
             color: var(--accent-green);
             min-height: 150px;
             max-height: 250px;
@@ -236,34 +244,74 @@
             flex-direction: column;
             gap: 8px;
         }
-        .term-log-box .log-line { animation: typeLine 0.1s ease forwards; }
+        .term-log-box .log-line { animation: typeLine 0.1s ease forwards; word-break: break-all; }
         .term-log-box .log-error { color: #ff3366; }
         @keyframes typeLine { from { opacity: 0; transform: translateX(-5px); } to { opacity: 1; transform: translateX(0); } }
+
+        /* --- Pipeline Specs --- */
+        .pipeline-section { padding: 100px 0; border-top: 1px solid var(--border-light); }
+        .pipeline-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .pipeline-content h2 { font-size: clamp(28px, 5vw, 36px); text-transform: uppercase; margin-bottom: 20px; }
+        .pipeline-content p { color: var(--text-muted); margin-bottom: 30px; font-size: 16px; }
+        .tech-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 15px; }
+        .tech-item { background: var(--bg-panel); border: 1px solid var(--border-light); padding: 20px; border-radius: 4px; }
+        .tech-item h4 { color: var(--accent-cyan); font-family: var(--font-mono); font-size: 13px; margin-bottom: 10px; }
+        .tech-item p { font-size: 13px; color: var(--text-muted); }
 
         /* --- Contact Terminal --- */
         .terminal-section { padding: 100px 0; background: var(--bg-panel); border-top: 1px solid var(--border-light); }
         .terminal-box { max-width: 800px; margin: 0 auto; background: #020205; border: 1px solid var(--border-strong); box-shadow: 0 0 30px rgba(0, 240, 255, 0.05); position: relative; }
-        .term-header { background: rgba(0, 240, 255, 0.1); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-strong); font-family: var(--font-mono); font-size: 13px; color: var(--accent-cyan); }
-        .term-body { padding: 40px; }
+        .term-header { background: rgba(0, 240, 255, 0.1); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-strong); font-family: var(--font-mono); font-size: 11px; color: var(--accent-cyan); }
+        .term-body { padding: 30px; }
         .form-row { margin-bottom: 25px; }
-        .term-label { display: block; font-family: var(--font-mono); color: var(--text-muted); font-size: 12px; margin-bottom: 10px; }
-        .term-input { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--border-light); color: var(--text-main); font-family: var(--font-mono); font-size: 16px; padding: 10px 0; transition: 0.3s; }
+        .term-label { display: block; font-family: var(--font-mono); color: var(--text-muted); font-size: 11px; margin-bottom: 10px; }
+        .term-input { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--border-light); color: var(--text-main); font-family: var(--font-mono); font-size: 14px; padding: 10px 0; transition: 0.3s; }
         .term-input:focus { outline: none; border-bottom-color: var(--accent-cyan); box-shadow: 0 5px 10px -10px var(--accent-cyan); }
         textarea.term-input { resize: vertical; min-height: 100px; }
 
         /* --- Footer --- */
-        footer { padding: 50px 0; border-top: 1px solid var(--border-light); text-align: center; background: var(--bg-deep); }
-        .footer-text { font-family: var(--font-mono); color: var(--text-muted); font-size: 13px; }
+        footer { padding: 40px 0; border-top: 1px solid var(--border-light); text-align: center; background: var(--bg-deep); }
+        .footer-text { font-family: var(--font-mono); color: var(--text-muted); font-size: 11px; padding: 0 15px; }
 
-        /* Responsive Mobile Optimizations */
+        /* ========================================================
+           AGGRESSIVE MOBILE OPTIMIZATIONS
+           ======================================================== */
+        @media (max-width: 992px) {
+            .pipeline-grid { grid-template-columns: 1fr; }
+        }
+        
         @media (max-width: 768px) {
+            .container { padding: 0 15px; }
+            
+            /* Hide non-essential nav links on mobile */
             .nav-links { display: none; }
-            .global-banner { font-size: 9px; padding: 10px 5px; letter-spacing: 0.5px; }
-            .global-banner .highlight { font-size: 11px; }
-            .global-banner .dim { display: none; }
-            header { top: 38px; }
-            .hero { padding: 180px 0 80px; }
-            .filter-controls { flex-direction: column; align-items: stretch; }
+            
+            /* Shrink and wrap the global banner so it never causes horizontal scroll */
+            .global-banner { 
+                font-size: 10px; 
+                padding: 8px 5px; 
+                line-height: 1.4;
+            }
+            .global-banner .highlight { font-size: 12px; }
+            .global-banner .dim { display: none; } /* Hide 'DEPLOYED TO MARKET' to save space */
+            
+            /* Adjust header positioning and size */
+            header { top: 40px; }
+            .nav-container { height: 70px; }
+            
+            /* Scale down logo and WhatsApp button for phone screens */
+            .cyber-logo-wrapper { height: 32px; }
+            .nav-container .btn { padding: 8px 16px; font-size: 11px; letter-spacing: 1px;}
+            
+            /* Adjust Hero padding to account for header */
+            .hero { padding: 160px 0 60px; }
+            .hero-actions { flex-direction: column; width: 100%; }
+            .hero-actions .btn { width: 100%; }
+            
+            /* Stack filter buttons nicely */
+            .filter-controls { flex-direction: column; align-items: stretch; gap: 8px; }
+            
+            /* Terminal mobile padding */
             .term-body { padding: 20px; }
         }
     </style>
@@ -280,10 +328,10 @@
 
 <header>
     <div class="container nav-container">
-        <!-- ANIMATED LOGO -->
+        <!-- ANIMATED LOGO WITH CORRECT GITHUB PATH -->
         <a href="#" class="brand">
             <div class="cyber-logo-wrapper">
-                <img src="Astatine logo plain.png" alt="Astatine Technologies" class="cyber-logo-img">
+                <img src="astatine-logo.png" alt="Astatine Technologies" class="cyber-logo-img">
                 <div class="cyber-scanlines"></div>
             </div>
         </a>
@@ -396,6 +444,18 @@
 
                 <!-- Card: Software 1 -->
                 <article class="matrix-card" data-category="software">
+                    <span class="card-tag">FIRMWARE DEPLOYMENT</span>
+                    <h3>AOISOS Web Installer</h3>
+                    <p>Custom-built browser flashing platform. Allows secure, immediate deployment of firmware to consumer devices without complex desktop IDEs.</p>
+                    <ul class="card-specs">
+                        <li>Browser-to-Serial API Integration</li>
+                        <li>MAC Address License Binding</li>
+                        <li>Remote Payload Delivery</li>
+                    </ul>
+                </article>
+
+                <!-- Card: Software 2 -->
+                <article class="matrix-card" data-category="software">
                     <span class="card-tag">UI / UX</span>
                     <h3>Device Management Portals</h3>
                     <p>Intuitive front-end applications served directly from the embedded device. Engineered for flawless user onboarding and configuration.</p>
@@ -406,7 +466,7 @@
                     </ul>
                 </article>
                 
-                <!-- Card: Software 2 -->
+                <!-- Card: Software 3 -->
                 <article class="matrix-card" data-category="software">
                     <span class="card-tag">CAD / PHYSICAL</span>
                     <h3>3D Enclosure Generation</h3>
@@ -422,7 +482,7 @@
         </div>
     </section>
 
-    <!-- NEW: PROTOTYPE FIRMWARE FLASHER -->
+    <!-- PROTOTYPE FIRMWARE FLASHER -->
     <section class="flasher-section" id="deploy">
         <div class="container">
             <div class="section-header">
@@ -454,6 +514,36 @@
                 <div class="log-line">> Awaiting user connection...</div>
             </div>
 
+        </div>
+    </section>
+
+    <!-- PIPELINE SPECS SECTION -->
+    <section class="pipeline-section" id="pipeline">
+        <div class="container pipeline-grid">
+            <div class="pipeline-content">
+                <h2>The Development Pipeline</h2>
+                <p>We do not just write code; we fabricate reality. Our engineering pipeline covers the entire hardware lifecycle, ensuring that the software perfectly complements the silicon it runs on.</p>
+                <a href="#terminal" class="btn btn-primary">Request Blueprint</a>
+            </div>
+            
+            <div class="tech-list">
+                <div class="tech-item">
+                    <h4>01. Schematic & Routing</h4>
+                    <p>Complex trace routing, component selection, and professional PCB layouts optimized for signal integrity.</p>
+                </div>
+                <div class="tech-item">
+                    <h4>02. Firmware Engineering</h4>
+                    <p>C/C++ and Python code optimized for memory constraints, ensuring rock-solid uptime on edge devices.</p>
+                </div>
+                <div class="tech-item">
+                    <h4>03. UI / Ecosystem</h4>
+                    <p>Connecting the grid. Building localized web servers, mobile-responsive controls, and secure cloud pipelines.</p>
+                </div>
+                <div class="tech-item">
+                    <h4>04. Physical Packaging</h4>
+                    <p>Ensuring the electronics survive the real world with tailored 3D CAD modeling and robust enclosures.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -559,18 +649,16 @@
     async function triggerWebSerial(boardType) {
         const terminal = document.getElementById('flashTerminal');
         
-        // Helper function to write to our cyber terminal UI
         function logToTerminal(message, isError = false) {
             const line = document.createElement('div');
             line.className = isError ? 'log-line log-error' : 'log-line';
             line.innerText = `> ${message}`;
             terminal.appendChild(line);
-            terminal.scrollTop = terminal.scrollHeight; // Auto-scroll to bottom
+            terminal.scrollTop = terminal.scrollHeight; 
         }
 
         logToTerminal(`Initiating Web Serial sequence for ${boardType}...`);
 
-        // Check if browser supports Web Serial API
         if (!('serial' in navigator)) {
             logToTerminal('ERROR: Web Serial API not supported in this browser. Please use Chrome or Edge.', true);
             return;
@@ -578,8 +666,6 @@
 
         try {
             logToTerminal(`Requesting COM port access from user...`);
-            
-            // This triggers the native browser pop-up to select the COM port
             const port = await navigator.serial.requestPort();
             
             logToTerminal(`SUCCESS: Port selected. Handshake initialized with ${boardType}.`);
@@ -591,17 +677,13 @@
             logToTerminal(`[WAITING FOR PAYLOAD] Ready to write .bin file to ${boardType}.`);
             
             // TODO: INTEGRATE ESP-WEB-TOOLS OR BINARY UPLOAD HERE.
-            // When you are ready to actually upload the .bin file, you will replace 
-            // this section with the logic that streams the file array buffer into the port.writer.
             
-            // Simulating a safe disconnect for now
             setTimeout(async () => {
                 await port.close();
                 logToTerminal(`Port closed safely. Flasher standing by.`);
             }, 3000);
 
         } catch (error) {
-            // Catches errors like the user clicking "Cancel" on the port selection screen
             logToTerminal(`PROCESS ABORTED: ${error.message}`, true);
         }
     }
