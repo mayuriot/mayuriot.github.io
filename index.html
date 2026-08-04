@@ -19,6 +19,7 @@
             
             --accent-cyan: #00f0ff;
             --accent-purple: #8a2be2;
+            --accent-green: #00ff66;
             --accent-glow: rgba(0, 240, 255, 0.2);
             
             --text-main: #e2e8f0;
@@ -40,7 +41,6 @@
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
-            /* Cyber Grid Background */
             background-image: 
                 linear-gradient(var(--border-light) 1px, transparent 1px),
                 linear-gradient(90deg, var(--border-light) 1px, transparent 1px);
@@ -53,10 +53,48 @@
         ul { list-style: none; }
         .container { max-width: 1400px; margin: 0 auto; padding: 0 30px; }
 
+        /* --- Global Impact HUD Banner --- */
+        .global-banner {
+            background: rgba(3, 5, 10, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--accent-cyan);
+            border-bottom: 1px solid var(--border-strong);
+            box-shadow: 0 4px 20px rgba(0, 240, 255, 0.05);
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 700;
+            text-align: center;
+            padding: 10px 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1001;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .global-banner .highlight { color: #fff; text-shadow: 0 0 10px var(--accent-cyan); font-size: 14px; }
+        .global-banner .dim { color: var(--text-muted); }
+
+        .pulse-cyan {
+            width: 8px; height: 8px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-cyan);
+            animation: blink 1.5s infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
         /* --- Header & Navigation --- */
         header {
             position: fixed;
-            top: 0; left: 0; width: 100%;
+            top: 40px;
+            left: 0; width: 100%;
             background: var(--bg-glass);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
@@ -65,16 +103,6 @@
             transition: all 0.3s ease;
         }
         .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
-        
-        .brand {
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .brand-icon { color: var(--accent-cyan); font-family: var(--font-mono); font-weight: bold; }
         
         .nav-links { display: flex; gap: 40px; font-family: var(--font-mono); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
         .nav-links a { color: var(--text-muted); transition: 0.3s; position: relative; }
@@ -95,186 +123,131 @@
             clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
             transition: 0.3s ease;
         }
-        .btn-primary {
-            background: var(--accent-cyan);
-            color: var(--bg-deep);
-            box-shadow: 0 0 20px var(--accent-glow);
-        }
-        .btn-primary:hover {
-            background: #fff;
-            box-shadow: 0 0 30px rgba(255,255,255,0.4);
-            transform: translateY(-2px);
-        }
-        .btn-outline {
-            background: transparent;
-            color: var(--accent-cyan);
-            border: 1px solid var(--accent-cyan);
-        }
+        .btn-primary { background: var(--accent-cyan); color: var(--bg-deep); box-shadow: 0 0 20px var(--accent-glow); }
+        .btn-primary:hover { background: #fff; box-shadow: 0 0 30px rgba(255,255,255,0.4); transform: translateY(-2px); }
+        
+        .btn-outline { background: transparent; color: var(--accent-cyan); border: 1px solid var(--accent-cyan); }
         .btn-outline:hover { background: var(--accent-glow); }
+        
+        .btn-flash { background: transparent; color: var(--accent-purple); border: 1px solid var(--accent-purple); }
+        .btn-flash:hover { background: var(--accent-purple); color: #fff; box-shadow: 0 0 20px rgba(138, 43, 226, 0.4); }
+
+        /* --- Animated Cyber Logo Integration --- */
+        .cyber-logo-wrapper {
+            position: relative;
+            display: inline-block;
+            height: 45px; 
+            overflow: hidden;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .cyber-logo-wrapper:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.4));
+        }
+        .cyber-logo-img {
+            display: block;
+            height: 100%;
+            width: auto;
+            position: relative;
+            z-index: 1;
+            animation: cyber-glitch 5s infinite linear alternate-reverse;
+        }
+        .cyber-scanlines {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 2;
+            pointer-events: none;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 240, 255, 0.15) 50%, rgba(0, 240, 255, 0.15));
+            background-size: 100% 4px;
+            opacity: 0.6;
+            animation: scanline-scroll 8s linear infinite;
+        }
+
+        @keyframes cyber-glitch {
+            0%, 2%, 6%, 10%, 100% { transform: translate(0) skew(0deg); filter: none; }
+            3% { transform: translate(-4px, 2px) skew(3deg); filter: drop-shadow(-3px 0 0 rgba(0, 240, 255, 0.9)) drop-shadow(3px 0 0 rgba(255, 0, 255, 0.9)); }
+            4% { transform: translate(0) skew(0deg); filter: none; }
+            7% { transform: translate(4px, -2px) skew(-4deg); filter: drop-shadow(3px 0 0 rgba(0, 240, 255, 0.9)) drop-shadow(-3px 0 0 rgba(255, 0, 255, 0.9)) hue-rotate(45deg); }
+            8% { transform: translate(-1px, 1px) skew(1deg); filter: contrast(180%) brightness(120%); }
+        }
+        @keyframes scanline-scroll { 0% { background-position: 0 0; } 100% { background-position: 0 100px; } }
 
         /* --- Hero Section --- */
-        .hero {
-            padding: 200px 0 120px;
-            position: relative;
-            text-align: center;
-        }
+        .hero { padding: 220px 0 120px; position: relative; text-align: center; }
         .hero::before {
             content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-            width: 800px; height: 800px;
-            background: radial-gradient(circle, rgba(138, 43, 226, 0.15) 0%, transparent 60%);
+            width: 800px; height: 800px; background: radial-gradient(circle, rgba(138, 43, 226, 0.15) 0%, transparent 60%);
             z-index: -1; pointer-events: none;
         }
-        
-        .sys-status {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-family: var(--font-mono);
-            color: var(--accent-cyan);
-            border: 1px solid var(--border-light);
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-size: 13px;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
-            background: var(--bg-glass);
-        }
-        .pulse { width: 8px; height: 8px; background: var(--accent-cyan); border-radius: 50%; box-shadow: 0 0 10px var(--accent-cyan); animation: blink 1.5s infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-
-        .hero h1 {
-            font-size: clamp(45px, 6vw, 85px);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-        }
-        .text-gradient {
-            background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .hero p {
-            font-size: 20px;
-            color: var(--text-muted);
-            max-width: 800px;
-            margin: 0 auto 50px;
-            font-weight: 300;
-        }
+        .sys-status { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono); color: var(--accent-cyan); border: 1px solid var(--border-light); padding: 8px 16px; border-radius: 30px; font-size: 13px; letter-spacing: 2px; margin-bottom: 30px; background: var(--bg-glass); }
+        .hero h1 { font-size: clamp(45px, 6vw, 85px); font-weight: 800; line-height: 1.1; margin-bottom: 30px; text-transform: uppercase; }
+        .text-gradient { background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 20px; color: var(--text-muted); max-width: 800px; margin: 0 auto 50px; font-weight: 300; }
         .hero-actions { display: flex; gap: 20px; justify-content: center; }
 
-        /* --- Interactive Matrix Selection (The Core Feature) --- */
-        .matrix-section { padding: 100px 0; border-top: 1px solid var(--border-light); background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-panel) 100%); }
-        
+        /* --- Reusable Section Headers --- */
         .section-header { text-align: center; margin-bottom: 60px; }
         .section-header h2 { font-size: 40px; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; }
         .section-header p { color: var(--text-muted); font-family: var(--font-mono); font-size: 14px; }
 
-        .filter-controls {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 50px;
-        }
-        .filter-btn {
-            background: var(--bg-deep);
-            border: 1px solid var(--border-light);
-            color: var(--text-muted);
-            padding: 10px 25px;
-            font-family: var(--font-mono);
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: 0.3s;
-            clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-        }
+        /* --- Interactive Matrix Section --- */
+        .matrix-section { padding: 100px 0; border-top: 1px solid var(--border-light); background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-panel) 100%); }
+        .filter-controls { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-bottom: 50px; }
+        .filter-btn { background: var(--bg-deep); border: 1px solid var(--border-light); color: var(--text-muted); padding: 10px 25px; font-family: var(--font-mono); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: 0.3s; clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); }
         .filter-btn:hover { border-color: var(--accent-cyan); color: var(--text-main); }
-        .filter-btn.active {
-            background: rgba(0, 240, 255, 0.1);
-            border-color: var(--accent-cyan);
-            color: var(--accent-cyan);
-            box-shadow: inset 0 0 15px var(--accent-glow);
-        }
+        .filter-btn.active { background: rgba(0, 240, 255, 0.1); border-color: var(--accent-cyan); color: var(--accent-cyan); box-shadow: inset 0 0 15px var(--accent-glow); }
 
-        .matrix-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-            min-height: 400px;
-        }
-
-        .matrix-card {
-            background: var(--bg-deep);
-            border: 1px solid var(--border-light);
-            padding: 30px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            transition: 0.4s ease;
-            animation: cardSpawn 0.5s ease forwards;
-        }
-        .matrix-card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
-            background: linear-gradient(90deg, var(--accent-cyan), transparent);
-            opacity: 0; transition: 0.3s;
-        }
+        .matrix-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; min-height: 400px; }
+        .matrix-card { background: var(--bg-deep); border: 1px solid var(--border-light); padding: 30px; position: relative; display: flex; flex-direction: column; transition: 0.4s ease; animation: cardSpawn 0.5s ease forwards; }
+        .matrix-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, var(--accent-cyan), transparent); opacity: 0; transition: 0.3s; }
         .matrix-card:hover { transform: translateY(-5px); border-color: var(--border-strong); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
         .matrix-card:hover::before { opacity: 1; }
-        
         .matrix-card.hidden { display: none; }
-
-        @keyframes cardSpawn {
-            from { opacity: 0; transform: scale(0.95) translateY(10px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
+        
+        @keyframes cardSpawn { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
 
         .card-tag { font-family: var(--font-mono); font-size: 11px; color: var(--accent-purple); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 15px; display: block; }
         .matrix-card h3 { font-size: 22px; font-weight: 600; margin-bottom: 15px; }
         .matrix-card p { color: var(--text-muted); font-size: 15px; margin-bottom: 25px; flex-grow: 1; }
-        
         .card-specs { border-top: 1px dashed var(--border-light); padding-top: 20px; font-family: var(--font-mono); font-size: 12px; color: var(--accent-cyan); }
         .card-specs li { margin-bottom: 8px; display: flex; gap: 10px; }
         .card-specs li::before { content: '>'; color: var(--text-muted); }
 
-        /* --- Pipeline Specs --- */
-        .pipeline-section { padding: 120px 0; border-top: 1px solid var(--border-light); }
-        .pipeline-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        /* --- Firmware Web Flasher Section --- */
+        .flasher-section { padding: 100px 0; border-top: 1px solid var(--border-light); }
+        .flasher-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px; }
         
-        .pipeline-content h2 { font-size: 36px; text-transform: uppercase; margin-bottom: 20px; }
-        .pipeline-content p { color: var(--text-muted); margin-bottom: 30px; font-size: 18px; }
-        
-        .tech-list { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .tech-item { background: var(--bg-panel); border: 1px solid var(--border-light); padding: 20px; border-radius: 4px; }
-        .tech-item h4 { color: var(--accent-cyan); font-family: var(--font-mono); font-size: 14px; margin-bottom: 10px; }
-        .tech-item p { font-size: 14px; color: var(--text-muted); }
+        .term-log-box {
+            background: #020408;
+            border: 1px solid var(--border-strong);
+            border-radius: 4px;
+            padding: 20px;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--accent-green);
+            min-height: 150px;
+            max-height: 250px;
+            overflow-y: auto;
+            box-shadow: inset 0 0 20px rgba(0, 255, 102, 0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .term-log-box .log-line { animation: typeLine 0.1s ease forwards; }
+        .term-log-box .log-error { color: #ff3366; }
+        @keyframes typeLine { from { opacity: 0; transform: translateX(-5px); } to { opacity: 1; transform: translateX(0); } }
 
         /* --- Contact Terminal --- */
         .terminal-section { padding: 100px 0; background: var(--bg-panel); border-top: 1px solid var(--border-light); }
-        .terminal-box {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #020205;
-            border: 1px solid var(--border-strong);
-            box-shadow: 0 0 30px rgba(0, 240, 255, 0.05);
-            position: relative;
-        }
+        .terminal-box { max-width: 800px; margin: 0 auto; background: #020205; border: 1px solid var(--border-strong); box-shadow: 0 0 30px rgba(0, 240, 255, 0.05); position: relative; }
         .term-header { background: rgba(0, 240, 255, 0.1); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-strong); font-family: var(--font-mono); font-size: 13px; color: var(--accent-cyan); }
         .term-body { padding: 40px; }
-        
         .form-row { margin-bottom: 25px; }
         .term-label { display: block; font-family: var(--font-mono); color: var(--text-muted); font-size: 12px; margin-bottom: 10px; }
-        .term-input {
-            width: 100%;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid var(--border-light);
-            color: var(--text-main);
-            font-family: var(--font-mono);
-            font-size: 16px;
-            padding: 10px 0;
-            transition: 0.3s;
-        }
+        .term-input { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--border-light); color: var(--text-main); font-family: var(--font-mono); font-size: 16px; padding: 10px 0; transition: 0.3s; }
         .term-input:focus { outline: none; border-bottom-color: var(--accent-cyan); box-shadow: 0 5px 10px -10px var(--accent-cyan); }
         textarea.term-input { resize: vertical; min-height: 100px; }
 
@@ -282,14 +255,14 @@
         footer { padding: 50px 0; border-top: 1px solid var(--border-light); text-align: center; background: var(--bg-deep); }
         .footer-text { font-family: var(--font-mono); color: var(--text-muted); font-size: 13px; }
 
-        /* Responsive */
-        @media (max-width: 992px) {
-            .pipeline-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 40px; }
-        }
+        /* Responsive Mobile Optimizations */
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero { padding: 150px 0 80px; }
+            .global-banner { font-size: 9px; padding: 10px 5px; letter-spacing: 0.5px; }
+            .global-banner .highlight { font-size: 11px; }
+            .global-banner .dim { display: none; }
+            header { top: 38px; }
+            .hero { padding: 180px 0 80px; }
             .filter-controls { flex-direction: column; align-items: stretch; }
             .term-body { padding: 20px; }
         }
@@ -297,14 +270,27 @@
 </head>
 <body>
 
+<!-- GLOBAL IMPACT HUD BANNER -->
+<div class="global-banner" id="globalBanner">
+    <div class="pulse-cyan"></div>
+    <span>LIVE DATA:</span>
+    <span class="highlight"><span id="liveCounter">49,280</span> UNITS</span>
+    <span class="dim">DEPLOYED TO MARKET</span>
+</div>
+
 <header>
     <div class="container nav-container">
+        <!-- ANIMATED LOGO -->
         <a href="#" class="brand">
-            <span class="brand-icon">{'//'}</span>ASTATINE
+            <div class="cyber-logo-wrapper">
+                <img src="Astatine logo plain.png" alt="Astatine Technologies" class="cyber-logo-img">
+                <div class="cyber-scanlines"></div>
+            </div>
         </a>
+        
         <nav class="nav-links">
             <a href="#matrix">Hardware Matrix</a>
-            <a href="#pipeline">Engineering Specs</a>
+            <a href="#deploy">Web Flasher</a>
             <a href="#terminal">Comms Link</a>
         </nav>
         <a href="https://wa.me/916207033076" target="_blank" class="btn btn-outline">WhatsApp Uplink</a>
@@ -323,12 +309,12 @@
             <p>Advanced embedded engineering. From bare-metal silicon logic and heavy-duty power electronics to fully autonomous IoT ecosystems and dynamic UI control interfaces.</p>
             <div class="hero-actions">
                 <a href="#matrix" class="btn btn-primary">Initialize Matrix</a>
-                <a href="#pipeline" class="btn btn-outline">View Capabilities</a>
+                <a href="#deploy" class="btn btn-outline">Test Firmware</a>
             </div>
         </div>
     </section>
 
-    <!-- INTERACTIVE MATRIX SECTION (Core Request) -->
+    <!-- INTERACTIVE MATRIX SECTION -->
     <section class="matrix-section" id="matrix">
         <div class="container">
             <div class="section-header">
@@ -410,18 +396,6 @@
 
                 <!-- Card: Software 1 -->
                 <article class="matrix-card" data-category="software">
-                    <span class="card-tag">FIRMWARE DEPLOYMENT</span>
-                    <h3>AOISOS Web Installer</h3>
-                    <p>Custom-built browser flashing platform. Allows secure, immediate deployment of firmware to consumer devices without complex desktop IDEs.</p>
-                    <ul class="card-specs">
-                        <li>Browser-to-Serial API Integration</li>
-                        <li>MAC Address License Binding</li>
-                        <li>Remote Payload Delivery</li>
-                    </ul>
-                </article>
-
-                <!-- Card: Software 2 -->
-                <article class="matrix-card" data-category="software">
                     <span class="card-tag">UI / UX</span>
                     <h3>Device Management Portals</h3>
                     <p>Intuitive front-end applications served directly from the embedded device. Engineered for flawless user onboarding and configuration.</p>
@@ -432,7 +406,7 @@
                     </ul>
                 </article>
                 
-                <!-- Card: Software 3 -->
+                <!-- Card: Software 2 -->
                 <article class="matrix-card" data-category="software">
                     <span class="card-tag">CAD / PHYSICAL</span>
                     <h3>3D Enclosure Generation</h3>
@@ -448,33 +422,38 @@
         </div>
     </section>
 
-    <!-- PIPELINE SPECS SECTION -->
-    <section class="pipeline-section" id="pipeline">
-        <div class="container pipeline-grid">
-            <div class="pipeline-content">
-                <h2>The Development Pipeline</h2>
-                <p>We do not just write code; we fabricate reality. Our engineering pipeline covers the entire hardware lifecycle, ensuring that the software perfectly complements the silicon it runs on.</p>
-                <a href="#terminal" class="btn btn-primary">Request Blueprint</a>
+    <!-- NEW: PROTOTYPE FIRMWARE FLASHER -->
+    <section class="flasher-section" id="deploy">
+        <div class="container">
+            <div class="section-header">
+                <h2>Prototype Deployment</h2>
+                <p>Test our Web Installer logic directly in your browser. Flash test environments to your development boards via Web Serial.</p>
             </div>
-            
-            <div class="tech-list">
-                <div class="tech-item">
-                    <h4>01. Schematic & Routing</h4>
-                    <p>Complex trace routing, component selection, and professional PCB layouts optimized for signal integrity.</p>
-                </div>
-                <div class="tech-item">
-                    <h4>02. Firmware Engineering</h4>
-                    <p>C/C++ and Python code optimized for memory constraints, ensuring rock-solid uptime on edge devices.</p>
-                </div>
-                <div class="tech-item">
-                    <h4>03. UI / Ecosystem</h4>
-                    <p>Connecting the grid. Building localized web servers, mobile-responsive controls, and secure cloud pipelines.</p>
-                </div>
-                <div class="tech-item">
-                    <h4>04. Physical Packaging</h4>
-                    <p>Ensuring the electronics survive the real world with tailored 3D CAD modeling and robust enclosures.</p>
-                </div>
+
+            <div class="flasher-grid">
+                <!-- ESP8266 Option -->
+                <article class="matrix-card" style="align-items: center; text-align: center;">
+                    <span class="card-tag">Legacy WiFi Node</span>
+                    <h3>ESP8266 Flasher</h3>
+                    <p>Connect your ESP8266 via USB to inject the test .bin payload directly from this interface.</p>
+                    <button class="btn btn-flash" onclick="triggerWebSerial('ESP8266')">Initialize Flash</button>
+                </article>
+
+                <!-- ESP32 Option -->
+                <article class="matrix-card" style="align-items: center; text-align: center;">
+                    <span class="card-tag">Dual-Core Architecture</span>
+                    <h3>ESP32 Flasher</h3>
+                    <p>Connect your ESP32 dev board via USB to initialize the Web Serial flashing sequence.</p>
+                    <button class="btn btn-flash" onclick="triggerWebSerial('ESP32')">Initialize Flash</button>
+                </article>
             </div>
+
+            <!-- Live Terminal Log Box -->
+            <div class="term-log-box" id="flashTerminal">
+                <div class="log-line">> Astatine_Web_Flasher_v1.0 initialized.</div>
+                <div class="log-line">> Awaiting user connection...</div>
+            </div>
+
         </div>
     </section>
 
@@ -517,27 +496,53 @@
     </div>
 </footer>
 
-<!-- JavaScript for Interactive Matrix Filtering -->
+<!-- JavaScript Engine -->
 <script>
     document.addEventListener("DOMContentLoaded", () => {
+        // --- 1. Live Counting Logic (49,324 Units) ---
+        const counterElement = document.getElementById('liveCounter');
+        const startValue = 49210; 
+        const endValue = 49324;
+        const duration = 2500; 
+
+        let startTime = null;
+
+        function animateCount(timestamp) {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            const currentVal = Math.floor(progress * (endValue - startValue) + startValue);
+            
+            counterElement.innerHTML = currentVal.toLocaleString();
+
+            if (progress < 1) {
+                window.requestAnimationFrame(animateCount);
+            } else {
+                setInterval(() => {
+                    if(Math.random() > 0.7) {
+                        let currentNum = parseInt(counterElement.innerHTML.replace(/,/g, ''));
+                        currentNum += Math.floor(Math.random() * 2) + 1;
+                        counterElement.innerHTML = currentNum.toLocaleString();
+                    }
+                }, 4000);
+            }
+        }
+        window.requestAnimationFrame(animateCount);
+
+        // --- 2. Interactive Matrix Filtering Logic ---
         const filterBtns = document.querySelectorAll('.filter-btn');
         const matrixCards = document.querySelectorAll('.matrix-card');
 
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Remove active class from all buttons
                 filterBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
                 btn.classList.add('active');
 
                 const filterValue = btn.getAttribute('data-filter');
 
                 matrixCards.forEach(card => {
                     const category = card.getAttribute('data-category');
-                    
-                    // Reset animation by removing and re-adding the class
                     card.style.animation = 'none';
-                    card.offsetHeight; // trigger reflow
+                    card.offsetHeight; 
                     
                     if (filterValue === 'all' || filterValue === category) {
                         card.classList.remove('hidden');
@@ -549,6 +554,57 @@
             });
         });
     });
+
+    // --- 3. Web Serial Flasher Logic (WLED Style) ---
+    async function triggerWebSerial(boardType) {
+        const terminal = document.getElementById('flashTerminal');
+        
+        // Helper function to write to our cyber terminal UI
+        function logToTerminal(message, isError = false) {
+            const line = document.createElement('div');
+            line.className = isError ? 'log-line log-error' : 'log-line';
+            line.innerText = `> ${message}`;
+            terminal.appendChild(line);
+            terminal.scrollTop = terminal.scrollHeight; // Auto-scroll to bottom
+        }
+
+        logToTerminal(`Initiating Web Serial sequence for ${boardType}...`);
+
+        // Check if browser supports Web Serial API
+        if (!('serial' in navigator)) {
+            logToTerminal('ERROR: Web Serial API not supported in this browser. Please use Chrome or Edge.', true);
+            return;
+        }
+
+        try {
+            logToTerminal(`Requesting COM port access from user...`);
+            
+            // This triggers the native browser pop-up to select the COM port
+            const port = await navigator.serial.requestPort();
+            
+            logToTerminal(`SUCCESS: Port selected. Handshake initialized with ${boardType}.`);
+            logToTerminal(`Opening connection at 115200 baud rate...`);
+            
+            await port.open({ baudRate: 115200 });
+            
+            logToTerminal(`Connection established!`);
+            logToTerminal(`[WAITING FOR PAYLOAD] Ready to write .bin file to ${boardType}.`);
+            
+            // TODO: INTEGRATE ESP-WEB-TOOLS OR BINARY UPLOAD HERE.
+            // When you are ready to actually upload the .bin file, you will replace 
+            // this section with the logic that streams the file array buffer into the port.writer.
+            
+            // Simulating a safe disconnect for now
+            setTimeout(async () => {
+                await port.close();
+                logToTerminal(`Port closed safely. Flasher standing by.`);
+            }, 3000);
+
+        } catch (error) {
+            // Catches errors like the user clicking "Cancel" on the port selection screen
+            logToTerminal(`PROCESS ABORTED: ${error.message}`, true);
+        }
+    }
 </script>
 
 </body>
