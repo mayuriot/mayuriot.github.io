@@ -3,455 +3,553 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Astatine Technologies — Modern IoT & Embedded Systems</title>
+    <title>Astatine Technologies | Next-Gen Embedded Engineering</title>
     
+    <!-- Futuristic Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-color: #0b0f19;
-            --surface-color: #111827;
-            --surface-alt: #1f2937;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --accent-primary: #3b82f6; 
-            --accent-hover: #60a5fa;
-            --accent-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            --border-color: #374151;
+            /* Futuristic Dark Theme */
+            --bg-deep: #03050a;
+            --bg-panel: #0a0f1a;
+            --bg-glass: rgba(10, 15, 26, 0.7);
             
-            --font-heading: 'Outfit', sans-serif;
-            --font-body: 'Inter', sans-serif;
+            --accent-cyan: #00f0ff;
+            --accent-purple: #8a2be2;
+            --accent-glow: rgba(0, 240, 255, 0.2);
+            
+            --text-main: #e2e8f0;
+            --text-muted: #8b9bb4;
+            
+            --border-light: rgba(0, 240, 255, 0.15);
+            --border-strong: rgba(0, 240, 255, 0.4);
+            
+            --font-display: 'Outfit', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
         }
 
-        * {
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
         body {
-            background-color: var(--bg-color);
+            font-family: var(--font-display);
+            background-color: var(--bg-deep);
             color: var(--text-main);
-            font-family: var(--font-body);
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
             overflow-x: hidden;
-            font-size: 1.1rem;
+            /* Cyber Grid Background */
+            background-image: 
+                linear-gradient(var(--border-light) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-light) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: center center;
+            background-attachment: fixed;
         }
 
-        h1, h2, h3, h4, .brand-text {
-            font-family: var(--font-heading);
-            color: #ffffff;
-            margin-top: 0;
-        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 30px; }
 
-        a { text-decoration: none; color: var(--accent-primary); transition: 0.3s ease; }
-        a:hover { color: var(--accent-hover); }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        /* --- Header & Navigation --- */
+        header {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background: var(--bg-glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
         
-        /* Header */
-        .site-header { 
-            background: rgba(11, 15, 25, 0.8); 
-            border-bottom: 1px solid var(--border-color); 
-            padding: 15px 0; 
-            position: sticky; 
-            top: 0; 
-            z-index: 100; 
-            backdrop-filter: blur(12px); 
-        }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .brand { display: flex; align-items: center; gap: 10px; font-size: 1.5rem; font-weight: 800; letter-spacing: 0.5px; }
-        .brand-text { color: #fff; }
-        .primary-nav ul { list-style: none; display: flex; gap: 30px; margin: 0; padding: 0; align-items: center; font-weight: 500; font-size: 1rem; }
-        .primary-nav a { color: var(--text-muted); }
-        .primary-nav a:hover { color: #fff; }
-        
-        /* Buttons */
-        .btn { 
-            display: inline-flex; 
-            align-items: center; 
-            justify-content: center; 
-            padding: 12px 28px; 
-            font-family: var(--font-body); 
-            font-weight: 600; 
-            border-radius: 8px; 
-            cursor: pointer; 
-            border: none; 
-            transition: all 0.3s ease; 
-            text-decoration: none; 
-            font-size: 1rem; 
-        }
-        .btn-primary { 
-            background: var(--accent-gradient); 
-            color: #fff !important; 
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-        }
-        .btn-primary:hover { 
-            transform: translateY(-2px); 
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5); 
-        }
-        .btn-ghost { 
-            background: transparent; 
-            color: var(--text-main) !important; 
-            border: 1px solid var(--border-color); 
-        }
-        .btn-ghost:hover { 
-            background: var(--surface-alt); 
-            border-color: var(--text-muted);
-        }
-
-        /* Hero Section */
-        .hero { 
-            padding: 120px 0 80px; 
-            position: relative; 
-            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.1), transparent 40%); 
-        }
-        .hero-copy { max-width: 800px; margin: 0 auto; text-align: center; }
-        .hero-badge { 
-            display: inline-block; 
-            padding: 6px 16px; 
-            background: rgba(59, 130, 246, 0.1); 
-            border: 1px solid rgba(59, 130, 246, 0.3); 
-            color: var(--accent-hover); 
-            border-radius: 20px;
-            font-size: 0.85rem; 
-            font-weight: 600;
-            margin-bottom: 24px; 
-            letter-spacing: 1px; 
-        }
-        .hero h1 { font-size: 4.5rem; margin: 0 0 15px; line-height: 1.1; font-weight: 800; letter-spacing: -1px; }
-        .gradient-text { 
-            background: var(--accent-gradient); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-        }
-        .tagline { font-size: 1.5rem; color: #fff; font-weight: 500; margin-bottom: 20px; }
-        .hero-sub { font-size: 1.15rem; color: var(--text-muted); margin: 0 auto 40px; line-height: 1.8; }
-        .hero-actions { display: flex; gap: 15px; justify-content: center; }
-
-        /* Tech Stack Grid */
-        .stack-section { padding: 40px 0 80px; border-bottom: 1px solid var(--border-color); text-align: center; }
-        .stack-title { font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 30px; font-weight: 600; font-family: var(--font-body); }
-        .stack-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 900px; margin: 0 auto; }
-        .stack-badge { background: var(--surface-color); border: 1px solid var(--border-color); padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: 0.3s; color: var(--text-main); }
-        .stack-badge:hover { border-color: var(--accent-primary); color: #fff; transform: translateY(-2px); }
-
-        /* Grids */
-        .section-header { text-align: center; margin-bottom: 60px; padding-top: 80px; }
-        .section-header h2 { font-size: 2.5rem; }
-        .services-grid, .portfolio-grid, .team-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 30px; 
-            padding-bottom: 80px; 
-        }
-        
-        /* Cards */
-        .card { 
-            background: var(--surface-color); 
-            border: 1px solid var(--border-color); 
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.3s ease; 
-            display: flex; 
-            flex-direction: column; 
-        }
-        .card:hover { 
-            transform: translateY(-5px); 
-            border-color: var(--accent-primary);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
-        }
-        
-        .card-image { width: 100%; height: 220px; overflow: hidden; position: relative; background: var(--surface-alt); }
-        .card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .card:hover .card-image img { transform: scale(1.05); }
-        
-        .card-content { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
-        .tag { 
-            display: inline-block; 
-            padding: 4px 10px; 
-            background: rgba(59, 130, 246, 0.1); 
-            color: var(--accent-hover); 
-            border-radius: 6px;
-            font-size: 0.8rem; 
-            font-weight: 600;
-            margin-bottom: 15px; 
-            align-self: flex-start;
-        }
-        .card h3 { font-size: 1.4rem; margin-bottom: 10px; }
-        .card p { color: var(--text-muted); margin-bottom: 25px; flex-grow: 1; font-size: 1rem; }
-        
-        .service-features { list-style: none; padding: 0; color: var(--text-muted); font-size: 1rem; }
-        .service-features li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-        .service-features li::before { 
-            content: '✓'; 
-            color: var(--accent-primary); 
-            font-weight: bold; 
-            background: rgba(59, 130, 246, 0.1);
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
+        .brand {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 2px;
             display: flex;
             align-items: center;
+            gap: 10px;
+        }
+        .brand-icon { color: var(--accent-cyan); font-family: var(--font-mono); font-weight: bold; }
+        
+        .nav-links { display: flex; gap: 40px; font-family: var(--font-mono); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-links a { color: var(--text-muted); transition: 0.3s; position: relative; }
+        .nav-links a:hover { color: var(--accent-cyan); text-shadow: 0 0 8px var(--accent-glow); }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
+            padding: 12px 28px;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            border: none;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+            transition: 0.3s ease;
+        }
+        .btn-primary {
+            background: var(--accent-cyan);
+            color: var(--bg-deep);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+        .btn-primary:hover {
+            background: #fff;
+            box-shadow: 0 0 30px rgba(255,255,255,0.4);
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--accent-cyan);
+            border: 1px solid var(--accent-cyan);
+        }
+        .btn-outline:hover { background: var(--accent-glow); }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 200px 0 120px;
+            position: relative;
+            text-align: center;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.15) 0%, transparent 60%);
+            z-index: -1; pointer-events: none;
+        }
+        
+        .sys-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-mono);
+            color: var(--accent-cyan);
+            border: 1px solid var(--border-light);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            background: var(--bg-glass);
+        }
+        .pulse { width: 8px; height: 8px; background: var(--accent-cyan); border-radius: 50%; box-shadow: 0 0 10px var(--accent-cyan); animation: blink 1.5s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+        .hero h1 {
+            font-size: clamp(45px, 6vw, 85px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        .text-gradient {
+            background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 20px;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 50px;
+            font-weight: 300;
+        }
+        .hero-actions { display: flex; gap: 20px; justify-content: center; }
+
+        /* --- Interactive Matrix Selection (The Core Feature) --- */
+        .matrix-section { padding: 100px 0; border-top: 1px solid var(--border-light); background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-panel) 100%); }
+        
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 40px; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; }
+        .section-header p { color: var(--text-muted); font-family: var(--font-mono); font-size: 14px; }
+
+        .filter-controls {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+        .filter-btn {
+            background: var(--bg-deep);
+            border: 1px solid var(--border-light);
+            color: var(--text-muted);
+            padding: 10px 25px;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s;
+            clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+        }
+        .filter-btn:hover { border-color: var(--accent-cyan); color: var(--text-main); }
+        .filter-btn.active {
+            background: rgba(0, 240, 255, 0.1);
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            box-shadow: inset 0 0 15px var(--accent-glow);
         }
 
-        /* Footer */
-        .site-footer { background: var(--surface-color); border-top: 1px solid var(--border-color); padding: 80px 0 30px; font-size: 0.95rem; color: var(--text-muted); }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
-        .footer-col h4 { color: #fff; margin-bottom: 25px; font-size: 1.2rem; }
-        .footer-col ul { list-style: none; padding: 0; margin: 0; }
-        .footer-col ul li { margin-bottom: 15px; }
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            min-height: 400px;
+        }
+
+        .matrix-card {
+            background: var(--bg-deep);
+            border: 1px solid var(--border-light);
+            padding: 30px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            transition: 0.4s ease;
+            animation: cardSpawn 0.5s ease forwards;
+        }
+        .matrix-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, var(--accent-cyan), transparent);
+            opacity: 0; transition: 0.3s;
+        }
+        .matrix-card:hover { transform: translateY(-5px); border-color: var(--border-strong); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
+        .matrix-card:hover::before { opacity: 1; }
         
-        /* =========================================
-           MOBILE OPTIMIZATIONS (Phone Screens)
-           ========================================= */
+        .matrix-card.hidden { display: none; }
+
+        @keyframes cardSpawn {
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .card-tag { font-family: var(--font-mono); font-size: 11px; color: var(--accent-purple); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 15px; display: block; }
+        .matrix-card h3 { font-size: 22px; font-weight: 600; margin-bottom: 15px; }
+        .matrix-card p { color: var(--text-muted); font-size: 15px; margin-bottom: 25px; flex-grow: 1; }
+        
+        .card-specs { border-top: 1px dashed var(--border-light); padding-top: 20px; font-family: var(--font-mono); font-size: 12px; color: var(--accent-cyan); }
+        .card-specs li { margin-bottom: 8px; display: flex; gap: 10px; }
+        .card-specs li::before { content: '>'; color: var(--text-muted); }
+
+        /* --- Pipeline Specs --- */
+        .pipeline-section { padding: 120px 0; border-top: 1px solid var(--border-light); }
+        .pipeline-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        
+        .pipeline-content h2 { font-size: 36px; text-transform: uppercase; margin-bottom: 20px; }
+        .pipeline-content p { color: var(--text-muted); margin-bottom: 30px; font-size: 18px; }
+        
+        .tech-list { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .tech-item { background: var(--bg-panel); border: 1px solid var(--border-light); padding: 20px; border-radius: 4px; }
+        .tech-item h4 { color: var(--accent-cyan); font-family: var(--font-mono); font-size: 14px; margin-bottom: 10px; }
+        .tech-item p { font-size: 14px; color: var(--text-muted); }
+
+        /* --- Contact Terminal --- */
+        .terminal-section { padding: 100px 0; background: var(--bg-panel); border-top: 1px solid var(--border-light); }
+        .terminal-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #020205;
+            border: 1px solid var(--border-strong);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.05);
+            position: relative;
+        }
+        .term-header { background: rgba(0, 240, 255, 0.1); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-strong); font-family: var(--font-mono); font-size: 13px; color: var(--accent-cyan); }
+        .term-body { padding: 40px; }
+        
+        .form-row { margin-bottom: 25px; }
+        .term-label { display: block; font-family: var(--font-mono); color: var(--text-muted); font-size: 12px; margin-bottom: 10px; }
+        .term-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            font-size: 16px;
+            padding: 10px 0;
+            transition: 0.3s;
+        }
+        .term-input:focus { outline: none; border-bottom-color: var(--accent-cyan); box-shadow: 0 5px 10px -10px var(--accent-cyan); }
+        textarea.term-input { resize: vertical; min-height: 100px; }
+
+        /* --- Footer --- */
+        footer { padding: 50px 0; border-top: 1px solid var(--border-light); text-align: center; background: var(--bg-deep); }
+        .footer-text { font-family: var(--font-mono); color: var(--text-muted); font-size: 13px; }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .pipeline-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 40px; }
+        }
         @media (max-width: 768px) {
-            /* Keep only the Contact Us button in header, hide text links */
-            .primary-nav ul li:not(:last-child) { display: none; }
-            .site-header .btn { padding: 8px 16px; font-size: 0.9rem; }
-            
-            /* Reduce massive hero spacing */
-            .hero { padding: 60px 0 40px; }
-            .hero h1 { font-size: 2.6rem; }
-            .tagline { font-size: 1.15rem; margin-bottom: 15px; }
-            .hero-sub { font-size: 1rem; margin-bottom: 30px; }
-            
-            /* Make buttons full width for easy thumb tapping */
-            .hero-actions { flex-direction: column; width: 100%; gap: 12px; }
-            .hero-actions .btn { width: 100%; justify-content: center; }
-            
-            /* Tighter Tech Stack */
-            .stack-section { padding: 20px 0 50px; }
-            .stack-grid { gap: 10px; }
-            .stack-badge { padding: 8px 14px; font-size: 0.85rem; }
-            
-            /* Section Headers */
-            .section-header { padding-top: 40px; margin-bottom: 40px; }
-            .section-header h2 { font-size: 2rem; }
-            
-            /* Ensure single column layout with no side-scrolling */
-            .services-grid, .portfolio-grid, .team-grid { grid-template-columns: 1fr; gap: 20px; padding-bottom: 50px;}
-            .card-content { padding: 25px; }
-            .card-image { height: 180px; } /* Slightly shorter images on mobile */
-            
-            .footer-grid { grid-template-columns: 1fr; gap: 30px; margin-bottom: 40px; }
-            .site-footer { padding: 50px 0 20px; }
+            .nav-links { display: none; }
+            .hero { padding: 150px 0 80px; }
+            .filter-controls { flex-direction: column; align-items: stretch; }
+            .term-body { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
-<header class="site-header">
+<header>
     <div class="container nav-container">
-        <a href="https://astatine.in/" class="brand" aria-label="Astatine Technologies home">
-            <span class="brand-text">ASTATINE</span>
+        <a href="#" class="brand">
+            <span class="brand-icon">{'//'}</span>ASTATINE
         </a>
-        <nav class="primary-nav">
-            <ul>
-                <li><a href="#portfolio">Hardware</a></li>
-                <li><a href="#services">Capabilities</a></li>
-                <li><a href="#founder">Founder</a></li>
-                <li><a href="https://wa.me/916207033076" target="_blank" class="btn btn-primary">Contact Us</a></li>
-            </ul>
+        <nav class="nav-links">
+            <a href="#matrix">Hardware Matrix</a>
+            <a href="#pipeline">Engineering Specs</a>
+            <a href="#terminal">Comms Link</a>
         </nav>
+        <a href="https://wa.me/916207033076" target="_blank" class="btn btn-outline">WhatsApp Uplink</a>
     </div>
 </header>
 
-<main id="main">
+<main>
+    <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
-            <div class="hero-copy">
-                <span class="hero-badge">System Online // V.2026</span>
-                <h1>Engineering The <span class="gradient-text">Hardware</span> Edge</h1>
+            <div class="sys-status">
+                <div class="pulse"></div>
+                SYSTEM ONLINE // V.2026
+            </div>
+            <h1>Architecting the <br><span class="text-gradient">Hardware Singularity</span></h1>
+            <p>Advanced embedded engineering. From bare-metal silicon logic and heavy-duty power electronics to fully autonomous IoT ecosystems and dynamic UI control interfaces.</p>
+            <div class="hero-actions">
+                <a href="#matrix" class="btn btn-primary">Initialize Matrix</a>
+                <a href="#pipeline" class="btn btn-outline">View Capabilities</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE MATRIX SECTION (Core Request) -->
+    <section class="matrix-section" id="matrix">
+        <div class="container">
+            <div class="section-header">
+                <h2>System Architectures</h2>
+                <p>Select a subsystem category below to filter capabilities and deployed hardware.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="filter-controls">
+                <button class="filter-btn active" data-filter="all">All Systems</button>
+                <button class="filter-btn" data-filter="mcu">Microcontrollers</button>
+                <button class="filter-btn" data-filter="power">Power Electronics</button>
+                <button class="filter-btn" data-filter="iot">IoT Gateways</button>
+                <button class="filter-btn" data-filter="software">Software / UI</button>
+            </div>
+
+            <!-- Grid Content -->
+            <div class="matrix-grid" id="matrixGrid">
                 
-                <h2 class="tagline">Expert in Embedded hardware, firmware, UI, apps, and website design</h2>
+                <!-- Card: MCU 1 -->
+                <article class="matrix-card" data-category="mcu">
+                    <span class="card-tag">SILICON CORE</span>
+                    <h3>ESP32 / ESP8266 Ecosystems</h3>
+                    <p>High-performance wireless node development. Engineered for extreme low-latency environments, custom routing, and reliable local network broadcasting.</p>
+                    <ul class="card-specs">
+                        <li>Dual-Core & Single-Core Implementations</li>
+                        <li>Built-in WiFi/BLE Stacks</li>
+                        <li>OTA Flashing Optimization</li>
+                    </ul>
+                </article>
+
+                <!-- Card: MCU 2 -->
+                <article class="matrix-card" data-category="mcu">
+                    <span class="card-tag">PERIPHERAL LOGIC</span>
+                    <h3>Precision Timing & RTC</h3>
+                    <p>Bare-metal peripheral integrations. Specializing in highly accurate I2C data bus communication for autonomous systems.</p>
+                    <ul class="card-specs">
+                        <li>DS1307 RTC IC Integration</li>
+                        <li>STM32 (ARM Cortex-M) Bare-metal</li>
+                        <li>Automated Logic Scheduling</li>
+                    </ul>
+                </article>
+
+                <!-- Card: Power 1 -->
+                <article class="matrix-card" data-category="power">
+                    <span class="card-tag">HEAVY DUTY</span>
+                    <h3>Smart Motor Starter Gateway</h3>
+                    <p>Industrial-grade control unit engineered to drive and protect heavy water pumps. Replaces outdated manual starters with intelligent telemetry.</p>
+                    <ul class="card-specs">
+                        <li>Active Load Monitoring</li>
+                        <li>Programmable Auto-Stop Timers</li>
+                        <li>Resource Conservation Logic</li>
+                    </ul>
+                </article>
+
+                <!-- Card: Power 2 -->
+                <article class="matrix-card" data-category="power">
+                    <span class="card-tag">PROTECTION RELAY</span>
+                    <h3>Power Diagnostics Node</h3>
+                    <p>Specialized hardware for harsh electrical environments, featuring localized data-logging and signal verification.</p>
+                    <ul class="card-specs">
+                        <li>True AC Math processing</li>
+                        <li>Over/Under Voltage Protection</li>
+                        <li>Current Transformer Calibration</li>
+                    </ul>
+                </article>
+
+                <!-- Card: IoT -->
+                <article class="matrix-card" data-category="iot">
+                    <span class="card-tag">EDGE COMPUTE</span>
+                    <h3>Nexus 4 Smart Hub</h3>
+                    <p>A sleek 4-channel smart relay architecture. Built for immediate room automation with dynamic edge control and instantaneous response times.</p>
+                    <ul class="card-specs">
+                        <li>Low-Latency Relay Actuation</li>
+                        <li>Dedicated Web Interface</li>
+                        <li>Dynamic Ecosystem Scaling</li>
+                    </ul>
+                </article>
+
+                <!-- Card: Software 1 -->
+                <article class="matrix-card" data-category="software">
+                    <span class="card-tag">FIRMWARE DEPLOYMENT</span>
+                    <h3>AOISOS Web Installer</h3>
+                    <p>Custom-built browser flashing platform. Allows secure, immediate deployment of firmware to consumer devices without complex desktop IDEs.</p>
+                    <ul class="card-specs">
+                        <li>Browser-to-Serial API Integration</li>
+                        <li>MAC Address License Binding</li>
+                        <li>Remote Payload Delivery</li>
+                    </ul>
+                </article>
+
+                <!-- Card: Software 2 -->
+                <article class="matrix-card" data-category="software">
+                    <span class="card-tag">UI / UX</span>
+                    <h3>Device Management Portals</h3>
+                    <p>Intuitive front-end applications served directly from the embedded device. Engineered for flawless user onboarding and configuration.</p>
+                    <ul class="card-specs">
+                        <li>WLED-Style Device Discovery</li>
+                        <li>XML Config Upload/Download</li>
+                        <li>Custom GUI Theming</li>
+                    </ul>
+                </article>
                 
-                <p class="hero-sub">From bare-metal silicon to fully autonomous IoT ecosystems. We specialize in custom PCB design, precision microcontroller firmware, and commercial-grade smart automation hardware engineered for the Indian market.</p>
-                <div class="hero-actions">
-                    <a href="https://wa.me/916207033076" target="_blank" class="btn btn-primary">Contact Us</a>
-                    <a href="#portfolio" class="btn btn-ghost">View Portfolio</a>
+                <!-- Card: Software 3 -->
+                <article class="matrix-card" data-category="software">
+                    <span class="card-tag">CAD / PHYSICAL</span>
+                    <h3>3D Enclosure Generation</h3>
+                    <p>Bridging the digital logic to the physical world. Designing custom 3D electronic enclosures that seamlessly mate with our custom PCBs.</p>
+                    <ul class="card-specs">
+                        <li>Browser-Based CAD Tools</li>
+                        <li>EasyEDA Schematic Routing</li>
+                        <li>JLCPCB Manufacturing Prep</li>
+                    </ul>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PIPELINE SPECS SECTION -->
+    <section class="pipeline-section" id="pipeline">
+        <div class="container pipeline-grid">
+            <div class="pipeline-content">
+                <h2>The Development Pipeline</h2>
+                <p>We do not just write code; we fabricate reality. Our engineering pipeline covers the entire hardware lifecycle, ensuring that the software perfectly complements the silicon it runs on.</p>
+                <a href="#terminal" class="btn btn-primary">Request Blueprint</a>
+            </div>
+            
+            <div class="tech-list">
+                <div class="tech-item">
+                    <h4>01. Schematic & Routing</h4>
+                    <p>Complex trace routing, component selection, and professional PCB layouts optimized for signal integrity.</p>
+                </div>
+                <div class="tech-item">
+                    <h4>02. Firmware Engineering</h4>
+                    <p>C/C++ and Python code optimized for memory constraints, ensuring rock-solid uptime on edge devices.</p>
+                </div>
+                <div class="tech-item">
+                    <h4>03. UI / Ecosystem</h4>
+                    <p>Connecting the grid. Building localized web servers, mobile-responsive controls, and secure cloud pipelines.</p>
+                </div>
+                <div class="tech-item">
+                    <h4>04. Physical Packaging</h4>
+                    <p>Ensuring the electronics survive the real world with tailored 3D CAD modeling and robust enclosures.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Tech Stack Ecosystem -->
-    <section class="stack-section">
-        <div class="container">
-            <h3 class="stack-title">Hardware & Software Ecosystem</h3>
-            <div class="stack-grid">
-                <div class="stack-badge">⚙️ ESP8266 & ESP32</div>
-                <div class="stack-badge">⚙️ STM32 & STM8</div>
-                <div class="stack-badge">📐 EasyEDA</div>
-                <div class="stack-badge">🏭 JLCPCB & LionCircuits</div>
-                <div class="stack-badge">💻 C / C++</div>
-                <div class="stack-badge">🐍 Python</div>
-                <div class="stack-badge">☁️ Blynk IoT Platform</div>
-                <div class="stack-badge">🌐 Web & UI Design</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="portfolio" style="border-top: 1px solid var(--border-color);">
+    <!-- CONTACT TERMINAL -->
+    <section class="terminal-section" id="terminal">
         <div class="container">
             <div class="section-header">
-                <h2>Flagship <span class="gradient-text">Hardware</span></h2>
+                <h2>Initialize Comms</h2>
+                <p>Open a secure channel to discuss your hardware specifications.</p>
             </div>
 
-            <div class="portfolio-grid">
-                
-                <article class="card">
-                    <div class="card-image">
-                        <img src="Landing page nexus 4.jpg" alt="Nexus 4 System">
+            <div class="terminal-box">
+                <div class="term-header">
+                    <span>ASTATINE_OS // SECURE_TERMINAL</span>
+                    <span>PORT: 8080</span>
+                </div>
+                <form class="term-body" onsubmit="event.preventDefault(); alert('Transmission simulated. Use WhatsApp for active projects.');">
+                    <div class="form-row">
+                        <label class="term-label">GUEST_ID // NAME</label>
+                        <input type="text" class="term-input" required placeholder="Enter designation...">
                     </div>
-                    <div class="card-content">
-                        <span class="tag">Smart Relay Hub</span>
-                        <h3>Nexus 4 System</h3>
-                        <p>A sleek, 4-channel smart relay hub managed via the dedicated Astatine web interface. Designed for low-latency room automation with Over-the-Air (OTA) update capabilities and dynamic edge control architecture.</p>
-                        <a href="https://mayursen16.github.io/" class="btn btn-ghost" style="align-self: flex-start;">View Project</a>
+                    <div class="form-row">
+                        <label class="term-label">ROUTING_VECTOR // EMAIL</label>
+                        <input type="email" class="term-input" required placeholder="Enter comms address...">
                     </div>
-                </article>
-
-                <article class="card">
-                    <div class="card-image">
-                        <img src="landing page ssswms.jpg" alt="Smart Motor Starter">
+                    <div class="form-row">
+                        <label class="term-label">PAYLOAD // PROJECT_SPECS</label>
+                        <textarea class="term-input" required placeholder="Input architecture requirements, MCU preferences, or logic pipelines..."></textarea>
                     </div>
-                    <div class="card-content">
-                        <span class="tag">Resource Conservation</span>
-                        <h3>Smart Motor Starter</h3>
-                        <p>The MayurIoT gateway. An industrial-grade IoT device engineered to protect heavy-duty water pumps. Features full phone-controlled operation, programmable auto-stop timers to prevent water wastage, and active load monitoring.</p>
-                        <a href="https://mayursen16.github.io/motor.html" class="btn btn-ghost" style="align-self: flex-start;">View Project</a>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <div class="card-image">
-                        <img src="placeholder3.jpg" alt="Precision Tank Guardian">
-                    </div>
-                    <div class="card-content">
-                        <span class="tag">Infrastructure Controller</span>
-                        <h3>Precision Tank Guardian</h3>
-                        <p>100% automated water infrastructure controller featuring True AC math, localized SD data-logging, and peak detection for rectified DC signals. Ensures flawless resource management.</p>
-                        <a href="#" class="btn btn-ghost" style="align-self: flex-start;">View Project</a>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <div class="card-image">
-                        <img src="placeholder4.jpg" alt="Power Diagnostics Relay">
-                    </div>
-                    <div class="card-content">
-                        <span class="tag">Industrial Protection</span>
-                        <h3>Power Diagnostics Relay</h3>
-                        <p>STM32-based industrial over/under voltage protection node featuring precise Current Transformer calibration and custom bus-hardened drivers for harsh electrical environments.</p>
-                        <a href="#" class="btn btn-ghost" style="align-self: flex-start;">View Project</a>
-                    </div>
-                </article>
-                
-                <article class="card">
-                    <div class="card-image">
-                        <img src="placeholder5.jpg" alt="Custom Edge Hardware">
-                    </div>
-                    <div class="card-content">
-                        <span class="tag">Specialized Builds</span>
-                        <h3>Custom Edge Hardware</h3>
-                        <p>Showcasing specialized hardware builds, ranging from BS6 ICE sequential firing ECU simulators to ultra-low latency MIDI conversion modules and the modular Quick Timer (QT) logic add-ons.</p>
-                        <a href="#" class="btn btn-ghost" style="align-self: flex-start;">View Project</a>
-                    </div>
-                </article>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="services" style="background: var(--surface-color); border-top: 1px solid var(--border-color);">
-        <div class="container">
-            <div class="section-header">
-                <h2>Engineering <span class="gradient-text">Capabilities</span></h2>
-            </div>
-
-            <div class="services-grid">
-                <article class="card" style="padding: 10px;">
-                    <div class="card-content">
-                        <h3>PCB & Firmware Design</h3>
-                        <p>Ground-up hardware development from raw silicon to functional ecosystem. Specializing in professional layouts and component routing.</p>
-                        <ul class="service-features">
-                            <li>ESP8266 & ESP-12F Architecture</li>
-                            <li>STM8 & STM32 Bare-Metal Dev</li>
-                            <li>Custom Circuit Fabrication</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <article class="card" style="padding: 10px;">
-                    <div class="card-content">
-                        <h3>Embedded IoT Systems</h3>
-                        <p>Connecting the physical grid to digital interfaces. Expertise in integrating microcontrollers and building custom local web servers for edge devices.</p>
-                        <ul class="service-features">
-                            <li>Blynk IoT Platform Integration</li>
-                            <li>Secure Logic Pipelines</li>
-                            <li>Remote Device OTA Management</li>
-                        </ul>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section id="founder" style="border-top: 1px solid var(--border-color);">
-        <div class="container" style="padding-top: 80px; padding-bottom: 80px;">
-            <div class="section-header" style="padding-top: 0;">
-                <h2>Meet the <span class="gradient-text">Developer</span></h2>
-            </div>
-            <div class="team-grid" style="grid-template-columns: 1fr; max-width: 800px; margin: 0 auto;">
-                <article class="card" style="text-align: center; padding: 50px 40px;">
-                    <h3 style="font-size: 2.2rem; margin-bottom: 5px;">Mayur Sen</h3>
-                    <div style="color: var(--accent-primary); font-weight: 600; margin-bottom: 25px; font-size: 1.1rem;">Founder | Astatine Technologies & MayurIoT</div>
-                    <p style="font-size: 1.1rem; line-height: 1.8;">I am an embedded systems developer based in Nawada, Bihar. I specialize in bridging bare-metal hardware design with full-stack deployments. My focus is engineering highly autonomous, commercial-grade systems specifically optimized for cost-effective reliability. Whether routing complex PCB traces or coding an ESP8266 to communicate with the cloud, the goal is always performance and innovation.</p>
-                </article>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Execute Transmission</button>
+                </form>
             </div>
         </div>
     </section>
 </main>
 
-<footer class="site-footer">
+<footer>
     <div class="container">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="https://astatine.in/" class="brand" style="margin-bottom: 15px; display: inline-block;">
-                    <span class="brand-text" style="font-size: 1.5rem;">ASTATINE</span>
-                </a>
-                <p>Engineered in Bharat.<br>Building the future of embedded hardware.</p>
-            </div>
-            
-            <div class="footer-col">
-                <h4>Social</h4>
-                <ul>
-                    <li><a href="https://www.linkedin.com/in/mayursen31/" target="_blank">LinkedIn</a></li>
-                    <li><a href="https://github.com/mayursen16" target="_blank">GitHub</a></li>
-                    <li><a href="https://www.youtube.com/@mayuriot" target="_blank">YouTube Channel</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <ul>
-                    <li><a href="mailto:astatinetechtechnologies@gmail.com">Email Us</a></li>
-                    <li><a href="https://wa.me/916207033076" target="_blank">WhatsApp Chat</a></li>
-                    <li style="margin-top: 15px; color: var(--text-muted);">Plot 1101, Akbarpur<br>Nawada, Bihar 805126</li>
-                </ul>
-            </div>
-        </div>
-        <div style="border-top: 1px solid var(--border-color); padding-top: 30px; font-size: 0.9rem; text-align: center; color: var(--text-muted);">
-            &copy; 2026 Astatine Technologies. All rights reserved.
-        </div>
+        <p class="footer-text">© 2026 ASTATINE TECHNOLOGIES. ENGINEERED IN BHARAT. // ALL SYSTEMS NOMINAL.</p>
     </div>
 </footer>
+
+<!-- JavaScript for Interactive Matrix Filtering -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const matrixCards = document.querySelectorAll('.matrix-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                matrixCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    
+                    // Reset animation by removing and re-adding the class
+                    card.style.animation = 'none';
+                    card.offsetHeight; // trigger reflow
+                    
+                    if (filterValue === 'all' || filterValue === category) {
+                        card.classList.remove('hidden');
+                        card.style.animation = 'cardSpawn 0.5s ease forwards';
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    });
+</script>
 
 </body>
 </html>
