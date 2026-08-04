@@ -10,6 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     
+    <!-- ESP Web Tools API (Official Flashing Engine) -->
+    <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+
     <style>
         :root {
             /* Futuristic Dark Theme */
@@ -81,7 +84,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-wrap: wrap; /* Allows text to wrap on small screens */
+            flex-wrap: wrap; 
             gap: 8px;
         }
         .global-banner .highlight { color: #fff; text-shadow: 0 0 10px var(--accent-cyan); font-size: 14px; }
@@ -150,28 +153,12 @@
             cursor: pointer;
             transition: transform 0.3s ease;
         }
-        .cyber-logo-wrapper:hover {
-            transform: scale(1.05);
-            filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.4));
-        }
-        .cyber-logo-img {
-            display: block;
-            height: 100%;
-            width: auto;
-            position: relative;
-            z-index: 1;
-            animation: cyber-glitch 5s infinite linear alternate-reverse;
-        }
+        .cyber-logo-wrapper:hover { transform: scale(1.05); filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.4)); }
+        .cyber-logo-img { display: block; height: 100%; width: auto; position: relative; z-index: 1; animation: cyber-glitch 5s infinite linear alternate-reverse; }
         .cyber-scanlines {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: 2;
-            pointer-events: none;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none;
             background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 240, 255, 0.15) 50%, rgba(0, 240, 255, 0.15));
-            background-size: 100% 4px;
-            opacity: 0.6;
-            animation: scanline-scroll 8s linear infinite;
+            background-size: 100% 4px; opacity: 0.6; animation: scanline-scroll 8s linear infinite;
         }
 
         @keyframes cyber-glitch {
@@ -228,6 +215,10 @@
         .flasher-section { padding: 100px 0; border-top: 1px solid var(--border-light); }
         .flasher-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px; margin-bottom: 40px; }
         
+        /* Required to keep esp-web-tools layout clean */
+        esp-web-install-button { display: inline-block; margin-top: 10px; }
+        .flasher-note { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); margin-top: 15px; display: block;}
+
         .term-log-box {
             background: #020408;
             border: 1px solid var(--border-strong);
@@ -282,36 +273,22 @@
         
         @media (max-width: 768px) {
             .container { padding: 0 15px; }
-            
-            /* Hide non-essential nav links on mobile */
             .nav-links { display: none; }
             
-            /* Shrink and wrap the global banner so it never causes horizontal scroll */
-            .global-banner { 
-                font-size: 10px; 
-                padding: 8px 5px; 
-                line-height: 1.4;
-            }
+            .global-banner { font-size: 10px; padding: 8px 5px; line-height: 1.4; }
             .global-banner .highlight { font-size: 12px; }
-            .global-banner .dim { display: none; } /* Hide 'DEPLOYED TO MARKET' to save space */
+            .global-banner .dim { display: none; } 
             
-            /* Adjust header positioning and size */
             header { top: 40px; }
             .nav-container { height: 70px; }
-            
-            /* Scale down logo and WhatsApp button for phone screens */
             .cyber-logo-wrapper { height: 32px; }
             .nav-container .btn { padding: 8px 16px; font-size: 11px; letter-spacing: 1px;}
             
-            /* Adjust Hero padding to account for header */
             .hero { padding: 160px 0 60px; }
             .hero-actions { flex-direction: column; width: 100%; }
             .hero-actions .btn { width: 100%; }
             
-            /* Stack filter buttons nicely */
             .filter-controls { flex-direction: column; align-items: stretch; gap: 8px; }
-            
-            /* Terminal mobile padding */
             .term-body { padding: 20px; }
         }
     </style>
@@ -328,7 +305,7 @@
 
 <header>
     <div class="container nav-container">
-        <!-- ANIMATED LOGO WITH CORRECT GITHUB PATH -->
+        <!-- ANIMATED LOGO -->
         <a href="#" class="brand">
             <div class="cyber-logo-wrapper">
                 <img src="astatine-logo.png" alt="Astatine Technologies" class="cyber-logo-img">
@@ -382,7 +359,6 @@
             <!-- Grid Content -->
             <div class="matrix-grid" id="matrixGrid">
                 
-                <!-- Card: MCU 1 -->
                 <article class="matrix-card" data-category="mcu">
                     <span class="card-tag">SILICON CORE</span>
                     <h3>ESP32 / ESP8266 Ecosystems</h3>
@@ -394,7 +370,6 @@
                     </ul>
                 </article>
 
-                <!-- Card: MCU 2 -->
                 <article class="matrix-card" data-category="mcu">
                     <span class="card-tag">PERIPHERAL LOGIC</span>
                     <h3>Precision Timing & RTC</h3>
@@ -406,7 +381,6 @@
                     </ul>
                 </article>
 
-                <!-- Card: Power 1 -->
                 <article class="matrix-card" data-category="power">
                     <span class="card-tag">HEAVY DUTY</span>
                     <h3>Smart Motor Starter Gateway</h3>
@@ -418,7 +392,6 @@
                     </ul>
                 </article>
 
-                <!-- Card: Power 2 -->
                 <article class="matrix-card" data-category="power">
                     <span class="card-tag">PROTECTION RELAY</span>
                     <h3>Power Diagnostics Node</h3>
@@ -430,7 +403,6 @@
                     </ul>
                 </article>
 
-                <!-- Card: IoT -->
                 <article class="matrix-card" data-category="iot">
                     <span class="card-tag">EDGE COMPUTE</span>
                     <h3>Nexus 4 Smart Hub</h3>
@@ -442,19 +414,6 @@
                     </ul>
                 </article>
 
-                <!-- Card: Software 1 -->
-                <article class="matrix-card" data-category="software">
-                    <span class="card-tag">FIRMWARE DEPLOYMENT</span>
-                    <h3>AOISOS Web Installer</h3>
-                    <p>Custom-built browser flashing platform. Allows secure, immediate deployment of firmware to consumer devices without complex desktop IDEs.</p>
-                    <ul class="card-specs">
-                        <li>Browser-to-Serial API Integration</li>
-                        <li>MAC Address License Binding</li>
-                        <li>Remote Payload Delivery</li>
-                    </ul>
-                </article>
-
-                <!-- Card: Software 2 -->
                 <article class="matrix-card" data-category="software">
                     <span class="card-tag">UI / UX</span>
                     <h3>Device Management Portals</h3>
@@ -466,7 +425,6 @@
                     </ul>
                 </article>
                 
-                <!-- Card: Software 3 -->
                 <article class="matrix-card" data-category="software">
                     <span class="card-tag">CAD / PHYSICAL</span>
                     <h3>3D Enclosure Generation</h3>
@@ -482,12 +440,12 @@
         </div>
     </section>
 
-    <!-- PROTOTYPE FIRMWARE FLASHER -->
+    <!-- PROTOTYPE FIRMWARE FLASHER (FULLY FUNCTIONAL API) -->
     <section class="flasher-section" id="deploy">
         <div class="container">
             <div class="section-header">
                 <h2>Prototype Deployment</h2>
-                <p>Test our Web Installer logic directly in your browser. Flash test environments to your development boards via Web Serial.</p>
+                <p>Flash test environments to your development boards directly from your browser.</p>
             </div>
 
             <div class="flasher-grid">
@@ -495,22 +453,34 @@
                 <article class="matrix-card" style="align-items: center; text-align: center;">
                     <span class="card-tag">Legacy WiFi Node</span>
                     <h3>ESP8266 Flasher</h3>
-                    <p>Connect your ESP8266 via USB to inject the test .bin payload directly from this interface.</p>
-                    <button class="btn btn-flash" onclick="triggerWebSerial('ESP8266')">Initialize Flash</button>
+                    <p>Connect your ESP8266 via USB to inject the payload.</p>
+                    
+                    <!-- Official ESP Web Tools Button Component -->
+                    <esp-web-install-button id="flash-btn-8266">
+                        <button slot="activate" class="btn btn-flash">Initialize ESP8266 Flash</button>
+                        <span slot="unsupported" style="color: #ff3366; font-size: 12px; margin-top: 10px; display: block;">Browser not supported. Use Chrome or Edge.</span>
+                    </esp-web-install-button>
+                    <span class="flasher-note">Targeting: flash-esp8266.bin (Offset 0x0)</span>
                 </article>
 
                 <!-- ESP32 Option -->
                 <article class="matrix-card" style="align-items: center; text-align: center;">
                     <span class="card-tag">Dual-Core Architecture</span>
                     <h3>ESP32 Flasher</h3>
-                    <p>Connect your ESP32 dev board via USB to initialize the Web Serial flashing sequence.</p>
-                    <button class="btn btn-flash" onclick="triggerWebSerial('ESP32')">Initialize Flash</button>
+                    <p>Connect your ESP32 dev board via USB to inject the payload.</p>
+                    
+                    <!-- Official ESP Web Tools Button Component -->
+                    <esp-web-install-button id="flash-btn-32">
+                        <button slot="activate" class="btn btn-flash">Initialize ESP32 Flash</button>
+                        <span slot="unsupported" style="color: #ff3366; font-size: 12px; margin-top: 10px; display: block;">Browser not supported. Use Chrome or Edge.</span>
+                    </esp-web-install-button>
+                    <span class="flasher-note">Targeting: flash-esp32.bin (Offset 0x0)</span>
                 </article>
             </div>
 
             <!-- Live Terminal Log Box -->
             <div class="term-log-box" id="flashTerminal">
-                <div class="log-line">> Astatine_Web_Flasher_v1.0 initialized.</div>
+                <div class="log-line">> Astatine_Web_Flasher_v2.0 initialized.</div>
                 <div class="log-line">> Awaiting user connection...</div>
             </div>
 
@@ -589,21 +559,19 @@
 <!-- JavaScript Engine -->
 <script>
     document.addEventListener("DOMContentLoaded", () => {
+        
         // --- 1. Live Counting Logic (49,324 Units) ---
         const counterElement = document.getElementById('liveCounter');
         const startValue = 49210; 
         const endValue = 49324;
         const duration = 2500; 
-
         let startTime = null;
 
         function animateCount(timestamp) {
             if (!startTime) startTime = timestamp;
             const progress = Math.min((timestamp - startTime) / duration, 1);
             const currentVal = Math.floor(progress * (endValue - startValue) + startValue);
-            
             counterElement.innerHTML = currentVal.toLocaleString();
-
             if (progress < 1) {
                 window.requestAnimationFrame(animateCount);
             } else {
@@ -626,14 +594,12 @@
             btn.addEventListener('click', () => {
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-
                 const filterValue = btn.getAttribute('data-filter');
 
                 matrixCards.forEach(card => {
                     const category = card.getAttribute('data-category');
                     card.style.animation = 'none';
                     card.offsetHeight; 
-                    
                     if (filterValue === 'all' || filterValue === category) {
                         card.classList.remove('hidden');
                         card.style.animation = 'cardSpawn 0.5s ease forwards';
@@ -643,12 +609,11 @@
                 });
             });
         });
-    });
 
-    // --- 3. Web Serial Flasher Logic (WLED Style) ---
-    async function triggerWebSerial(boardType) {
-        const terminal = document.getElementById('flashTerminal');
+        // --- 3. DYNAMIC ESP WEB TOOLS MANIFEST INJECTION ---
         
+        // Helper function to log events to our Cyber Terminal
+        const terminal = document.getElementById('flashTerminal');
         function logToTerminal(message, isError = false) {
             const line = document.createElement('div');
             line.className = isError ? 'log-line log-error' : 'log-line';
@@ -657,36 +622,52 @@
             terminal.scrollTop = terminal.scrollHeight; 
         }
 
-        logToTerminal(`Initiating Web Serial sequence for ${boardType}...`);
+        // Generate JSON manifest for ESP8266 and convert to a Data URI
+        const manifest8266 = {
+            name: "Astatine ESP8266 Payload",
+            builds: [{
+                chipFamily: "ESP8266",
+                parts: [{ path: "flash-esp8266.bin", offset: 0 }]
+            }]
+        };
+        const manifestUrl8266 = "data:application/json;charset=utf-8," + encodeURIComponent(JSON.stringify(manifest8266));
+        const btn8266 = document.getElementById('flash-btn-8266');
+        btn8266.setAttribute('manifest', manifestUrl8266);
 
-        if (!('serial' in navigator)) {
-            logToTerminal('ERROR: Web Serial API not supported in this browser. Please use Chrome or Edge.', true);
-            return;
-        }
+        // Generate JSON manifest for ESP32 and convert to a Data URI
+        const manifest32 = {
+            name: "Astatine ESP32 Payload",
+            builds: [{
+                chipFamily: "ESP32",
+                parts: [{ path: "flash-esp32.bin", offset: 0 }]
+            }]
+        };
+        const manifestUrl32 = "data:application/json;charset=utf-8," + encodeURIComponent(JSON.stringify(manifest32));
+        const btn32 = document.getElementById('flash-btn-32');
+        btn32.setAttribute('manifest', manifestUrl32);
 
-        try {
-            logToTerminal(`Requesting COM port access from user...`);
-            const port = await navigator.serial.requestPort();
-            
-            logToTerminal(`SUCCESS: Port selected. Handshake initialized with ${boardType}.`);
-            logToTerminal(`Opening connection at 115200 baud rate...`);
-            
-            await port.open({ baudRate: 115200 });
-            
-            logToTerminal(`Connection established!`);
-            logToTerminal(`[WAITING FOR PAYLOAD] Ready to write .bin file to ${boardType}.`);
-            
-            // TODO: INTEGRATE ESP-WEB-TOOLS OR BINARY UPLOAD HERE.
-            
-            setTimeout(async () => {
-                await port.close();
-                logToTerminal(`Port closed safely. Flasher standing by.`);
-            }, 3000);
-
-        } catch (error) {
-            logToTerminal(`PROCESS ABORTED: ${error.message}`, true);
-        }
-    }
+        // Listen to ESP Web Tools Events and print them to the Terminal
+        [btn8266, btn32].forEach(btn => {
+            btn.addEventListener('state-changed', (e) => {
+                const state = e.detail.state;
+                if(state === 'ERROR') {
+                    logToTerminal(`ERROR: Flashing process failed. Check USB cable and ensure your .bin file is uploaded to GitHub.`, true);
+                } else if(state === 'CONNECTING') {
+                    logToTerminal(`Requesting Serial Port... Connecting to device...`);
+                } else if(state === 'INITIALIZING') {
+                    logToTerminal(`Handshake successful. Initializing chip geometry...`);
+                } else if(state === 'PREPARING') {
+                    logToTerminal(`Preparing firmware payload...`);
+                } else if(state === 'ERASING') {
+                    logToTerminal(`Erasing flash memory... (This may take a moment)`);
+                } else if(state === 'WRITING') {
+                    logToTerminal(`Writing .bin payload to device memory...`);
+                } else if(state === 'FINISHED') {
+                    logToTerminal(`SUCCESS: Firmware deployed. Rebooting device!`);
+                }
+            });
+        });
+    });
 </script>
 
 </body>
