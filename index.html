@@ -605,6 +605,38 @@
             border-top: 1px solid var(--border-light);
             background: linear-gradient(180deg, var(--bg-panel) 0%, var(--bg-deep) 100%);
         }
+        .tool-filter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .tool-filter label {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .tool-filter select {
+            background: var(--bg-deep);
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+            padding: 10px 20px;
+            font-family: var(--font-mono);
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.3s;
+            min-width: 240px;
+        }
+        .tool-filter select:focus {
+            border-color: var(--accent-cyan);
+            outline: none;
+            box-shadow: 0 0 12px var(--accent-glow);
+        }
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr));
@@ -865,6 +897,14 @@
             .tools-grid {
                 grid-template-columns: 1fr;
             }
+            .tool-filter {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .tool-filter select {
+                width: 100%;
+                min-width: unset;
+            }
             .term-body {
                 padding: 20px;
             }
@@ -1109,10 +1149,34 @@
                 <p>PCB calculators, impedance estimators, component decoders, and analog helpers – all in your browser.</p>
             </div>
 
+            <!-- TOOL DROPDOWN FILTER -->
+            <div class="tool-filter">
+                <label for="toolSelect">Select Tool:</label>
+                <select id="toolSelect">
+                    <option value="all">All Tools</option>
+                    <option value="trace-width">Trace Width (IPC‑2221)</option>
+                    <option value="via-current">Via Current Capacity</option>
+                    <option value="clearance">Clearance & Creepage</option>
+                    <option value="microstrip">Microstrip Z₀</option>
+                    <option value="stripline">Stripline Z₀</option>
+                    <option value="resistor-color">Resistor Color Code</option>
+                    <option value="smd-resistor">SMD Resistor Decoder</option>
+                    <option value="cap-decoder">Cap Marking Decoder</option>
+                    <option value="filter-designer">Active Filter Designer</option>
+                    <option value="led-resistor">LED Resistor Sizing</option>
+                    <option value="ne555">NE555 Timer</option>
+                    <option value="buck-boost">Buck/Boost Sizing</option>
+                    <option value="diff-microstrip">Differential Microstrip</option>
+                    <option value="rc-constant">RC Time Constant</option>
+                    <option value="voltage-divider">Voltage Divider</option>
+                    <option value="battery-life">Battery Life Estimator</option>
+                </select>
+            </div>
+
             <div class="tools-grid">
 
                 <!-- 1. TRACE WIDTH CALCULATOR (IPC-2221) -->
-                <div class="tool-card">
+                <div class="tool-card" data-tool="trace-width">
                     <h3><span>📐</span> Trace Width (IPC‑2221)</h3>
                     <p class="tool-desc">External / internal layer. Current, copper thickness, temp rise.</p>
                     <div class="tool-input-group">
@@ -1133,7 +1197,7 @@
                 </div>
 
                 <!-- 2. VIA CURRENT CAPACITY -->
-                <div class="tool-card">
+                <div class="tool-card" data-tool="via-current">
                     <h3><span>⏺</span> Via Current Capacity</h3>
                     <p class="tool-desc">Plated through-hole via max current (IPC‑2152 approx).</p>
                     <div class="tool-input-group">
@@ -1149,7 +1213,7 @@
                 </div>
 
                 <!-- 3. CLEARANCE & CREEPAGE (IPC-2221B) -->
-                <div class="tool-card">
+                <div class="tool-card" data-tool="clearance">
                     <h3><span>⚡</span> Clearance &amp; Creepage</h3>
                     <p class="tool-desc">Minimum spacing for peak working voltage.</p>
                     <div class="tool-input-group">
@@ -1168,7 +1232,7 @@
                 </div>
 
                 <!-- 4. MICROSTRIP IMPEDANCE -->
-                <div class="tool-card">
+                <div class="tool-card" data-tool="microstrip">
                     <h3><span>〰️</span> Microstrip Z₀</h3>
                     <p class="tool-desc">Characteristic impedance of a surface trace.</p>
                     <div class="tool-input-group">
@@ -1185,7 +1249,7 @@
                 </div>
 
                 <!-- 5. STRIPLINE IMPEDANCE -->
-                <div class="tool-card">
+                <div class="tool-card" data-tool="stripline">
                     <h3><span>▬</span> Stripline Z₀</h3>
                     <p class="tool-desc">Symmetric stripline embedded between two planes.</p>
                     <div class="tool-input-group">
@@ -1201,7 +1265,7 @@
                 </div>
 
                 <!-- 6. RESISTOR COLOR CODE VISUALIZER -->
-                <div class="tool-card">
+                <div class="tool-card" data-tool="resistor-color">
                     <h3><span>🎨</span> Resistor Color Code</h3>
                     <p class="tool-desc">4‑band / 5‑band. Click bands or type value.</p>
                     <div class="tool-input-group">
@@ -1218,7 +1282,7 @@
                 </div>
 
                 <!-- 7. SMD RESISTOR DECODER -->
-                <div class="tool-card">
+                <div class="tool-card" data-tool="smd-resistor">
                     <h3><span>🔢</span> SMD Resistor Decoder</h3>
                     <p class="tool-desc">3‑digit, 4‑digit, EIA‑96.</p>
                     <div class="tool-input-group">
@@ -1230,7 +1294,7 @@
                 </div>
 
                 <!-- 8. CAPACITOR MARKING DECODER -->
-                <div class="tool-card">
+                <div class="tool-card" data-tool="cap-decoder">
                     <h3><span>🔋</span> Cap Marking Decoder</h3>
                     <p class="tool-desc">3‑digit pF code (e.g. 104K → 100nF ±10%).</p>
                     <div class="tool-input-group">
@@ -1242,7 +1306,7 @@
                 </div>
 
                 <!-- 9. FILTER DESIGNER (SALLEN-KEY) WITH BODE PLOT -->
-                <div class="tool-card">
+                <div class="tool-card" data-tool="filter-designer">
                     <h3><span>📈</span> Active Filter Designer</h3>
                     <p class="tool-desc">2nd‑order Sallen‑Key LPF / HPF. Interactive Bode plot.</p>
                     <div class="tool-input-group">
@@ -1261,7 +1325,7 @@
                 </div>
 
                 <!-- 10. LED SERIES RESISTOR -->
-                <div class="tool-card">
+                <div class="tool-card" data-tool="led-resistor">
                     <h3><span>💡</span> LED Resistor Sizing</h3>
                     <p class="tool-desc">Single, series, or parallel array.</p>
                     <div class="tool-input-group">
@@ -1279,7 +1343,7 @@
                 </div>
 
                 <!-- 11. NE555 TIMER -->
-                <div class="tool-card">
+                <div class="tool-card" data-tool="ne555">
                     <h3><span>⏱️</span> NE555 Timer</h3>
                     <p class="tool-desc">Astable / monostable with waveform preview.</p>
                     <div class="tool-input-group">
@@ -1298,7 +1362,7 @@
                 </div>
 
                 <!-- 12. BUCK/BOOST POWER STAGE -->
-                <div class="tool-card">
+                <div class="tool-card" data-tool="buck-boost">
                     <h3><span>⚙️</span> Buck/Boost Sizing</h3>
                     <p class="tool-desc">Minimum inductance, peak current, output capacitance.</p>
                     <div class="tool-input-group">
@@ -1313,6 +1377,76 @@
                         <div><span class="result-label">L_min</span> <span class="result-value" id="bbL">—</span></div>
                         <div><span class="result-label">I_peak</span> <span class="result-value" id="bbIpk">—</span></div>
                         <div><span class="result-label">C_out(min)</span> <span class="result-value" id="bbC">—</span></div>
+                    </div>
+                </div>
+
+                <!-- ============================================================
+                NEW TOOLS ADDED BELOW
+                ============================================================ -->
+
+                <!-- 13. DIFFERENTIAL MICROSTRIP IMPEDANCE -->
+                <div class="tool-card" data-tool="diff-microstrip">
+                    <h3><span>〰️〰️</span> Differential Microstrip</h3>
+                    <p class="tool-desc">Edge‑coupled differential impedance (Zdiff) and common‑mode (Zcm).</p>
+                    <div class="tool-input-group">
+                        <div class="tool-input-row"><label>W (mm)</label><input type="number" id="dmW" value="0.5" step="0.05" min="0.05" /></div>
+                        <div class="tool-input-row"><label>Gap (mm)</label><input type="number" id="dmG" value="0.2" step="0.05" min="0.05" /></div>
+                        <div class="tool-input-row"><label>T (mm)</label><input type="number" id="dmT" value="0.035" step="0.005" min="0.01" /></div>
+                        <div class="tool-input-row"><label>H (mm)</label><input type="number" id="dmH" value="1.6" step="0.1" min="0.1" /></div>
+                        <div class="tool-input-row"><label>εᵣ</label><input type="number" id="dmEr" value="4.6" step="0.1" min="1" /></div>
+                    </div>
+                    <div class="tool-result" id="dmResult">
+                        <div><span class="result-label">Zdiff</span> <span class="result-value" id="dmZdiff">—</span></div>
+                        <div><span class="result-label">Zcm</span> <span class="result-value" id="dmZcm">—</span></div>
+                        <div><span class="result-label">εᵉᶠᶠ</span> <span class="result-value" id="dmEeff">—</span></div>
+                    </div>
+                </div>
+
+                <!-- 14. RC TIME CONSTANT -->
+                <div class="tool-card" data-tool="rc-constant">
+                    <h3><span>⏳</span> RC Time Constant</h3>
+                    <p class="tool-desc">τ, cut‑off frequency, rise/fall time.</p>
+                    <div class="tool-input-group">
+                        <div class="tool-input-row"><label>R (Ω)</label><input type="number" id="rcR" value="10000" step="100" min="1" /></div>
+                        <div class="tool-input-row"><label>C (µF)</label><input type="number" id="rcC" value="1" step="0.1" min="0.001" /></div>
+                    </div>
+                    <div class="tool-result" id="rcConstResult">
+                        <div><span class="result-label">τ</span> <span class="result-value" id="rcTau">—</span></div>
+                        <div><span class="result-label">f_c</span> <span class="result-value" id="rcFc">—</span></div>
+                        <div><span class="result-label">Rise (10‑90%)</span> <span class="result-value" id="rcRise">—</span></div>
+                        <div><span class="result-label">Fall (90‑10%)</span> <span class="result-value" id="rcFall">—</span></div>
+                    </div>
+                </div>
+
+                <!-- 15. VOLTAGE DIVIDER -->
+                <div class="tool-card" data-tool="voltage-divider">
+                    <h3><span>⚡</span> Voltage Divider</h3>
+                    <p class="tool-desc">Vout, current, and power for two resistors.</p>
+                    <div class="tool-input-group">
+                        <div class="tool-input-row"><label>Vin (V)</label><input type="number" id="vdVin" value="5" step="0.5" min="0.1" /></div>
+                        <div class="tool-input-row"><label>R1 (Ω)</label><input type="number" id="vdR1" value="1000" step="100" min="1" /></div>
+                        <div class="tool-input-row"><label>R2 (Ω)</label><input type="number" id="vdR2" value="2000" step="100" min="1" /></div>
+                    </div>
+                    <div class="tool-result" id="vdResult">
+                        <div><span class="result-label">Vout</span> <span class="result-value" id="vdVout">—</span></div>
+                        <div><span class="result-label">I (mA)</span> <span class="result-value" id="vdI">—</span></div>
+                        <div><span class="result-label">P_R1 (W)</span> <span class="result-value" id="vdP1">—</span></div>
+                        <div><span class="result-label">P_R2 (W)</span> <span class="result-value" id="vdP2">—</span></div>
+                    </div>
+                </div>
+
+                <!-- 16. BATTERY LIFE ESTIMATOR -->
+                <div class="tool-card" data-tool="battery-life">
+                    <h3><span>🔋</span> Battery Life Estimator</h3>
+                    <p class="tool-desc">Runtime (hours) based on capacity and load.</p>
+                    <div class="tool-input-group">
+                        <div class="tool-input-row"><label>Capacity (mAh)</label><input type="number" id="blCap" value="2000" step="100" min="1" /></div>
+                        <div class="tool-input-row"><label>Load (mA)</label><input type="number" id="blLoad" value="100" step="5" min="0.1" /></div>
+                        <div class="tool-input-row"><label>Efficiency (%)</label><input type="number" id="blEff" value="90" step="1" min="1" max="100" /></div>
+                    </div>
+                    <div class="tool-result" id="blResult">
+                        <div><span class="result-label">Runtime</span> <span class="result-value" id="blHours">—</span></div>
+                        <div><span class="result-label">Days</span> <span class="result-value" id="blDays">—</span></div>
                     </div>
                 </div>
 
@@ -1442,6 +1576,26 @@
                     else if (s === 'FINISHED') logTerm('SUCCESS: Firmware deployed. Rebooting!');
                 });
             });
+
+            // ============================================================
+            //  TOOL FILTER (Dropdown)
+            // ============================================================
+            const toolSelect = document.getElementById('toolSelect');
+            const toolCards = document.querySelectorAll('.tool-card');
+
+            function filterTools() {
+                const selected = toolSelect.value;
+                toolCards.forEach(card => {
+                    const toolId = card.dataset.tool;
+                    if (selected === 'all' || selected === toolId) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+            toolSelect.addEventListener('change', filterTools);
+            filterTools(); // initial state
 
             // ============================================================
             //  TOOL: TRACE WIDTH (IPC-2221)
@@ -1921,6 +2075,88 @@
             ['bbVin', 'bbVout', 'bbIout', 'bbFsw', 'bbLir', 'bbVrip'].forEach(id => document.getElementById(id)
                 .addEventListener('input', calcBuckBoost));
             calcBuckBoost();
+
+            // ============================================================
+            //  NEW TOOL: DIFFERENTIAL MICROSTRIP
+            // ============================================================
+            function calcDiffMicrostrip() {
+                const W = parseFloat(document.getElementById('dmW').value) || 0.5;
+                const G = parseFloat(document.getElementById('dmG').value) || 0.2;
+                const T = parseFloat(document.getElementById('dmT').value) || 0.035;
+                const H = parseFloat(document.getElementById('dmH').value) || 1.6;
+                const er = parseFloat(document.getElementById('dmEr').value) || 4.6;
+                // Approximate formulas for edge-coupled microstrip
+                const Weff = W + (1.25 * T / Math.PI) * (1 + Math.log(4 * Math.PI * W / T));
+                const eeff = (er + 1) / 2 + ((er - 1) / 2) / Math.sqrt(1 + 12 * H / Weff);
+                // Single-ended Zo
+                const Zo = 87 / Math.sqrt(eeff) * Math.log(5.98 * H / (0.8 * Weff + T));
+                // Differential: Zdiff = 2*Zo*(1 - 0.48*exp(-0.96*G/H))
+                const ratio = G / H;
+                const Zdiff = 2 * Zo * (1 - 0.48 * Math.exp(-0.96 * ratio));
+                // Common mode: Zcm = 0.5*Zo*(1 + 0.48*exp(-0.96*ratio))
+                const Zcm = 0.5 * Zo * (1 + 0.48 * Math.exp(-0.96 * ratio));
+                document.getElementById('dmZdiff').textContent = Zdiff.toFixed(1) + ' Ω';
+                document.getElementById('dmZcm').textContent = Zcm.toFixed(1) + ' Ω';
+                document.getElementById('dmEeff').textContent = eeff.toFixed(3);
+            }
+            ['dmW', 'dmG', 'dmT', 'dmH', 'dmEr'].forEach(id => document.getElementById(id).addEventListener('input',
+                calcDiffMicrostrip));
+            calcDiffMicrostrip();
+
+            // ============================================================
+            //  NEW TOOL: RC TIME CONSTANT
+            // ============================================================
+            function calcRC() {
+                const R = parseFloat(document.getElementById('rcR').value) || 10000;
+                const C = parseFloat(document.getElementById('rcC').value) * 1e-6 || 1e-6;
+                const tau = R * C;
+                const fc = 1 / (2 * Math.PI * tau);
+                const rise = 2.2 * tau; // 10% to 90%
+                const fall = rise; // symmetric
+                document.getElementById('rcTau').textContent = tau.toFixed(3) + ' s';
+                document.getElementById('rcFc').textContent = fc.toFixed(1) + ' Hz';
+                document.getElementById('rcRise').textContent = (rise * 1000).toFixed(1) + ' ms';
+                document.getElementById('rcFall').textContent = (fall * 1000).toFixed(1) + ' ms';
+            }
+            ['rcR', 'rcC'].forEach(id => document.getElementById(id).addEventListener('input', calcRC));
+            calcRC();
+
+            // ============================================================
+            //  NEW TOOL: VOLTAGE DIVIDER
+            // ============================================================
+            function calcVoltageDivider() {
+                const Vin = parseFloat(document.getElementById('vdVin').value) || 5;
+                const R1 = parseFloat(document.getElementById('vdR1').value) || 1000;
+                const R2 = parseFloat(document.getElementById('vdR2').value) || 2000;
+                const Vout = Vin * R2 / (R1 + R2);
+                const I = Vin / (R1 + R2);
+                const P1 = I * I * R1;
+                const P2 = I * I * R2;
+                document.getElementById('vdVout').textContent = Vout.toFixed(2) + ' V';
+                document.getElementById('vdI').textContent = (I * 1000).toFixed(2) + ' mA';
+                document.getElementById('vdP1').textContent = P1.toFixed(4) + ' W';
+                document.getElementById('vdP2').textContent = P2.toFixed(4) + ' W';
+            }
+            ['vdVin', 'vdR1', 'vdR2'].forEach(id => document.getElementById(id).addEventListener('input',
+                calcVoltageDivider));
+            calcVoltageDivider();
+
+            // ============================================================
+            //  NEW TOOL: BATTERY LIFE ESTIMATOR
+            // ============================================================
+            function calcBatteryLife() {
+                const cap = parseFloat(document.getElementById('blCap').value) || 2000;
+                const load = parseFloat(document.getElementById('blLoad').value) || 100;
+                const eff = parseFloat(document.getElementById('blEff').value) || 90;
+                const effectiveCap = cap * (eff / 100);
+                const hours = effectiveCap / load;
+                const days = hours / 24;
+                document.getElementById('blHours').textContent = hours.toFixed(1) + ' h';
+                document.getElementById('blDays').textContent = days.toFixed(2) + ' d';
+            }
+            ['blCap', 'blLoad', 'blEff'].forEach(id => document.getElementById(id).addEventListener('input',
+                calcBatteryLife));
+            calcBatteryLife();
 
         }); // end DOMContentLoaded
     </script>
