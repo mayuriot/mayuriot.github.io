@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Astatine Technologies | Advanced Embedded Systems & Bare-Metal Silicon Engineering</title>
-    <meta name="description" content="Astatine Technologies specializes in bare-metal embedded systems, STM32 & ARM Cortex-M firmware, real-time deterministic RTOS kernels, CAN/Modbus fieldbus protocols, high-speed multilayer PCB design, and engineering calculation tools." />
+    <title>Astatine Technologies | Turnkey Electronic Products: PCB Design, Firmware &amp; Manufacturing</title>
+    <meta name="description" content="From ideas to final electronic product in your hand: PCB design, PCB manufacturing, firmware development, component sourcing, PCB assembly, custom enclosure, packaging, and shipment." />
 
     <!-- Google Fonts: Barlow Condensed (for hero impact) + Outfit (modern body) + JetBrains Mono (technical specs) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,7 +14,6 @@
     <style>
         /* ============================================================
            THEME TOKENS: VIBRANT DUSK & SUNSET FLUID GRADIENT
-           Inspired by reference: Deep Twilight, Electric Blue, Sunset Coral
            ============================================================ */
         :root {
             --bg-deep: #120924;
@@ -76,7 +75,7 @@
         }
 
         /* ============================================================
-           ORGANIC FLUID WAVE BACKGROUND (INSPIRED BY REFERENCE)
+           ORGANIC FLUID WAVE BACKGROUND (FROM REFERENCE IMAGE)
            ============================================================ */
         .ambient-fluid-container {
             position: absolute;
@@ -89,7 +88,6 @@
             z-index: 0;
         }
 
-        /* Large smooth blurred fluid ribbon */
         .fluid-blob-svg {
             position: absolute;
             top: 60px;
@@ -122,7 +120,6 @@
                 radial-gradient(circle at 50% 80%, rgba(255, 107, 107, 0.2) 0%, transparent 60%);
         }
 
-        /* Grid Dots & Micro Alignment Ticks */
         .technical-grid-lines {
             position: absolute;
             top: 0;
@@ -136,7 +133,6 @@
             z-index: 1;
         }
 
-        /* Container Layout */
         .container {
             width: 100%;
             max-width: 1400px;
@@ -147,7 +143,95 @@
         }
 
         /* ============================================================
-           LEFT TECHNICAL VERTICAL RAIL (FROM REFERENCE IMAGE)
+           TOP TURNKEY PRODUCT LIFECYCLE BANNER
+           ============================================================ */
+        .turnkey-tagline-bar {
+            background: rgba(14, 8, 30, 0.95);
+            border-bottom: 1px solid rgba(255, 122, 89, 0.3);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 101;
+            padding: 10px 0;
+            overflow: hidden;
+        }
+
+        .turnkey-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .turnkey-headline {
+            font-family: var(--font-display);
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .turnkey-headline span.badge-pill {
+            background: var(--coral-gradient);
+            color: #ffffff;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-family: var(--font-code);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .turnkey-steps-track {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            padding: 4px 0;
+        }
+
+        .turnkey-steps-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .step-chip {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-family: var(--font-code);
+            font-size: 11px;
+            color: var(--text-muted);
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .step-chip b {
+            color: var(--coral-bright);
+        }
+
+        .step-chip:hover {
+            border-color: var(--coral-bright);
+            color: #ffffff;
+            background: rgba(255, 122, 89, 0.15);
+        }
+
+        .step-arrow-sym {
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 11px;
+        }
+
+        /* ============================================================
+           LEFT TECHNICAL VERTICAL RAIL
            ============================================================ */
         .page-wrapper {
             display: flex;
@@ -190,7 +274,7 @@
         .rail-labels {
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 32px;
             align-items: center;
         }
 
@@ -255,7 +339,7 @@
         }
 
         /* ============================================================
-           TOP NAVIGATION BAR (INSPIRED BY REFERENCE)
+           TOP NAVIGATION BAR
            ============================================================ */
         header {
             width: 100%;
@@ -300,7 +384,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 36px;
+            gap: 32px;
             list-style: none;
         }
 
@@ -338,7 +422,6 @@
             box-shadow: 0 8px 30px rgba(255, 107, 107, 0.5);
         }
 
-        /* Mobile Hamburger */
         .mobile-toggle {
             display: none;
             background: transparent;
@@ -349,15 +432,13 @@
         }
 
         /* ============================================================
-           HERO SECTION: BOLD CONDENSED TITLE + MULTI-CARD SHOWCASE
-           (ACCURATELY IMPLEMENTING THE ATTACHED REFERENCE IMAGE)
+           HERO SECTION: BOLD CONDENSED TITLE + NUMBERED SHOWCASE
            ============================================================ */
         .hero-section {
             padding: 40px 0 90px;
             position: relative;
         }
 
-        /* Top Dotted Coordinate Guide */
         .hero-dots-guide {
             display: flex;
             align-items: center;
@@ -376,7 +457,6 @@
             align-items: center;
         }
 
-        /* Hero Left: Big Typography */
         .hero-copy {
             display: flex;
             flex-direction: column;
@@ -385,25 +465,27 @@
 
         .hero-eyebrow {
             font-family: var(--font-code);
-            font-size: 12px;
-            letter-spacing: 2px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
             color: var(--coral-bright);
             text-transform: uppercase;
             margin-bottom: 14px;
             display: flex;
             align-items: center;
             gap: 8px;
+            flex-wrap: wrap;
         }
 
         .hero-title {
             font-family: var(--font-display);
-            font-size: clamp(64px, 7.8vw, 118px);
+            font-size: clamp(60px, 7.5vw, 114px);
             font-weight: 900;
             line-height: 0.92;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #ffffff;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
         }
 
         .hero-title .highlight-line {
@@ -416,19 +498,18 @@
             font-size: 16px;
             line-height: 1.65;
             color: var(--text-muted);
-            max-width: 480px;
-            margin-bottom: 36px;
+            max-width: 490px;
+            margin-bottom: 34px;
             font-weight: 300;
         }
 
         .hero-actions {
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 16px;
             flex-wrap: wrap;
         }
 
-        /* Buttons */
         .btn-solid-coral {
             display: inline-flex;
             align-items: center;
@@ -459,7 +540,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 15px 30px;
+            padding: 15px 28px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.2);
             color: #ffffff;
@@ -479,7 +560,7 @@
             transform: translateY(-2px);
         }
 
-        /* Hero Right: Numbered Cards Carousel (01, 02, 03) */
+        /* Numbered Cards Carousel */
         .hero-showcase {
             position: relative;
         }
@@ -492,7 +573,6 @@
             margin-bottom: 24px;
         }
 
-        /* Showcase Card 1 (Dark Glass with 02 numeral) */
         .showcase-card {
             background: rgba(16, 12, 34, 0.85);
             backdrop-filter: blur(20px);
@@ -515,7 +595,6 @@
             border-color: rgba(255, 255, 255, 0.3);
         }
 
-        /* Showcase Card 2 (Solid Coral Accent with 03 numeral) */
         .showcase-card.card-accent-coral {
             background: var(--card-coral-bg);
             border-color: rgba(255, 255, 255, 0.2);
@@ -582,7 +661,6 @@
             line-height: 1.5;
         }
 
-        /* Showcase Navigation & Callout Bar */
         .showcase-footer {
             display: flex;
             align-items: center;
@@ -641,7 +719,6 @@
             transform: scale(1.08);
         }
 
-        /* Bottom Ticks Guide */
         .hero-bottom-ticks {
             margin-top: 35px;
             display: flex;
@@ -654,15 +731,16 @@
         }
 
         /* ============================================================
-           HARDWARE & EMBEDDED ARCHITECTURES MATRIX
+           NEW SECTION: OUR PAST PCB DESIGN PHOTOS & HARDWARE GALLERY
+           Auto-renders images named pcb1, pcb2, pcb3... with fallbacks
            ============================================================ */
         .section-block {
-            padding: 100px 0;
+            padding: 90px 0;
             position: relative;
         }
 
         .section-header {
-            margin-bottom: 50px;
+            margin-bottom: 45px;
         }
 
         .section-tag {
@@ -693,7 +771,258 @@
             font-weight: 300;
         }
 
-        /* Category Filter Pills */
+        /* PCB Gallery Grid */
+        .pcb-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 28px;
+            margin-top: 30px;
+        }
+
+        .pcb-card {
+            background: var(--card-glass);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .pcb-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--card-border-glow);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 107, 107, 0.25);
+        }
+
+        .pcb-img-container {
+            width: 100%;
+            height: 230px;
+            background: #090614;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pcb-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .pcb-card:hover .pcb-img-container img {
+            transform: scale(1.08);
+        }
+
+        /* Fallback Generated Circuit Art */
+        .pcb-placeholder-art {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0e1726 0%, #080d1a 100%);
+            position: relative;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .pcb-circuit-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.35;
+        }
+
+        .pcb-target-badge {
+            background: rgba(255, 122, 89, 0.15);
+            border: 1px dashed var(--coral-bright);
+            color: var(--coral-bright);
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-family: var(--font-code);
+            font-size: 12px;
+            font-weight: 700;
+            z-index: 2;
+            margin-bottom: 8px;
+        }
+
+        .pcb-hint-text {
+            font-family: var(--font-code);
+            font-size: 10px;
+            color: var(--text-dim);
+            z-index: 2;
+        }
+
+        .pcb-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: space-between;
+        }
+
+        .pcb-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .pcb-layer-pill {
+            font-family: var(--font-code);
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 4px;
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--cyan-glow);
+            border: 1px solid rgba(0, 240, 255, 0.25);
+            text-transform: uppercase;
+        }
+
+        .pcb-filename-tag {
+            font-family: var(--font-code);
+            font-size: 11px;
+            color: var(--text-dim);
+        }
+
+        .pcb-title {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .pcb-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+
+        .pcb-specs-tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 14px;
+        }
+
+        .pcb-spec-item {
+            font-family: var(--font-code);
+            font-size: 10px;
+            color: var(--text-subtle);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        /* Lightbox Modal */
+        .pcb-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(8, 4, 18, 0.92);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .pcb-modal.active {
+            display: flex;
+        }
+
+        .pcb-modal-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--card-border-glow);
+            border-radius: 16px;
+            max-width: 900px;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+            position: relative;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 18px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close-btn:hover {
+            background: var(--coral-bright);
+        }
+
+        .modal-img-wrap {
+            width: 100%;
+            max-height: 480px;
+            background: #080512;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .modal-img-wrap img {
+            max-width: 100%;
+            max-height: 480px;
+            object-fit: contain;
+        }
+
+        .modal-meta-wrap {
+            padding: 26px 32px;
+        }
+
+        .modal-meta-title {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .modal-meta-desc {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+           HARDWARE ARCHITECTURES MATRIX
+           ============================================================ */
         .pills-filter-bar {
             display: flex;
             align-items: center;
@@ -729,7 +1058,6 @@
             box-shadow: 0 4px 18px rgba(255, 107, 107, 0.35);
         }
 
-        /* Matrix Cards Grid */
         .matrix-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
@@ -844,7 +1172,7 @@
         }
 
         /* ============================================================
-           THE 4-STAGE HARDWARE & FIRMWARE PIPELINE
+           THE 4-STAGE PIPELINE
            ============================================================ */
         .pipeline-grid {
             display: grid;
@@ -901,7 +1229,7 @@
         }
 
         /* ============================================================
-           DEVELOPER TOOLS SUITE (16 CALCULATORS IN DUSK AESTHETIC)
+           DEVELOPER TOOLS SUITE (16 CALCULATORS)
            ============================================================ */
         .tools-filter-wrapper {
             background: rgba(18, 12, 38, 0.85);
@@ -949,7 +1277,6 @@
             pointer-events: none;
         }
 
-        /* Tools Grid */
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(390px, 1fr));
@@ -1253,7 +1580,130 @@
         }
 
         /* ============================================================
-           RESPONSIVE BREAKPOINTS (MATCHING RIGHT-SIDE MOBILE PREVIEW)
+           MOBILE DRAWER NAVIGATION STYLES
+           ============================================================ */
+        .mobile-drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(8, 4, 18, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .mobile-drawer-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(18, 10, 38, 0.96);
+            backdrop-filter: blur(32px);
+            -webkit-backdrop-filter: blur(32px);
+            border-bottom: 2px solid rgba(255, 122, 89, 0.4);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85);
+            padding: 24px 20px 32px;
+            transform: translateY(-100%);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .mobile-drawer-overlay.active .mobile-drawer {
+            transform: translateY(0);
+        }
+        .mobile-drawer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .mobile-drawer-brand {
+            font-family: var(--font-display);
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: 1.5px;
+            color: #ffffff;
+        }
+        .mobile-drawer-close {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        .mobile-drawer-close:hover {
+            background: var(--coral-bright);
+        }
+        .mobile-drawer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .mobile-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 10px;
+            color: #ffffff;
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+            min-height: 50px;
+        }
+        .mobile-nav-link span {
+            font-family: var(--font-code);
+            font-size: 12px;
+            color: var(--coral-bright);
+        }
+        .mobile-nav-link:hover,
+        .mobile-nav-link:active {
+            background: rgba(255, 122, 89, 0.15);
+            border-color: var(--coral-bright);
+            transform: translateX(4px);
+        }
+        .mobile-drawer-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .mobile-drawer-meta {
+            font-family: var(--font-code);
+            font-size: 10px;
+            color: var(--text-dim);
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        /* ============================================================
+           RESPONSIVE BREAKPOINTS (MOBILE & TABLET OPTIMIZED)
            ============================================================ */
         @media (max-width: 1080px) {
             .hero-grid {
@@ -1281,16 +1731,24 @@
                 width: 100%;
             }
             .container {
-                padding: 0 20px;
+                padding: 0 18px;
             }
             .nav-links {
                 display: none;
             }
             .mobile-toggle {
-                display: block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 44px;
+                height: 44px;
+                border-radius: 8px;
+                background: rgba(255, 255, 255, 0.06);
+                border: 1px solid rgba(255, 255, 255, 0.15);
             }
-            .cards-deck-wrapper {
-                grid-template-columns: 1fr;
+            .nav-cta-btn {
+                padding: 9px 16px;
+                font-size: 11px;
             }
             .tools-grid {
                 grid-template-columns: 1fr;
@@ -1298,23 +1756,216 @@
             .matrix-grid {
                 grid-template-columns: 1fr;
             }
+            .pcb-gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .pills-filter-bar {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                gap: 8px;
+                padding-bottom: 8px;
+                margin-bottom: 24px;
+                width: 100%;
+            }
+            .pills-filter-bar::-webkit-scrollbar {
+                display: none;
+            }
+            .pill-btn {
+                flex-shrink: 0;
+                white-space: nowrap;
+                padding: 8px 16px;
+                font-size: 11px;
+            }
+            .turnkey-tagline-bar {
+                padding: 8px 0;
+            }
+            .turnkey-inner {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+            .turnkey-headline {
+                font-size: 13px;
+                white-space: normal;
+                text-align: center;
+                justify-content: center;
+                line-height: 1.3;
+            }
+            .turnkey-steps-track {
+                justify-content: flex-start;
+                padding-bottom: 4px;
+            }
             .input-row {
                 flex-direction: column;
                 align-items: stretch;
+                padding: 10px 12px;
+            }
+            .input-row label {
+                margin-bottom: 4px;
             }
             .input-row input,
             .input-row select {
                 width: 100%;
                 text-align: left;
+                height: 44px;
+                font-size: 16px; /* Prevents auto-zoom on iOS Safari */
             }
             .input-row select {
                 text-align-last: left;
+            }
+            .search-input {
+                font-size: 16px; /* Prevents auto-zoom on iOS */
+                height: 46px;
+            }
+            .term-input {
+                font-size: 16px; /* Prevents auto-zoom on iOS */
             }
             .terminal-actions-row {
                 flex-direction: column;
             }
             .terminal-actions-row button {
                 width: 100%;
+                min-height: 48px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-section {
+                padding: 20px 0 50px;
+            }
+            .hero-eyebrow {
+                font-size: 10px;
+                text-align: center;
+                justify-content: center;
+                line-height: 1.4;
+            }
+            .hero-title {
+                font-size: clamp(42px, 12vw, 68px);
+                line-height: 0.94;
+                margin-bottom: 18px;
+                text-align: center;
+            }
+            .hero-desc {
+                font-size: 14px;
+                line-height: 1.55;
+                text-align: center;
+                margin-bottom: 24px;
+                padding: 0 4px;
+            }
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+                gap: 12px;
+            }
+            .hero-actions .btn-solid-coral,
+            .hero-actions .btn-outline-glass {
+                width: 100%;
+                text-align: center;
+                padding: 14px 20px;
+                min-height: 48px;
+            }
+            .hero-dots-guide {
+                display: none;
+            }
+            .hero-bottom-ticks {
+                font-size: 9px;
+                letter-spacing: 1px;
+                flex-direction: column;
+                gap: 6px;
+                text-align: center;
+            }
+            .hero-bottom-ticks span:nth-child(2) {
+                display: none;
+            }
+            /* Reference Image Mobile Mockup: Show single featured card */
+            .cards-deck-wrapper {
+                grid-template-columns: 1fr;
+                margin-bottom: 16px;
+            }
+            #cardSlotB {
+                display: none;
+            }
+            .showcase-card {
+                min-height: 290px;
+                padding: 24px 20px;
+            }
+            .card-numeral {
+                font-size: 64px;
+                margin-bottom: 10px;
+            }
+            .card-lead-title {
+                font-size: 20px;
+            }
+            .card-meta {
+                font-size: 12px;
+            }
+            .showcase-footer {
+                flex-direction: column;
+                gap: 14px;
+                align-items: stretch;
+                text-align: center;
+                padding: 14px 16px;
+            }
+            .showcase-nav-arrows {
+                justify-content: center;
+            }
+            .circle-nav-btn {
+                width: 44px;
+                height: 44px;
+            }
+            .section-block {
+                padding: 55px 0;
+            }
+            .section-title {
+                font-size: clamp(32px, 8.5vw, 44px);
+            }
+            .section-lead {
+                font-size: 14px;
+            }
+            .tools-filter-wrapper {
+                padding: 16px 14px;
+            }
+            .tool-card {
+                padding: 20px 16px;
+            }
+            .tool-result {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            .pcb-img-container {
+                height: 190px;
+            }
+            .pcb-body {
+                padding: 18px 16px;
+            }
+            .pcb-title {
+                font-size: 19px;
+            }
+            .pcb-modal {
+                padding: 12px;
+            }
+            .modal-img-wrap {
+                max-height: 260px;
+            }
+            .modal-meta-wrap {
+                padding: 18px 16px;
+            }
+            .modal-meta-title {
+                font-size: 20px;
+            }
+            .terminal-body {
+                padding: 22px 16px;
+            }
+            footer {
+                padding: 35px 0 25px;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
             }
         }
     </style>
@@ -1324,7 +1975,7 @@
     <!-- Ambient Mesh Glow -->
     <div class="ambient-glow-mesh"></div>
 
-    <!-- Fluid Background Wave Ribbon (Exact geometry inspired by reference image) -->
+    <!-- Fluid Background Wave Ribbon -->
     <div class="ambient-fluid-container">
         <svg class="fluid-blob-svg" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -1342,15 +1993,42 @@
         <div class="technical-grid-lines"></div>
     </div>
 
+    <!-- ============================================================
+         TOP TURNKEY PRODUCT LIFECYCLE BANNER
+         "From ideas to final electronic product in your hand"
+         ============================================================ -->
+    <div class="turnkey-tagline-bar">
+        <div class="container turnkey-inner">
+            <div class="turnkey-headline">
+                <span class="badge-pill">TURNKEY</span>
+                <span>FROM IDEAS TO FINAL ELECTRONIC PRODUCT IN YOUR HAND</span>
+            </div>
+            <div class="turnkey-steps-track">
+                <span class="step-chip"><b>01</b> PCB Design</span>
+                <span class="step-arrow-sym">➔</span>
+                <span class="step-chip"><b>02</b> PCB Manufacturing</span>
+                <span class="step-arrow-sym">➔</span>
+                <span class="step-chip"><b>03</b> Firmware Development</span>
+                <span class="step-arrow-sym">➔</span>
+                <span class="step-chip"><b>04</b> Component Sourcing</span>
+                <span class="step-arrow-sym">➔</span>
+                <span class="step-chip"><b>05</b> PCB Assembly</span>
+                <span class="step-arrow-sym">➔</span>
+                <span class="step-chip"><b>06</b> Custom Enclosure</span>
+                <span class="step-arrow-sym">➔</span>
+                <span class="step-chip"><b>07</b> Packaging</span>
+                <span class="step-arrow-sym">➔</span>
+                <span class="step-chip"><b>08</b> Shipment</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Whole Page Wrapper with Left Vertical Navigation Rail -->
     <div class="page-wrapper">
 
-        <!-- ============================================================
-             LEFT TECHNICAL VERTICAL RAIL (FROM REFERENCE IMAGE)
-             ============================================================ -->
+        <!-- Left Technical Vertical Rail -->
         <aside class="vertical-rail">
             <div class="rail-top-mark">
-                <!-- Atomic Embedded Symbol -->
                 <svg viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="3" fill="#ff7a59" />
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="rgba(255, 122, 89, 0.3)" />
@@ -1360,13 +2038,13 @@
             <div class="rail-labels">
                 <a href="#architectures" class="rail-label-item active">ARM CORTEX-M</a>
                 <div class="rail-divider-dot"></div>
-                <a href="#architectures" class="rail-label-item">STM32 / RISC-V</a>
+                <a href="#pcb-gallery" class="rail-label-item">PCB GALLERY</a>
                 <div class="rail-divider-dot"></div>
                 <a href="#architectures" class="rail-label-item">RTOS KERNEL</a>
                 <div class="rail-divider-dot"></div>
                 <a href="#tools" class="rail-label-item">CAN / MODBUS</a>
                 <div class="rail-divider-dot"></div>
-                <a href="#tools" class="rail-label-item">PCB FABRICATION</a>
+                <a href="#pipeline" class="rail-label-item">END-TO-END</a>
             </div>
 
             <div class="rail-bottom-status">
@@ -1378,9 +2056,7 @@
         <!-- Main Content Area -->
         <div class="main-content">
 
-            <!-- ============================================================
-                 TOP HEADER NAVIGATION
-                 ============================================================ -->
+            <!-- Top Header Navigation -->
             <header>
                 <div class="container">
                     <div class="nav-inner">
@@ -1391,7 +2067,8 @@
 
                         <ul class="nav-links">
                             <li><a href="#architectures">Architectures</a></li>
-                            <li><a href="#pipeline">Lifecycle</a></li>
+                            <li><a href="#pcb-gallery">PCB Gallery</a></li>
+                            <li><a href="#pipeline">Turnkey Lifecycle</a></li>
                             <li><a href="#tools">Dev Tools (16)</a></li>
                             <li><a href="#terminal">Comms Uplink</a></li>
                         </ul>
@@ -1408,23 +2085,42 @@
                 </div>
             </header>
 
-            <!-- ============================================================
-                 HERO SECTION (FAITHFUL TO ATTACHED IMAGE)
-                 ============================================================ -->
+            <!-- Mobile Navigation Drawer Overlay -->
+            <div class="mobile-drawer-overlay" id="mobileDrawerOverlay">
+                <div class="mobile-drawer" id="mobileDrawer">
+                    <div class="mobile-drawer-header">
+                        <span class="mobile-drawer-brand">ASTATINE</span>
+                        <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Menu">✕</button>
+                    </div>
+                    <div class="mobile-drawer-links">
+                        <a href="#architectures" class="mobile-nav-link"><span>01</span> Architectures</a>
+                        <a href="#pcb-gallery" class="mobile-nav-link"><span>02</span> Past PCB Designs</a>
+                        <a href="#pipeline" class="mobile-nav-link"><span>03</span> Turnkey Lifecycle</a>
+                        <a href="#tools" class="mobile-nav-link"><span>04</span> Developer Suite (16)</a>
+                        <a href="#terminal" class="mobile-nav-link"><span>05</span> Comms Uplink</a>
+                    </div>
+                    <div class="mobile-drawer-footer">
+                        <a href="https://wa.me/916207033076" target="_blank" rel="noopener" class="btn-solid-coral" style="width: 100%; text-align: center;">
+                            WhatsApp Direct Uplink
+                        </a>
+                        <div class="mobile-drawer-meta">ENGINEERED IN BHARAT // V.2026</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Section -->
             <section class="hero-section">
                 <div class="container">
                     
-                    <!-- Top Minimalist Dotted Alignment Guide -->
                     <div class="hero-dots-guide">
                         <span>·</span><span>·</span><span>·</span><span>·</span><span>·</span><span>·</span><span>·</span><span>·</span><span>·</span><span>·</span><span>·</span><span>·</span><span>·</span><span>·</span><span>·</span><span>·</span>
                     </div>
 
                     <div class="hero-grid">
                         
-                        <!-- Hero Left: Massive Condensed Bold Title -->
                         <div class="hero-copy">
                             <div class="hero-eyebrow">
-                                <span>✦</span> BARE-METAL SILICON &amp; FIRMWARE
+                                <span>✦</span> FROM IDEA TO FINAL ELECTRONIC PRODUCT IN YOUR HAND
                             </div>
 
                             <h1 class="hero-title">
@@ -1433,20 +2129,19 @@
                             </h1>
 
                             <p class="hero-desc">
-                                Specialized embedded systems engineering. From low-level register control, DMA transfers, and FreeRTOS deterministic kernels to industrial fieldbuses (CAN, Modbus) and impedance-matched multilayer PCB fabrication.
+                                Complete turnkey hardware solutions: <b>PCB design</b>, <b>PCB manufacturing</b>, <b>firmware development</b>, <b>component sourcing</b>, <b>PCB assembly (PCBA)</b>, <b>custom 3D enclosure</b>, <b>packaging</b>, and <b>global shipment</b>.
                             </p>
 
                             <div class="hero-actions">
-                                <a href="#tools" class="btn-solid-coral">Launch Dev Suite</a>
-                                <a href="#architectures" class="btn-outline-glass">Explore Systems</a>
+                                <a href="#pcb-gallery" class="btn-solid-coral">View Past PCB Designs</a>
+                                <a href="#tools" class="btn-outline-glass">Launch Dev Suite</a>
                             </div>
                         </div>
 
-                        <!-- Hero Right: Numbered Cards Carousel (01, 02, 03, 04) -->
+                        <!-- Numbered Showcase Cards Carousel -->
                         <div class="hero-showcase">
                             <div class="cards-deck-wrapper" id="cardsDeck">
                                 
-                                <!-- Card 02 (Dark Slate Glass - As shown in image) -->
                                 <article class="showcase-card" id="cardSlotA">
                                     <div class="card-numeral" id="numSlotA">02</div>
                                     <div class="card-center-icon">
@@ -1458,7 +2153,6 @@
                                     </div>
                                 </article>
 
-                                <!-- Card 03 (Solid Coral Accent - As shown in image) -->
                                 <article class="showcase-card card-accent-coral" id="cardSlotB">
                                     <div class="card-numeral" id="numSlotB">03</div>
                                     <div class="card-center-icon">
@@ -1472,7 +2166,6 @@
 
                             </div>
 
-                            <!-- Carousel Footer: Info Label + Circular Arrow Buttons -->
                             <div class="showcase-footer">
                                 <div class="showcase-info-block">
                                     <span class="showcase-info-label" id="showcaseLabel">SYSTEM ARCHITECTURE // V.2026</span>
@@ -1489,15 +2182,231 @@
 
                     </div>
 
-                    <!-- Bottom Technical Markings -->
                     <div class="hero-bottom-ticks">
                         <span>LAT: 28.61 // LNG: 77.20</span>
                         <span>· · · · · · · · · · · · · · · ·</span>
-                        <span>ENGINEERED IN BHARAT</span>
+                        <span>TURNKEY HARDWARE PIPELINE</span>
                     </div>
 
                 </div>
             </section>
+
+            <!-- ============================================================
+                 NEW SECTION: OUR PAST PCB DESIGN PHOTOS (HARDWARE GALLERY)
+                 Drop images named pcb1, pcb2, pcb3... in GitHub repo and they show!
+                 ============================================================ -->
+            <section class="section-block" id="pcb-gallery" style="background: rgba(14, 8, 30, 0.65);">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-tag">Fabrication Portfolio</span>
+                        <h2 class="section-title">Our Past PCB Designs</h2>
+                        <p class="section-lead">A gallery of our in-house engineered boards: multilayer micro-controllers, high-speed differential routing, isolated industrial power stages, and production-ready PCBA designs.</p>
+                    </div>
+
+                    <!-- Filter Bar for PCB Gallery -->
+                    <div class="pills-filter-bar">
+                        <button class="pill-btn active" data-pcb-filter="all">All PCB Designs (8)</button>
+                        <button class="pill-btn" data-pcb-filter="mult">4-8 Layer High Speed</button>
+                        <button class="pill-btn" data-pcb-filter="power">Power &amp; Inverters</button>
+                        <button class="pill-btn" data-pcb-filter="iot">Wireless &amp; MCUs</button>
+                        <button class="pill-btn" data-pcb-filter="fieldbus">Industrial CAN/Modbus</button>
+                    </div>
+
+                    <div class="pcb-gallery-grid" id="pcbGrid">
+
+                        <!-- PCB 1 -->
+                        <div class="pcb-card" data-pcb-category="mult" data-img-base="pcb1" data-title="STM32 High-Speed Controller PCB" data-desc="4-Layer impedance-controlled STM32 ARM Cortex-M4 motherboard featuring USB-OTG, high-speed SPI display bus, and DMA-driven analog telemetry.">
+                            <div class="pcb-img-container">
+                                <img src="pcb1.png" alt="PCB Design 1" class="pcb-target-img" data-slot="pcb1" />
+                            </div>
+                            <div class="pcb-body">
+                                <div>
+                                    <div class="pcb-header-row">
+                                        <span class="pcb-layer-pill">4-LAYER ENIG</span>
+                                        <span class="pcb-filename-tag">pcb1.png / .jpg</span>
+                                    </div>
+                                    <h3 class="pcb-title">STM32 Master Controller</h3>
+                                    <p class="pcb-desc">High-density 4-layer board with 50Ω single-ended trace tuning, dedicated ground return planes, and low-noise analog separation.</p>
+                                </div>
+                                <div class="pcb-specs-tag-list">
+                                    <span class="pcb-spec-item">STM32F4</span>
+                                    <span class="pcb-spec-item">50Ω Microstrip</span>
+                                    <span class="pcb-spec-item">0.2mm Vias</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PCB 2 -->
+                        <div class="pcb-card" data-pcb-category="fieldbus" data-img-base="pcb2" data-title="Isolated CAN-FD & Modbus Gateway PCB" data-desc="Industrial communication node with 2.5kV galvanic isolation, high-speed CAN-FD transceivers, and robust RS-485 Modbus termination.">
+                            <div class="pcb-img-container">
+                                <img src="pcb2.png" alt="PCB Design 2" class="pcb-target-img" data-slot="pcb2" />
+                            </div>
+                            <div class="pcb-body">
+                                <div>
+                                    <div class="pcb-header-row">
+                                        <span class="pcb-layer-pill">2-LAYER 2OZ</span>
+                                        <span class="pcb-filename-tag">pcb2.png / .jpg</span>
+                                    </div>
+                                    <h3 class="pcb-title">Isolated Industrial Fieldbus</h3>
+                                    <p class="pcb-desc">Galvanically isolated CAN 2.0B / CAN-FD and RS-485 transceiver board engineered for harsh high-EMI automotive and factory floors.</p>
+                                </div>
+                                <div class="pcb-specs-tag-list">
+                                    <span class="pcb-spec-item">2.5kV Isolation</span>
+                                    <span class="pcb-spec-item">CAN-FD</span>
+                                    <span class="pcb-spec-item">RS-485</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PCB 3 -->
+                        <div class="pcb-card" data-pcb-category="power" data-img-base="pcb3" data-title="3-Phase BLDC Inverter & Gate Driver" data-desc="Heavy-duty motor control stage with high-side/low-side MOSFET gate drivers, shunt resistor current sensing, and aluminum heatsink mounting.">
+                            <div class="pcb-img-container">
+                                <img src="pcb3.png" alt="PCB Design 3" class="pcb-target-img" data-slot="pcb3" />
+                            </div>
+                            <div class="pcb-body">
+                                <div>
+                                    <div class="pcb-header-row">
+                                        <span class="pcb-layer-pill">4-LAYER 2OZ</span>
+                                        <span class="pcb-filename-tag">pcb3.png / .jpg</span>
+                                    </div>
+                                    <h3 class="pcb-title">High-Power BLDC Driver</h3>
+                                    <p class="pcb-desc">Wide copper pours rated for 40A continuous load with low-inductance ceramic bypass capacitors and thermal vias for direct heat dissipation.</p>
+                                </div>
+                                <div class="pcb-specs-tag-list">
+                                    <span class="pcb-spec-item">40A Continuous</span>
+                                    <span class="pcb-spec-item">Gate Drivers</span>
+                                    <span class="pcb-spec-item">Shunt Sense</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PCB 4 -->
+                        <div class="pcb-card" data-pcb-category="iot" data-img-base="pcb4" data-title="Ultra-Compact ESP32 Telemetry Module" data-desc="Miniature edge node featuring onboard PIFA antenna matching network, LiPo battery charging, and ultra-low sleep current consumption.">
+                            <div class="pcb-img-container">
+                                <img src="pcb4.png" alt="PCB Design 4" class="pcb-target-img" data-slot="pcb4" />
+                            </div>
+                            <div class="pcb-body">
+                                <div>
+                                    <div class="pcb-header-row">
+                                        <span class="pcb-layer-pill">4-LAYER RF</span>
+                                        <span class="pcb-filename-tag">pcb4.png / .jpg</span>
+                                    </div>
+                                    <h3 class="pcb-title">ESP32 Wireless Edge Node</h3>
+                                    <p class="pcb-desc">Miniaturized RF board featuring controlled 50Ω coplanar waveguide with ground (CPWG), ceramic capacitors, and low-dropout power regulation.</p>
+                                </div>
+                                <div class="pcb-specs-tag-list">
+                                    <span class="pcb-spec-item">WiFi / BLE</span>
+                                    <span class="pcb-spec-item">CPWG 50Ω</span>
+                                    <span class="pcb-spec-item">LiPo Charger</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PCB 5 -->
+                        <div class="pcb-card" data-pcb-category="mult" data-img-base="pcb5" data-title="Precision 24-Bit Analog Data Acquisition" data-desc="Low-noise instrument-grade PCB with differential delta-sigma ADC, ultra-stable voltage reference, and guarded high-impedance analog inputs.">
+                            <div class="pcb-img-container">
+                                <img src="pcb5.png" alt="PCB Design 5" class="pcb-target-img" data-slot="pcb5" />
+                            </div>
+                            <div class="pcb-body">
+                                <div>
+                                    <div class="pcb-header-row">
+                                        <span class="pcb-layer-pill">6-LAYER PRECISION</span>
+                                        <span class="pcb-filename-tag">pcb5.png / .jpg</span>
+                                    </div>
+                                    <h3 class="pcb-title">Precision Analog DAQ</h3>
+                                    <p class="pcb-desc">6-Layer board with split ground plane strategy, star grounding, and guarded trace routing to achieve &gt;110dB signal-to-noise ratio.</p>
+                                </div>
+                                <div class="pcb-specs-tag-list">
+                                    <span class="pcb-spec-item">24-Bit ADC</span>
+                                    <span class="pcb-spec-item">Guarded Traces</span>
+                                    <span class="pcb-spec-item">&gt;110dB SNR</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PCB 6 -->
+                        <div class="pcb-card" data-pcb-category="power" data-img-base="pcb6" data-title="Industrial Smart Motor Starter PCBA" data-desc="Ruggedized relay actuation board with true RMS AC voltage/current measurement transformers and high-capacity contactor drive circuits.">
+                            <div class="pcb-img-container">
+                                <img src="pcb6.png" alt="PCB Design 6" class="pcb-target-img" data-slot="pcb6" />
+                            </div>
+                            <div class="pcb-body">
+                                <div>
+                                    <div class="pcb-header-row">
+                                        <span class="pcb-layer-pill">2-LAYER HEAVY COPPER</span>
+                                        <span class="pcb-filename-tag">pcb6.png / .jpg</span>
+                                    </div>
+                                    <h3 class="pcb-title">Smart Motor Starter Board</h3>
+                                    <p class="pcb-desc">Designed to replace mechanical starters with digital telemetry, current transformer (CT) calibration, and surge suppression MOVs.</p>
+                                </div>
+                                <div class="pcb-specs-tag-list">
+                                    <span class="pcb-spec-item">True AC Math</span>
+                                    <span class="pcb-spec-item">CT Sensing</span>
+                                    <span class="pcb-spec-item">Snubber Filter</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PCB 7 -->
+                        <div class="pcb-card" data-pcb-category="mult" data-img-base="pcb7" data-title="High-Speed RISC-V Compute Carrier" data-desc="8-Layer high-speed digital carrier board with DDR3 RAM differential routing, length-matched byte lanes, and gigabit ethernet PHY.">
+                            <div class="pcb-img-container">
+                                <img src="pcb7.png" alt="PCB Design 7" class="pcb-target-img" data-slot="pcb7" />
+                            </div>
+                            <div class="pcb-body">
+                                <div>
+                                    <div class="pcb-header-row">
+                                        <span class="pcb-layer-pill">8-LAYER MICROVIA</span>
+                                        <span class="pcb-filename-tag">pcb7.png / .jpg</span>
+                                    </div>
+                                    <h3 class="pcb-title">RISC-V High-Speed Carrier</h3>
+                                    <p class="pcb-desc">Complex high-density interconnect (HDI) board with length-tuned differential pairs, power integrity decoupling, and blind/buried vias.</p>
+                                </div>
+                                <div class="pcb-specs-tag-list">
+                                    <span class="pcb-spec-item">HDI Microvia</span>
+                                    <span class="pcb-spec-item">DDR3 Routing</span>
+                                    <span class="pcb-spec-item">Gigabit PHY</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PCB 8 -->
+                        <div class="pcb-card" data-pcb-category="iot" data-img-base="pcb8" data-title="Low-Power Multi-Sensor Environmental Node" data-desc="Battery-powered field sensor node integrating I²C environmental sensors, solar energy harvesting power management, and sub-GHz transceiver.">
+                            <div class="pcb-img-container">
+                                <img src="pcb8.png" alt="PCB Design 8" class="pcb-target-img" data-slot="pcb8" />
+                            </div>
+                            <div class="pcb-body">
+                                <div>
+                                    <div class="pcb-header-row">
+                                        <span class="pcb-layer-pill">4-LAYER LOW POWER</span>
+                                        <span class="pcb-filename-tag">pcb8.png / .jpg</span>
+                                    </div>
+                                    <h3 class="pcb-title">Solar Sensor Node PCBA</h3>
+                                    <p class="pcb-desc">Engineered for 5+ years of battery maintenance-free operation using Maximum Power Point Tracking (MPPT) solar harvesting.</p>
+                                </div>
+                                <div class="pcb-specs-tag-list">
+                                    <span class="pcb-spec-item">MPPT Solar</span>
+                                    <span class="pcb-spec-item">&lt;15µA Sleep</span>
+                                    <span class="pcb-spec-item">Sub-GHz RF</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lightbox Modal for PCB High-Res Inspection -->
+            <div class="pcb-modal" id="pcbModal">
+                <div class="pcb-modal-content">
+                    <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close Preview">✕</button>
+                    <div class="modal-img-wrap" id="modalImgWrap">
+                        <!-- Cloned or dynamically loaded image -->
+                    </div>
+                    <div class="modal-meta-wrap">
+                        <h3 class="modal-meta-title" id="modalTitle">PCB Design Title</h3>
+                        <p class="modal-meta-desc" id="modalDesc">Detailed board specifications, stackup layers, and fabrication parameters.</p>
+                    </div>
+                </div>
+            </div>
 
             <!-- ============================================================
                  EMBEDDED ARCHITECTURES & HARDWARE MATRIX
@@ -1510,7 +2419,6 @@
                         <p class="section-lead">Deep hardware mastery across bare-metal microcontrollers, RTOS kernels, high-speed mixed-signal buses, and ruggedized power stages.</p>
                     </div>
 
-                    <!-- Filter Pills Bar -->
                     <div class="pills-filter-bar">
                         <button class="pill-btn active" data-filter="all">All Architectures (6)</button>
                         <button class="pill-btn" data-filter="mcu">Bare-Metal MCU</button>
@@ -1521,7 +2429,6 @@
 
                     <div class="matrix-grid" id="archGrid">
                         
-                        <!-- 1. STM32 & ARM Cortex-M -->
                         <article class="arch-card" data-category="mcu">
                             <div>
                                 <div class="arch-top">
@@ -1538,7 +2445,6 @@
                             </ul>
                         </article>
 
-                        <!-- 2. FreeRTOS & Zephyr Kernels -->
                         <article class="arch-card" data-category="rtos">
                             <div>
                                 <div class="arch-top">
@@ -1555,7 +2461,6 @@
                             </ul>
                         </article>
 
-                        <!-- 3. CAN & Modbus Fieldbus -->
                         <article class="arch-card" data-category="fieldbus">
                             <div>
                                 <div class="arch-top">
@@ -1572,7 +2477,6 @@
                             </ul>
                         </article>
 
-                        <!-- 4. High-Speed Multilayer PCB -->
                         <article class="arch-card" data-category="pcb">
                             <div>
                                 <div class="arch-top">
@@ -1589,7 +2493,6 @@
                             </ul>
                         </article>
 
-                        <!-- 5. Power Stages & Motor Gate Drivers -->
                         <article class="arch-card" data-category="pcb">
                             <div>
                                 <div class="arch-top">
@@ -1606,7 +2509,6 @@
                             </ul>
                         </article>
 
-                        <!-- 6. Sensor Fusion & Precision Analog -->
                         <article class="arch-card" data-category="mcu">
                             <div>
                                 <div class="arch-top">
@@ -1628,43 +2530,43 @@
             </section>
 
             <!-- ============================================================
-                 LIFECYCLE PIPELINE SECTION
+                 LIFECYCLE PIPELINE: TURNKEY HARDWARE EXECUTION
                  ============================================================ -->
             <section class="section-block" id="pipeline" style="background: rgba(14, 9, 30, 0.5);">
                 <div class="container">
                     <div class="section-header">
-                        <span class="section-tag">Rigorous Execution</span>
-                        <h2 class="section-title">The Engineering Lifecycle</h2>
-                        <p class="section-lead">A full-spectrum methodology spanning circuit topology design, physical routing, bare-metal validation, and automated production testing.</p>
+                        <span class="section-tag">End-To-End Execution</span>
+                        <h2 class="section-title">The Complete Turnkey Lifecycle</h2>
+                        <p class="section-lead">From conceptual schematic and component procurement to precision SMT assembly, custom enclosures, and final product boxing in your hand.</p>
                     </div>
 
                     <div class="pipeline-grid">
                         <div class="pipeline-card">
                             <span class="pipeline-step-num">01</span>
                             <span class="pipeline-icon">🖋️</span>
-                            <h4 class="pipeline-title">Schematic &amp; Simulation</h4>
-                            <p class="pipeline-text">SPICE circuit modeling, component thermal derating, worst-case power analysis, and precision Bill of Materials (BOM) optimization.</p>
+                            <h4 class="pipeline-title">PCB Design &amp; Schematics</h4>
+                            <p class="pipeline-text">SPICE circuit simulation, component derating, impedance planning, multilayer stackup generation, and DFM validation.</p>
                         </div>
 
                         <div class="pipeline-card">
                             <span class="pipeline-step-num">02</span>
-                            <span class="pipeline-icon">📐</span>
-                            <h4 class="pipeline-title">Multilayer Routing</h4>
-                            <p class="pipeline-text">Differential impedance routing, dedicated power planes, thermal relief vias, and strict design for manufacturing (DFM) verification.</p>
+                            <span class="pipeline-icon">🏭</span>
+                            <h4 class="pipeline-title">Manufacturing &amp; Sourcing</h4>
+                            <p class="pipeline-text">Fabrication of high-density boards, Bill of Materials (BOM) global component sourcing, and authorized distributor verification.</p>
                         </div>
 
                         <div class="pipeline-card">
                             <span class="pipeline-step-num">03</span>
-                            <span class="pipeline-icon">💻</span>
-                            <h4 class="pipeline-title">Firmware &amp; RTOS</h4>
-                            <p class="pipeline-text">Bare-metal driver implementation in C/C++, RTOS thread scheduling, custom bootloaders with CRC checks, and fail-safe watchdog routines.</p>
+                            <span class="pipeline-icon">⚙️</span>
+                            <h4 class="pipeline-title">PCBA &amp; Firmware Build</h4>
+                            <p class="pipeline-text">Automated pick-and-place SMT assembly, reflow soldering, bare-metal C/C++ firmware flashing, and RTOS driver bring-up.</p>
                         </div>
 
                         <div class="pipeline-card">
                             <span class="pipeline-step-num">04</span>
-                            <span class="pipeline-icon">🔬</span>
-                            <h4 class="pipeline-title">HIL Test &amp; Bring-Up</h4>
-                            <p class="pipeline-text">Hardware-in-the-loop (HIL) automated test benches, digital logic probing, EMI pre-compliance scans, and thermal chamber stress tests.</p>
+                            <span class="pipeline-icon">📦</span>
+                            <h4 class="pipeline-title">Enclosure &amp; Shipment</h4>
+                            <p class="pipeline-text">Custom 3D CAD snap-fit enclosures, automated HIL testing, protective boxing, and insured door-to-door worldwide shipment.</p>
                         </div>
                     </div>
                 </div>
@@ -1681,7 +2583,6 @@
                         <p class="section-lead">All 16 in-browser engineering calculators, standard decoders, and real-time waveform visualizers for electronics design.</p>
                     </div>
 
-                    <!-- Category Pills & Live Search -->
                     <div class="tools-filter-wrapper">
                         <div class="pills-filter-bar" style="margin-bottom: 0; justify-content: center;">
                             <button class="pill-btn active" data-tool-category="all">All Tools (16)</button>
@@ -2088,14 +2989,159 @@
     </div><!-- /page-wrapper -->
 
     <!-- ============================================================
-         JAVASCRIPT ENGINE: CAROUSEL, CALCULATORS, & FILTERS
+         JAVASCRIPT ENGINE: PCB AUTO-FALLBACK, CAROUSEL & CALCULATORS
          ============================================================ -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
 
             // ============================================================
-            // 1. NUMBERED CARDS CAROUSEL ENGINE (01, 02, 03, 04)
-            // Matching the attached reference image with interactive next/prev
+            // MOBILE NAVIGATION DRAWER CONTROLLER
+            // ============================================================
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileDrawerClose = document.getElementById('mobileDrawerClose');
+            const mobileDrawerOverlay = document.getElementById('mobileDrawerOverlay');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            function openMobileDrawer() {
+                if (mobileDrawerOverlay) {
+                    mobileDrawerOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            function closeMobileDrawer() {
+                if (mobileDrawerOverlay) {
+                    mobileDrawerOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', openMobileDrawer);
+            }
+            if (mobileDrawerClose) {
+                mobileDrawerClose.addEventListener('click', closeMobileDrawer);
+            }
+            if (mobileDrawerOverlay) {
+                mobileDrawerOverlay.addEventListener('click', (e) => {
+                    if (e.target === mobileDrawerOverlay) closeMobileDrawer();
+                });
+            }
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', closeMobileDrawer);
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeMobileDrawer();
+            });
+
+            // ============================================================
+            // 1. SMART PCB IMAGE LOADER & DYNAMIC FALLBACK
+            // Tries pcbN.png, pcbN.jpg, pcbN.jpeg, pcbN.webp.
+            // If user has not uploaded the image yet, renders a beautiful circuit diagram!
+            // ============================================================
+            const pcbImages = document.querySelectorAll('.pcb-target-img');
+            const pcbCards = document.querySelectorAll('.pcb-card');
+            const pcbModal = document.getElementById('pcbModal');
+            const modalCloseBtn = document.getElementById('modalCloseBtn');
+            const modalImgWrap = document.getElementById('modalImgWrap');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDesc = document.getElementById('modalDesc');
+
+            function getSvgCircuit(slot) {
+                return `
+                <div class="pcb-placeholder-art">
+                    <svg class="pcb-circuit-svg" viewBox="0 0 400 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="20" y="20" width="360" height="210" rx="8" stroke="#00f0ff" stroke-width="1.5" stroke-dasharray="6 4" />
+                        <circle cx="60" cy="60" r="14" fill="#1e293b" stroke="#00f0ff" stroke-width="1.5" />
+                        <circle cx="340" cy="60" r="14" fill="#1e293b" stroke="#00f0ff" stroke-width="1.5" />
+                        <circle cx="60" cy="190" r="14" fill="#1e293b" stroke="#00f0ff" stroke-width="1.5" />
+                        <circle cx="340" cy="190" r="14" fill="#1e293b" stroke="#00f0ff" stroke-width="1.5" />
+                        <rect x="150" y="80" width="100" height="90" rx="4" fill="#0f172a" stroke="#ff7a59" stroke-width="2" />
+                        <text x="200" y="130" fill="#ffffff" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" text-anchor="middle">MCU / SOC</text>
+                        <path d="M 60 74 L 60 120 L 150 120" stroke="#00f0ff" stroke-width="1.5" fill="none" />
+                        <path d="M 340 74 L 340 100 L 250 100" stroke="#ff7a59" stroke-width="1.5" fill="none" />
+                        <path d="M 200 170 L 200 210" stroke="#a855f7" stroke-width="1.5" fill="none" />
+                        <circle cx="200" cy="210" r="4" fill="#a855f7" />
+                        <circle cx="105" cy="120" r="3" fill="#00f0ff" />
+                    </svg>
+                    <span class="pcb-target-badge">📸 ${slot}.png / .jpg</span>
+                    <span class="pcb-hint-text">Paste image '${slot}' into GitHub to display your actual PCB photo</span>
+                </div>
+                `;
+            }
+
+            pcbImages.forEach(img => {
+                const slot = img.dataset.slot;
+                const extensions = ['.png', '.jpg', '.jpeg', '.webp'];
+                let currentExtIdx = 0;
+
+                function tryNextExtension() {
+                    currentExtIdx++;
+                    if (currentExtIdx < extensions.length) {
+                        img.src = slot + extensions[currentExtIdx];
+                    } else {
+                        // All extensions failed, render circuit placeholder!
+                        const parent = img.parentElement;
+                        parent.innerHTML = getSvgCircuit(slot);
+                    }
+                }
+
+                img.onerror = tryNextExtension;
+            });
+
+            // PCB Lightbox Modal Trigger
+            pcbCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const title = card.dataset.title;
+                    const desc = card.dataset.desc;
+                    const imgSlot = card.dataset.imgBase;
+                    const currentImg = card.querySelector('img');
+
+                    modalTitle.textContent = title;
+                    modalDesc.textContent = desc;
+
+                    if (currentImg && currentImg.complete && currentImg.naturalWidth > 0) {
+                        modalImgWrap.innerHTML = `<img src="${currentImg.src}" alt="${title}" />`;
+                    } else {
+                        modalImgWrap.innerHTML = getSvgCircuit(imgSlot);
+                    }
+                    pcbModal.classList.add('active');
+                });
+            });
+
+            if (modalCloseBtn) {
+                modalCloseBtn.addEventListener('click', () => {
+                    pcbModal.classList.remove('active');
+                });
+            }
+
+            if (pcbModal) {
+                pcbModal.addEventListener('click', (e) => {
+                    if (e.target === pcbModal) {
+                        pcbModal.classList.remove('active');
+                    }
+                });
+            }
+
+            // PCB Gallery Category Filter
+            const pcbFilterBtns = document.querySelectorAll('[data-pcb-filter]');
+            pcbFilterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    pcbFilterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const cat = btn.dataset.pcbFilter;
+                    pcbCards.forEach(card => {
+                        if (cat === 'all' || card.dataset.pcbCategory === cat) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // ============================================================
+            // 2. NUMBERED CARDS CAROUSEL ENGINE (01, 02, 03, 04)
             // ============================================================
             const cardsData = [
                 {
@@ -2132,7 +3178,7 @@
                 }
             ];
 
-            let currentIndex = 1; // Start showing card 02 & card 03, exactly as in reference image!
+            let currentIndex = 1;
 
             const cardSlotA = document.getElementById('cardSlotA');
             const cardSlotB = document.getElementById('cardSlotB');
@@ -2179,8 +3225,32 @@
 
             updateCarousel();
 
+            // Touch Swipe Gesture for Mobile Cards Deck
+            const cardsDeck = document.getElementById('cardsDeck');
+            if (cardsDeck) {
+                let touchStartX = 0;
+                let touchStartY = 0;
+                cardsDeck.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                    touchStartY = e.changedTouches[0].screenY;
+                }, { passive: true });
+
+                cardsDeck.addEventListener('touchend', (e) => {
+                    const diffX = e.changedTouches[0].screenX - touchStartX;
+                    const diffY = e.changedTouches[0].screenY - touchStartY;
+                    if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+                        if (diffX < 0) {
+                            currentIndex = (currentIndex + 1) % cardsData.length;
+                        } else {
+                            currentIndex = (currentIndex - 1 + cardsData.length) % cardsData.length;
+                        }
+                        updateCarousel();
+                    }
+                }, { passive: true });
+            }
+
             // ============================================================
-            // 2. HARDWARE MATRIX FILTER
+            // 3. HARDWARE MATRIX FILTER
             // ============================================================
             const matrixPills = document.querySelectorAll('.pills-filter-bar .pill-btn[data-filter]');
             const archCards = document.querySelectorAll('.arch-card');
@@ -2201,7 +3271,7 @@
             });
 
             // ============================================================
-            // 3. DEVELOPER TOOLS: CATEGORY PILLS & REAL-TIME SEARCH
+            // 4. DEVELOPER TOOLS: CATEGORY PILLS & REAL-TIME SEARCH
             // ============================================================
             const toolCategoryPills = document.querySelectorAll('.tools-filter-wrapper .pill-btn[data-tool-category]');
             const toolCards = document.querySelectorAll('.tool-card');
@@ -2249,7 +3319,7 @@
             }
 
             // ============================================================
-            // 4. TOOL: TRACE WIDTH (IPC-2221)
+            // 5. TOOL: TRACE WIDTH (IPC-2221)
             // ============================================================
             function calcTraceWidth() {
                 const I = parseFloat(document.getElementById('twI').value) || 0.1;
@@ -2279,7 +3349,7 @@
             calcTraceWidth();
 
             // ============================================================
-            // 5. TOOL: VIA CURRENT CAPACITY
+            // 6. TOOL: VIA CURRENT CAPACITY
             // ============================================================
             function calcVia() {
                 const d = parseFloat(document.getElementById('viaD').value) || 0.8;
@@ -2304,7 +3374,7 @@
             calcVia();
 
             // ============================================================
-            // 6. TOOL: CLEARANCE & CREEPAGE (IPC-2221B)
+            // 7. TOOL: CLEARANCE & CREEPAGE (IPC-2221B)
             // ============================================================
             function calcClearance() {
                 const V = parseFloat(document.getElementById('clV').value) || 250;
@@ -2332,7 +3402,7 @@
             calcClearance();
 
             // ============================================================
-            // 7. TOOL: MICROSTRIP IMPEDANCE
+            // 8. TOOL: MICROSTRIP IMPEDANCE
             // ============================================================
             function calcMicrostrip() {
                 const W = parseFloat(document.getElementById('msW').value) || 0.5;
@@ -2354,7 +3424,7 @@
             calcMicrostrip();
 
             // ============================================================
-            // 8. TOOL: STRIPLINE IMPEDANCE
+            // 9. TOOL: STRIPLINE IMPEDANCE
             // ============================================================
             function calcStripline() {
                 const W = parseFloat(document.getElementById('ssW').value) || 0.2;
@@ -2374,7 +3444,7 @@
             calcStripline();
 
             // ============================================================
-            // 9. TOOL: RESISTOR COLOR CODE VISUALIZER
+            // 10. TOOL: RESISTOR COLOR CODE VISUALIZER
             // ============================================================
             const rcCanvas = document.getElementById('rcCanvas');
             const rcCtx = rcCanvas ? rcCanvas.getContext('2d') : null;
@@ -2387,19 +3457,19 @@
 
             function drawResistorBands(bands, digitsStr, multExp, tolColor) {
                 if (!rcCanvas || !rcCtx) return;
+                if (rcCanvas.parentElement && rcCanvas.parentElement.clientWidth > 50) {
+                    rcCanvas.width = rcCanvas.parentElement.clientWidth;
+                }
                 const w = rcCanvas.width;
                 const h = rcCanvas.height;
                 rcCtx.clearRect(0, 0, w, h);
 
-                // Background
                 rcCtx.fillStyle = '#0b0718';
                 rcCtx.fillRect(0, 0, w, h);
 
-                // Resistor Leads
                 rcCtx.fillStyle = '#94a3b8';
                 rcCtx.fillRect(10, h / 2 - 3, w - 20, 6);
 
-                // Ceramic body
                 const rw = w * 0.7;
                 const rx = (w - rw) / 2;
                 const rh = h * 0.55;
@@ -2492,7 +3562,7 @@
             decodeResistor();
 
             // ============================================================
-            // 10. TOOL: SMD RESISTOR DECODER
+            // 11. TOOL: SMD RESISTOR DECODER
             // ============================================================
             function decodeSMD() {
                 const code = (document.getElementById('smdCode').value || '').trim().toUpperCase();
@@ -2539,7 +3609,7 @@
             decodeSMD();
 
             // ============================================================
-            // 11. TOOL: CAPACITOR MARKING DECODER
+            // 12. TOOL: CAPACITOR MARKING DECODER
             // ============================================================
             function decodeCap() {
                 const code = (document.getElementById('capCode').value || '').trim().toUpperCase();
@@ -2565,7 +3635,7 @@
             decodeCap();
 
             // ============================================================
-            // 12. TOOL: ACTIVE FILTER (SALLEN-KEY) + BODE PLOT
+            // 13. TOOL: ACTIVE FILTER (SALLEN-KEY) + BODE PLOT
             // ============================================================
             const bodeCanvas = document.getElementById('bodeCanvas');
             const bodeCtx = bodeCanvas ? bodeCanvas.getContext('2d') : null;
@@ -2582,6 +3652,9 @@
                 document.getElementById('filtC').textContent = (C * 1e9).toFixed(1) + ' nF';
 
                 if (!bodeCanvas || !bodeCtx) return;
+                if (bodeCanvas.parentElement && bodeCanvas.parentElement.clientWidth > 50) {
+                    bodeCanvas.width = bodeCanvas.parentElement.clientWidth;
+                }
                 const w = bodeCanvas.width;
                 const h = bodeCanvas.height;
                 bodeCtx.clearRect(0, 0, w, h);
@@ -2664,7 +3737,7 @@
             calcFilter();
 
             // ============================================================
-            // 13. TOOL: LED RESISTOR SIZING
+            // 14. TOOL: LED RESISTOR SIZING
             // ============================================================
             function calcLED() {
                 const Vs = parseFloat(document.getElementById('ledVs').value) || 5;
@@ -2697,7 +3770,7 @@
             calcLED();
 
             // ============================================================
-            // 14. TOOL: NE555 TIMER
+            // 15. TOOL: NE555 TIMER
             // ============================================================
             const neCanvas = document.getElementById('neCanvas');
             const neCtx = neCanvas ? neCanvas.getContext('2d') : null;
@@ -2725,6 +3798,9 @@
                 document.getElementById('neDuty').textContent = duty.toFixed(1) + '%';
 
                 if (!neCanvas || !neCtx) return;
+                if (neCanvas.parentElement && neCanvas.parentElement.clientWidth > 50) {
+                    neCanvas.width = neCanvas.parentElement.clientWidth;
+                }
                 const w = neCanvas.width;
                 const h = neCanvas.height;
                 neCtx.clearRect(0, 0, w, h);
@@ -2771,7 +3847,7 @@
             calcNE555();
 
             // ============================================================
-            // 15. TOOL: BUCK/BOOST SIZING
+            // 16. TOOL: BUCK/BOOST SIZING
             // ============================================================
             function calcBuckBoost() {
                 const Vin = parseFloat(document.getElementById('bbVin').value) || 12;
@@ -2795,7 +3871,7 @@
             calcBuckBoost();
 
             // ============================================================
-            // 16. TOOL: DIFFERENTIAL MICROSTRIP
+            // 17. TOOL: DIFFERENTIAL MICROSTRIP
             // ============================================================
             function calcDiffMicrostrip() {
                 const W = parseFloat(document.getElementById('dmW').value) || 0.5;
@@ -2820,7 +3896,7 @@
             calcDiffMicrostrip();
 
             // ============================================================
-            // 17. TOOL: RC TIME CONSTANT
+            // 18. TOOL: RC TIME CONSTANT
             // ============================================================
             function calcRC() {
                 const R = parseFloat(document.getElementById('rcR').value) || 10000;
@@ -2841,7 +3917,7 @@
             calcRC();
 
             // ============================================================
-            // 18. TOOL: VOLTAGE DIVIDER
+            // 19. TOOL: VOLTAGE DIVIDER
             // ============================================================
             function calcVoltageDivider() {
                 const Vin = parseFloat(document.getElementById('vdVin').value) || 5;
@@ -2863,7 +3939,7 @@
             calcVoltageDivider();
 
             // ============================================================
-            // 19. TOOL: BATTERY LIFE ESTIMATOR
+            // 20. TOOL: BATTERY LIFE ESTIMATOR
             // ============================================================
             function calcBatteryLife() {
                 const cap = parseFloat(document.getElementById('blCap').value) || 2000;
@@ -2882,7 +3958,7 @@
             calcBatteryLife();
 
             // ============================================================
-            // 20. DIRECT COMMS TERMINAL
+            // 21. DIRECT COMMS TERMINAL
             // ============================================================
             const commsForm = document.getElementById('commsForm');
             const btnEmailDispatch = document.getElementById('btnEmailDispatch');
@@ -2930,6 +4006,17 @@
                     window.location.href = `mailto:contact@astatine.co.in?subject=${subject}&body=${body}`;
                 });
             }
+
+            // Window Resize: Redraw dynamic canvases cleanly on orientation change / viewport resize
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    decodeResistor();
+                    calcFilter();
+                    calcNE555();
+                }, 150);
+            });
 
         }); // End DOMContentLoaded
     </script>
